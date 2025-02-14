@@ -1,29 +1,18 @@
-import {Articles} from "@/components";
-import {DataColumn} from "@/components/LandingPage/DataColumn";
-import {FooterWithCTA} from "@/components/LandingPage/FooterWithCTA";
-import {Navbar} from "@/components/LandingPage/Navbar";
-import {QuestionAnswer} from "@/components/LandingPage/QuestionAnswer";
-import {StrengthNumber} from "@/components/LandingPage/StrengthNumber";
+import { Articles } from "@/components/LandingPage/Articles";
+import { DataColumn } from "@/components/LandingPage/DataColumn";
+import { FooterWithCTA } from "@/components/Common/FooterWithCTA";
+import { QuestionAnswer } from "@/components/LandingPage/QuestionAnswer";
+import { StrengthNumber } from "@/components/LandingPage/StrengthNumber";
+import { Subscription } from "@/components/Common/Subscription";
 import Image from "next/image";
 import Link from "next/link";
+import { Header } from "@/components";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen">
-      <div className="absolute">
-        <Image
-          src="/images/HomeScreenImages/GradiantImage.png"
-          alt="Gradient background"
-          height={500}
-          width={1960}
-          style={{
-            height: "100%",
-            width: "100%",
-          }}
-        />
-      </div>
-      <Navbar />
-      <div className="z-10  relative" >
+      <Header imageHeight="auto" />
+      <div className="z-10  relative">
         <main className="">
           <div className="flex flex-col lg:flex-row items-center justify-between py-12 lg:py-20 gap-12">
             <div className="lg:w-1/2 space-y-6 ml-10">
@@ -41,9 +30,9 @@ export default function Home() {
                 strategy—but every area of your organization.
               </p>
 
-              <div className="flex items-center space-x-3">
-                <div className="flex -space-x-2">
-                  <div className="w-120 h-53 rounded-full border-2 border-white overflow-hidden">
+              <div className="flex items-center space-x-3 ">
+                <div className="flex ">
+                  <div className="overflow-hidden">
                     <Image
                       src="/images/HomeScreenImages/Image1.png"
                       alt="User avatar"
@@ -53,32 +42,33 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-lg text-gray-600">
-                  Join{" "}
-                  <span className="font-bold text-gray-900">
+                  Join
+                  <span className="font-bold text-gray-900 ml-1 mr-1">
                     4600+ Creators
-                  </span>{" "}
+                  </span>
                   and start getting going viral right now
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md">
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md ">
                 <input
                   type="email"
                   placeholder="Enter Your Email"
-                  className="flex-1 px-4 py-3 rounded-lg borde border-[#D0D5DD] focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent text-[#6670858C]"
+                  className="flex-1 px-4 py-3 rounded-lg border border-[#D0D5DD] text-[#6670858C]"
                 />
-                <button className="px-6 py-3 bg-primaryBlue text-white transition-colors border border-[#F7BE00]">
+                <button className="px-6 py-3 bg-primaryBlue text-white border border-[#F7BE00]">
                   Get Started
                 </button>
               </div>
-
+              <div className="">
               <Link
                 href="#learn-more"
                 className="text-sm text-gray-800 underline"
               >
                 Learn More
               </Link>
-            </div>
+              </div>
+              </div>
 
             <div className="lg:w-1/2 hidden lg:block ">
               <Image
@@ -92,10 +82,11 @@ export default function Home() {
         </main>
       </div>
       <DataColumn />
-      <StrengthNumber/>
-      <QuestionAnswer/>
-      <Articles/>
-      <FooterWithCTA/>
+      <Subscription />
+      <StrengthNumber />
+      <QuestionAnswer />
+      <Articles />
+      <FooterWithCTA />
     </div>
   );
 }

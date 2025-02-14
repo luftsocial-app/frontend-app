@@ -9,7 +9,7 @@ export function StrengthNumber () {
   ];
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between p-8 gap-8 max-w-7xl mx-auto">
+    <div className="flex flex-col md:flex-row items-center justify-center p-8 gap-8 bg-secondaryPink">
       <div className="flex flex-col space-y-6 max-w-xl">
         <span className="text-lg font-bold text-primaryBlue">Our stats</span>
         

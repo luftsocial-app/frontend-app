@@ -2,8 +2,6 @@ export {Articles} from './Articles';
 export {Button} from './Button';
 export {DataColumn} from './DataColumn';
 export {Footer} from './Footer';
-export {FooterWithCTA} from './FooterWithCTA';
 export {HeroSection} from './HeroSection';
-export {Navbar} from './Navbar';
 export {QuestionAnswer} from './QuestionAnswer';
 export {StrengthNumber} from './StrengthNumber';

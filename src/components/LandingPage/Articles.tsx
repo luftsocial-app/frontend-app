@@ -20,7 +20,7 @@ export function Articles ()  {
   ];
 
   return (
-    <div className=" bg-secondaryPink mt-20 pt-20 pb-5">
+    <div className=" bg-secondaryPink pt-20 pb-5">
       <div className="mx-20">
         <p className="text-lg  text-primaryBlue text-center font-bold leading-[41px]">
           Blogs
