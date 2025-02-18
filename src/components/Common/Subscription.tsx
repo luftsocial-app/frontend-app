@@ -59,12 +59,11 @@ export function Subscription() {
         </h2>
       </div>
 
-      <div className="flex gap-8 justify-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
         {columnData.map((item, index) => (
           <div
             key={index}
-            
-            className={`relative rounded-[8px] border border-gray-300 w-full min-w-[362px] max-w-[362px] p-8 ${
+            className={`relative rounded-[8px] border border-gray-300 w-full max-w-[362px] mx-auto p-8 ${
               item.isPopular ? "bg-primaryBlue" : "bg-secondaryPink"
             }`}
           >

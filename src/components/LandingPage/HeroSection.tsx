@@ -25,7 +25,7 @@ export function HeroSection () {
               <input
                 type="text"
                 placeholder="Full Name"
-                className="w-full px-6 py-4  text-base  bg-primaryPurple  text-white placeholder-primaryWhite rounded-[5px]"
+                className="w-full px-6 py-4  text-base  bg-primaryPurple  text-white placeholder-primaryWhite rounded-[9px]"
                 required
               />
             </div>
@@ -33,12 +33,13 @@ export function HeroSection () {
               <input
                 type="email"
                 placeholder="Email Address"
-                className="w-full px-6 py-4 bg-primaryPurple text-white placeholder-primaryWhite rounded-[5px]"
+                className="w-full px-6 py-4 bg-primaryPurple text-white placeholder-primaryWhite rounded-[9px]"
                 required
               />
             </div>
-            <Button href="/start-your-trial" className="bg-primaryWhite text-primaryBlue px-10 rounded-[9px] "> Start Your Trial</Button>
+            <Button href="/start-your-trial" className="bg-primaryWhite text-primaryBlue px-12 rounded-[9px] "> Start Your Trial</Button>
             </form>
+
         </div>
       </div>
     </div>

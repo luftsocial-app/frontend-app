@@ -9,12 +9,12 @@ interface DropdownProps {
 
 export function QuestionAnswer ()  {
   return (
-    <div className="flex items-center border rounded-lg bg-gray-50 overflow-hidden">
+    <div className="flex items-center overflow-hidden ">
       <div className="flex-shrink-0 w-64 md:w-1/2">
         <img
           src="/images/HomeScreenImages/QuesAns.png"
           alt="Sample Image"
-          className="object-cover w-full h-full rounded-l-lg md:rounded-none"
+          className="object-cover w-full h-full"
         />
       </div>
 

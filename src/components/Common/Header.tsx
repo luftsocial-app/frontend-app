@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Navbar } from '@/components/Common/Navbar';
 
-export function Header({ imageHeight }:{imageHeight:string}) {
+export function Header({ imageHeight }:{imageHeight:any}) {
   return (
     <div className='relative overflow-visible' >
         <Image 

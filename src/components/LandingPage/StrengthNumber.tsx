@@ -3,13 +3,13 @@ import React from "react";
 export function StrengthNumber () {
   const stats = [
     { number: "100K", label: "Minutes Saved" },
-    { number: "4390", label: "Active Users" },
-    { number: "4390", label: "Projects Done" },
-    { number: "4390", label: "Happy Clients" }
+    { number: "1M+", label: "Traffic Generated" },
+    { number: "50K", label: "Daily Articles" },
+    { number: "5M", label: "AI Data Set" }
   ];
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center p-8 gap-8 bg-secondaryPink">
+    <div className="flex flex-col md:flex-row items-center justify-center p-10 gap-8 bg-secondaryPink">
       <div className="flex flex-col space-y-6 max-w-xl">
         <span className="text-lg font-bold text-primaryBlue">Our stats</span>
         
@@ -29,22 +29,24 @@ export function StrengthNumber () {
       </div>
 
       <div className="flex-shrink-0">
-        <div className="grid grid-cols-2 divide-x divide-y divide-gray-200 bg-white">
-          {stats.map((stat, index) => (
-            <div 
-              key={index}
-              className="flex flex-col items-center justify-center p-8 min-w-[180px]"
-            >
-              <span className="text-4xl font-semibold text-gray-900 mb-2">
-                {stat.number}
-              </span>
-              <span className="text-primaryPurple text-sm">
-                {stat.label}
-              </span>
-            </div>
-          ))}
-        </div>
+      <div className="relative grid grid-cols-2 gap-0">
+        {stats.map((stat, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center justify-center p-8 min-w-[180px]"
+          >
+            <span className="text-4xl font-semibold text-gray-900 mb-2">
+              {stat.number}
+            </span>
+            <span className="text-purple-600 text-sm">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-200"></div>
+        <div className="absolute top-1/2 left-0 right-0 h-px bg-gray-200"></div>
       </div>
+    </div>
     </div>
   );
 };
