@@ -1,13 +1,13 @@
 import { Contact, Footer, Navbar } from "@/components";
 import React from "react";
 
-export default function ContactScreen() {
+export function ContactScreen() {
   return (
     <div>
       <Navbar />
-      <Contact/>
+      <Contact />
       <div className=" p-10">
-      <Footer/>
+        <Footer />
       </div>
     </div>
   );

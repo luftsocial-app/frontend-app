@@ -1,12 +1,9 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { Navbar } from '@/components/Common/Navbar';
-import { useImageHeight } from '@/hooks/useImageHeight';
+import Image from "next/image";
+import { Navbar } from "@/components/Common/Navbar";
 
-export function Header({className}:{className:string}) {
-  const imageHeight = useImageHeight();
-
+export function Header({ className }: { className: string }) {
   return (
     <div className="relative overflow-visible">
       <Image

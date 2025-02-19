@@ -8,10 +8,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components";
 
-export default function Home() {
+export function HomeScreen() {
   return (
     <div className="relative min-h-screen">
-      <Header  className="h-[53rem] md:h-auto" />
+      <Header className="h-[53rem] md:h-auto" />
 
       <div className="z-10 relative lg:pl-[7.75rem]">
         <main>
@@ -49,7 +49,6 @@ export default function Home() {
                 </p>
               </div>
 
-              
               <div className="gap-4 flex flex-col items-center lg:items-start">
                 <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
                   <input
@@ -69,7 +68,6 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-
 
             <div className="lg:w-1/2 hidden lg:block">
               <Image

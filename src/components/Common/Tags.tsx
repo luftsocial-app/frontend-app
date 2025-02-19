@@ -1,5 +1,5 @@
-import React from 'react';
-import { getRandomColor } from '@/utils/RandomColor';
+import React from "react";
+import { getRandomColor } from "@/utils";
 
 interface TagsProps {
   tags: string[];

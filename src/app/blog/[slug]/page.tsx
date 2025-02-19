@@ -1,7 +1,7 @@
 import { FooterWithCTA, Header, MarkdownRenderer } from "@/components";
 import { BlogMeta } from "@/components/BlogScreen/BlogMeta";
 import { BlogDataType } from "./blog.types";
-import { formatDateString } from "@/utils/FormatDate";
+import { formatDateString } from "@/utils";
 import Image from "next/image";
 import { Twitter, Linkedin } from "lucide-react";
 
@@ -26,16 +26,14 @@ async function getBlogBySlug(slug: string) {
 
   try {
     const response = await fetch(
-      `http://192.168.0.210:1337/api/all-blogs?filters[slug][$eq]=${slug}&populate=*`,
+      `http://localhost:1337/api/all-blogs?filters[slug][$eq]=${slug}&populate=*`,
       {
         headers: {
           "Content-Type": "application/json",
         },
-        cache: "no-store", 
-      }
+        cache: "no-store",
+      },
     );
-
-    console.log(response, "responseresponseresponse");
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -56,7 +54,7 @@ export default async function Page({ params }: PageProps) {
   const param = await params;
   const slug = param?.slug as string;
 
-  const blogData = await getBlogBySlug(slug) as any
+  const blogData = (await getBlogBySlug(slug)) as any;
 
   const blog = blogData?.data[0] as BlogDataType;
   const content = blog?.blogContent ?? "";
@@ -100,7 +98,6 @@ export default async function Page({ params }: PageProps) {
                     width={20}
                     height={20}
                     style={{ fill: "black", stroke: "none" }}
-                    alt={"Twitter Image"}
                   />
                 </div>
               </a>
@@ -120,7 +117,6 @@ export default async function Page({ params }: PageProps) {
                     width={20}
                     height={20}
                     style={{ fill: "black", stroke: "none" }}
-                    alt={"Linkedin Image"}
                   />
                 </div>
               </a>
