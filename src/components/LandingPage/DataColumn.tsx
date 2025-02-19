@@ -29,8 +29,8 @@ export function DataColumn() {
   ];
 
   return (
-    <div className="bg-secondaryPink mt-20 pt-20 pb-5">
-      <div className="mx-6 sm:mx-10 md:mx-20">
+    <div className="bg-secondaryPink mt-10 pt-20 pb-5">
+      <div className="mx-6 sm:mx-10 md:mx-20 ">
         <p className="text-lg text-primaryPurple text-center font-bold leading-[41px]">
           Why We Are The Best
         </p>
@@ -47,11 +47,11 @@ export function DataColumn() {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6 sm:px-10 md:px-20 mb-40">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6 sm:px-10 md:px-20 md:mb-32 sm: mb-0 justify-center items-center ">
         {columnData.map((item, index) => (
           <div
             key={index}
-            className={`text-center px-4 sm:px-6 ${
+            className={`text-center px-4 sm:px-6 sm:pb-2 ${
               index % 4 !== 3 ? "border-r-0 sm:border-r-2 border-gray-200" : ""
             }`}
           >
@@ -63,7 +63,7 @@ export function DataColumn() {
             <h3 className="text-lg font-bold text-primaryPurple mb-2 text-left">
               {item.heading}
             </h3>
-            <p className="text-gray-600 text-left text-base font-normal">
+            <p className="text-gray-600 text-left text-base font-normal ">
               {item.paragraph}
             </p>
           </div>

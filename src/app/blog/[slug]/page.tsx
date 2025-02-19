@@ -66,7 +66,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <div className="w-full h-full min-h-screen">
       <div className="flex flex-col">
-        <Header imageHeight={170} />
+        <Header className="h-[10.625rem]" />
         <div className="mt-28">
           <BlogMeta
             title={blog?.title ?? ""}
@@ -76,7 +76,7 @@ export default async function Page({ params }: PageProps) {
             tags={blog?.tags[0].tags ?? ""}
           />
         </div>
-        <div className="mt-20 flex flex-row justify-center items-start xs: p-[20px]">
+        <div className="mt-20 flex flex-row justify-center xs: p-[20px] items-center">
           <div className="w-full max-w-3xl">
             <MarkdownRenderer content={content} />
           </div>

@@ -24,7 +24,7 @@ export function QuestionAnswer() {
           Questions & Answers
         </h2>
 
-        <div className="space-y-4">
+        <div className="space-y-4 ">
           <Dropdown
             question="Is LuftSocial Free?"
             answer="Bronze plan comes with a trial period, after which you will be charged a nominal fee to use the service."
@@ -65,17 +65,20 @@ const Dropdown: React.FC<DropdownProps> = ({ question, answer }) => {
         className="flex justify-between items-center text-lg md:text-xl font-semibold text-secondaryBlack cursor-pointer"
         onClick={toggleOpen}
       >
-        <span className="text-secondaryBlack font-bold">{question}</span>
         <ChevronDown
           className={`w-5 h-5 text-primaryPurple transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
+          <div className="w-full">
+  <span className="text-secondaryBlack font-bold text-left block ml-2">{question}</span>
+</div>
+
       </summary>
 
       <div
         ref={contentRef}
-        className="mt-2 ml-2 md:ml-4 text-secondaryLightGray overflow-hidden transition-all duration-300 text-lg font-normal"
+        className="mt-2 ml-2 md:ml-4 text-secondaryLightGray overflow-hidden transition-all duration-300 text-lg font-normal sm: ml-0"
         style={{ maxHeight: "0px" }}
       >
         {answer}

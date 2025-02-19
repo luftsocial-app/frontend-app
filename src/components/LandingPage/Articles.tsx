@@ -1,23 +1,11 @@
+"use client"
+import { useGetRecentBlogs } from "@/hooks/useGetRecentBlogs";
+import { formatDate } from "@/utils/FormatDate2";
 import Image from "next/image";
 
 export function Articles ()  {
-  const columnData = [
-    {
-      icon: "/images/HomeScreenImages/Blog1.png",
-      label: "April 09, 2025",
-      title: "Letter of Intent – Know 5 benefits of using AI",
-    },
-    {
-      icon: "/images/HomeScreenImages/Blog2.png",
-      label: "April 09, 2025",
-      title: " AI Content Generation : Know 5 Futuristic ways",
-    },
-    {
-      icon: "/images/HomeScreenImages/Blog3.png",
-      label: "April 09, 2025",
-      title: "Transcription – Impressive ways Audio 2 Text",
-    },
-  ];
+const {data} = useGetRecentBlogs();
+const blogs = data?.data ?? [];
 
   return (
     <div className="bg-secondaryPink pt-[6.25rem] pb-5">
@@ -33,28 +21,39 @@ export function Articles ()  {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[3.75rem] mx-4 md:mx-20 mb-[40] mt-[3.75rem]">
-        {columnData.map((item, index) => (
-          <div key={index}>
-            {item.icon && (
-              <div className="mb-[1.3125rem]">
-                <Image src={item.icon} alt="Icon" width={353} height={196} className="w-full" />
-              </div>
-            )}
-            <h3 className="text-xs font-medium text-gray-500 mb-[1.3125rem] text-left">
-              {item.label}
-            </h3>
-            <p className="text-gray-600 text-left text-xl md:text-2xl font-bold mb-[1.3125rem]">
-              {item.title}
-            </p>
+        {blogs.map((blog, index) => {
 
-            <a
-              href="#"
-              className="text-primaryBlue text-xs underline font-bold hover:text-primaryPurple transition-colors"
-            >
-              Continue Reading &rarr;
-            </a>
-          </div>
-        ))}
+  return (
+    <div key={index}>
+      {blog && (
+        <div className="mb-[1.3125rem]">
+          <Image
+            src={blog?.coverImg[0]?.url}
+            alt="Icon"
+            width={353}
+            height={196}
+            className="w-full"
+          />
+        </div>
+      )}
+      <h3 className="text-xs font-medium text-gray-500 mb-[1.3125rem] text-left">
+        {formatDate(blog.updatedAt)}
+      </h3>
+      <p className="text-gray-600 text-left text-xl md:text-2xl font-bold mb-[1.3125rem]">
+        {blog.title}
+      </p>
+
+      <a
+        href={`/blog/${blog.slug}`}
+
+        className="text-primaryBlue text-xs underline font-bold hover:text-primaryPurple transition-colors"
+      >
+        Continue Reading &rarr;
+      </a>
+    </div>
+  );
+})}
+
       </div>
     </div>
   );

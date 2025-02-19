@@ -11,7 +11,8 @@ import { Header } from "@/components";
 export default function Home() {
   return (
     <div className="relative min-h-screen">
-      <Header imageHeight="auto" />
+      <Header  className="h-[53rem] md:h-auto" />
+
       <div className="z-10 relative lg:pl-[7.75rem]">
         <main>
           <div className="flex flex-col lg:flex-row items-center justify-between py-8 md:py-12 lg:py-20 gap-8 md:gap-12">
@@ -48,6 +49,7 @@ export default function Home() {
                 </p>
               </div>
 
+              
               <div className="gap-4 flex flex-col items-center lg:items-start">
                 <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
                   <input
@@ -67,6 +69,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+
 
             <div className="lg:w-1/2 hidden lg:block">
               <Image

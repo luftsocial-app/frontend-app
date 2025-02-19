@@ -5,7 +5,7 @@ import {Subscription} from "@/components/Common/Subscription";
 export default function Pricing() {
   return (
     <div>
-      <Header imageHeight={170} />
+      <Header className="h-[10.625rem]" />
       <Subscription />
       <FooterWithCTA/>
 
