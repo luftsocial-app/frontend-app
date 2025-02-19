@@ -16,7 +16,7 @@ export function Contact() {
 
       <div className="w-full md:w-[40%] px-6 md:px-20 py-[6rem] flex flex-col justify-center ">
         <h1 className="text-2xl md:text-[30px] leading-[30px] md:leading-[38px] font-semibold text-gray-900 text-center md:text-left">
-          Let's level up your <br className="hidden md:block" />
+          Let&apos;s level up your <br className="hidden md:block" />
           brand, together
         </h1>
 

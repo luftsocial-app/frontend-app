@@ -18,11 +18,7 @@ export function BlogScreen() {
           </div>
           <UpperBlogs />
           <div className=" lg:mt-24 sm:mt-8">
-            <Cards
-              title={"All blog posts "}
-              layout="column"
-              Icon={ArrowUpRight}
-            />
+            <Cards title={"All blog posts "} Icon={ArrowUpRight} />
           </div>
           <div className="lg:mt-40 sm: mt-8">
             <FooterWithCTA />

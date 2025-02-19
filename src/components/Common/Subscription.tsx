@@ -53,7 +53,7 @@ export function Subscription() {
       <div className="text-center mb-12">
         <p className="text-primaryBlue font-bold text-lg mb-4">PRICING</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-          Packages That Don't Dent
+          Packages That Don&apos;t Dent
           <br className="hidden sm:block" />
           The Wallet
         </h2>

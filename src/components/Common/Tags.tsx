@@ -2,7 +2,7 @@ import React from "react";
 import { getRandomColor } from "@/utils";
 
 interface TagsProps {
-  tags: string[];
+  tags: { tags: string }[];
 }
 
 export function Tags({ tags }: TagsProps) {

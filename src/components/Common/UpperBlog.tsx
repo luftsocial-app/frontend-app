@@ -3,6 +3,7 @@ import { Details } from "./Details";
 import { useGetRecentBlogs } from "@/hooks/useGetRecentBlogs";
 import { Tags } from "./Tags";
 import { ArrowUpRight } from "lucide-react";
+import { BlogDataType } from "@/app/blog/[slug]/blog.types";
 
 export function UpperBlogs() {
   const { data } = useGetRecentBlogs();
@@ -42,7 +43,7 @@ export function UpperBlogs() {
       </div>
 
       <div className="h-full flex flex-col gap-[2rem] w-full">
-        {blogs.slice(1, 3).map((blog) => (
+        {blogs.slice(1, 3).map((blog: BlogDataType) => (
           <div key={blog.id} className="flex-1 w-full">
             <div className="w-full">
               <div className="flex flex-col sm:flex-row bg-white gap-4 w-full">

@@ -6,12 +6,7 @@ import Image from "next/image";
 import { Twitter, Linkedin } from "lucide-react";
 
 interface BlogData {
-  data: Array<{
-    attributes: {
-      title: string;
-      content: string;
-    };
-  }>;
+  data: BlogDataType[];
   meta: {
     pagination: {
       page: number;
@@ -21,7 +16,7 @@ interface BlogData {
   };
 }
 
-async function getBlogBySlug(slug: string) {
+async function getBlogBySlug(slug: string): Promise<BlogData | null> {
   if (!slug) return null;
 
   try {
@@ -42,24 +37,25 @@ async function getBlogBySlug(slug: string) {
     const data: BlogData = await response.json();
     return data;
   } catch (error) {
-    return error;
+    console.error(error);
+    return null;
   }
 }
 
 interface PageProps {
-  params: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function Page({ params }: PageProps) {
   const param = await params;
   const slug = param?.slug as string;
 
-  const blogData = (await getBlogBySlug(slug)) as any;
+  const blogData = await getBlogBySlug(slug);
 
-  const blog = blogData?.data[0] as BlogDataType;
+  const blog = blogData?.data[0];
   const content = blog?.blogContent ?? "";
 
-  const formattedDate = formatDateString(blog?.updatedAt);
+  const formattedDate = formatDateString(blog?.updatedAt ?? "");
 
   return (
     <div className="w-full h-full min-h-screen">

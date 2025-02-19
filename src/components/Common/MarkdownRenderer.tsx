@@ -1,5 +1,5 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const markdownComponents = {
@@ -19,24 +19,16 @@ const markdownComponents = {
     </h3>
   ),
   p: ({ children }: { children: React.ReactNode }) => (
-    <p className="text-base leading-relaxed my-4 text-left">
-      {children}
-    </p>
+    <p className="text-base leading-relaxed my-4 text-left">{children}</p>
   ),
   ul: ({ children }: { children: React.ReactNode }) => (
-    <ul className="list-disc list-inside my-4 pl-6 text-left">
-      {children}
-    </ul>
+    <ul className="list-disc list-inside my-4 pl-6 text-left">{children}</ul>
   ),
   ol: ({ children }: { children: React.ReactNode }) => (
-    <ol className="list-decimal list-inside my-4 pl-6 text-left">
-      {children}
-    </ol>
+    <ol className="list-decimal list-inside my-4 pl-6 text-left">{children}</ol>
   ),
   li: ({ children }: { children: React.ReactNode }) => (
-    <li className="text-base leading-normal my-2 text-left">
-      {children}
-    </li>
+    <li className="text-base leading-normal my-2 text-left">{children}</li>
   ),
   a: ({ children, href }: { children: React.ReactNode; href?: string }) => (
     <a href={href} className="text-primaryPurple  text-left">
@@ -56,13 +48,11 @@ const markdownComponents = {
   ),
   hr: () => <hr className="my-8 border-t border-gray-300" />,
   code: ({ children }: { children: React.ReactNode }) => (
-    <code className="bg-gray-100 px-2 py-1 font-mono text-sm">
-      {children}
-    </code>
+    <code className="bg-gray-100 px-2 py-1 font-mono text-sm">{children}</code>
   ),
   pre: ({ children }: { children: React.ReactNode }) => (
-<pre className="bg-gray-100 border-l-[2.5px] border-black  p-4 font-mono text-sm overflow-x-auto">
-{children}
+    <pre className="bg-gray-100 border-l-[2.5px] border-black  p-4 font-mono text-sm overflow-x-auto">
+      {children}
     </pre>
   ),
 };
@@ -71,15 +61,19 @@ interface MarkdownRendererProps {
   content: string;
 }
 
-export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
+export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
+  content,
+}) => {
   return (
     <div className="flex justify-center items-center w-full h-full text-black">
       <div className="container markdown-container">
-        <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={markdownComponents as Components}
+        >
           {content}
         </ReactMarkdown>
       </div>
     </div>
   );
 };
-
