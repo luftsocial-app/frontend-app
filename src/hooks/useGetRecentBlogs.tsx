@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react';
 
 export function useGetRecentBlogs() {
-  const [data, setData] = useState(null); // State to hold the data
-  const [loading, setLoading] = useState(true); // State to track loading status
-  const [error, setError] = useState(null); // State to hold any errors
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   console.log('Data---->', data)
   useEffect(() => {
@@ -12,7 +12,6 @@ export function useGetRecentBlogs() {
       console.log('GOT---->');
         try {
           const response = await fetch('http://192.168.0.210:1337/api/all-blogs?populate=*&sort[updatedAt]=desc&pagination[page]=1&pagination[pageSize]=3');
-          // const response = await fetch('/api/all-blogs');
 
           const result = await response.json();
           console.log( 'result====>',result); 
@@ -31,9 +30,8 @@ export function useGetRecentBlogs() {
       };
       
 
-    fetchData(); // Call the fetch function
-  }, []); // Empty dependency array to run only once when the component mounts
+    fetchData();
+  }, []);
 
-  console.log('Data1233545---->', data)
   return { data, loading, error };
 }

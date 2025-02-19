@@ -4,18 +4,18 @@ interface CardProps {
   name: string;
   title: string;
   content: string;
-  tags?:string[];
+  tags?:[];
   Icon?: React.ComponentType<{ size: number; color: string }>;
 }
 
 export function Details({ name, title, content , Icon, tags=[]}: CardProps) {
   return (
     <>
-      <h2 className="text-sm font-semibold text-secondaryPurple2 my-4">
+      <h2 className="text-sm font-semibold text-secondaryPurple2">
         {name}
       </h2>
       <div className="flex justify-between items-center">
-        <p className="text-2xl font-semiBold text-secondaryBlack3 ">
+        <p className="text-2xl font-semibold text-gray-900">
           {title}
         </p>
         {Icon && <Icon size={24} color={"#101828"} />}

@@ -11,11 +11,13 @@
   :root {
     /* --background: #0a0a0a; */
     --foreground: #ededed;
+    --font-sans: var(--font-plus-jakarta), sans-serif;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
+  font-family: var(--font-sans);
   font-family: Arial, Helvetica, sans-serif;
 }

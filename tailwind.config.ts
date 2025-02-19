@@ -23,7 +23,6 @@ export default {
         primaryBlack: "#1D1C1C",
         secondaryBlack2: "#6D6D6D",
         secondaryGray2: "#FFF5F5;",
-        secondaryBlack3: "#101828",
         secondaryPurple: "#7F56D9",
         secondaryPurple2: "#6941C6",
         secondaryGray3: "#667085",

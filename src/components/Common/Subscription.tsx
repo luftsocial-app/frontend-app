@@ -49,31 +49,31 @@ const columnData = [
 
 export function Subscription() {
   return (
-    <div className="mx-auto px-4 py-16">
+    <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-[11.81rem] py-16 sm:py-[6.25rem]">
       <div className="text-center mb-12">
         <p className="text-primaryBlue font-bold text-lg mb-4">PRICING</p>
-        <h2 className="text-4xl font-bold text-gray-900">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
           Packages That Don't Dent
-          <br />
+          <br className="hidden sm:block" />
           The Wallet
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {columnData.map((item, index) => (
           <div
             key={index}
-            className={`relative rounded-[8px] border border-gray-300 w-full max-w-[362px] mx-auto p-8 ${
+            className={`relative rounded-[8px] border border-gray-300 w-full max-w-[22.625rem] mx-auto p-6 sm:p-8 ${
               item.isPopular ? "bg-primaryBlue" : "bg-secondaryPink"
             }`}
           >
             {item.isPopular && (
-              <span className="absolute top-4 right-4 bg-white text-primaryBlack px-3 py-1 rounded-full text-xs  font-semiBold">
+              <span className="absolute top-4 right-4 bg-white text-primaryBlack px-3 py-1 rounded-full text-xs font-semiBold">
                 Most Popular
               </span>
             )}
 
-            <div className={"space-y-4"}>
+            <div className="space-y-4">
               <h3
                 className={`text-xl font-semibold ${
                   item.isPopular ? "text-white" : "text-primaryBlack"
@@ -102,7 +102,7 @@ export function Subscription() {
                 )}
               </div>
               <p
-                className={`text-sm font-normal  ${
+                className={`text-sm font-normal ${
                   item.isPopular ? "text-white" : "text-secondaryBlack2"
                 }`}
               >
@@ -135,8 +135,10 @@ export function Subscription() {
               </div>
 
               <button
-                className={` mt-8 py-2 px-8 rounded-lg text-base font-semiBold bg-white text-primaryBlue border ${item.isPopular ? 'border-white' : 'border-primaryBlue'}`}
-                >
+                className={`mt-8 py-3 w-full sm:w-auto px-8 rounded-lg text-base font-semibold bg-white text-primaryBlue border ${
+                  item.isPopular ? "border-white" : "border-primaryBlue"
+                }`}
+              >
                 {item.buttonText}
               </button>
             </div>

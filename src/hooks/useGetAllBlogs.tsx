@@ -1,18 +1,17 @@
 "use client"
 import { useState, useEffect } from 'react';
 
-export function useGetAllBlogs() {
-  const [data, setData] = useState(null); // State to hold the data
-  const [loading, setLoading] = useState(true); // State to track loading status
-  const [error, setError] = useState(null); // State to hold any errors
+export function useGetAllBlogs(page: number, pageSize: number) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   console.log('Data---->', data)
   useEffect(() => {
     const fetchData = async () => {
       console.log('GOT---->');
         try {
-          const response = await fetch('http://192.168.0.210:1337/api/all-blogs?populate=*');
-          // const response = await fetch('/api/all-blogs');
+          const response = await fetch(`http://192.168.0.210:1337/api/all-blogs?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}`);
 
           const result = await response.json();
           console.log( 'result====>',result); 
@@ -31,8 +30,8 @@ export function useGetAllBlogs() {
       };
       
 
-    fetchData(); // Call the fetch function
-  }, []); // Empty dependency array to run only once when the component mounts
+    fetchData();
+  }, [page, pageSize]);
 
   console.log('Data1233545---->', data)
   return { data, loading, error };

@@ -59,13 +59,12 @@ export default async function Page({ params }: PageProps) {
   const blogData = await getBlogBySlug(slug) as any
 
   const blog = blogData?.data[0] as BlogDataType;
-  console.log("blog===>", blog);
   const content = blog?.blogContent ?? "";
 
   const formattedDate = formatDateString(blog?.updatedAt);
 
   return (
-    <div className="p-6 w-full h-full min-h-screen">
+    <div className="w-full h-full min-h-screen">
       <div className="flex flex-col">
         <Header imageHeight={170} />
         <div className="mt-28">
@@ -77,7 +76,7 @@ export default async function Page({ params }: PageProps) {
             tags={blog?.tags[0].tags ?? ""}
           />
         </div>
-        <div className="mt-20 flex flex-row justify-center items-start">
+        <div className="mt-20 flex flex-row justify-center items-start xs: p-[20px]">
           <div className="w-full max-w-3xl">
             <MarkdownRenderer content={content} />
           </div>
