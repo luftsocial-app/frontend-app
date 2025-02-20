@@ -25,10 +25,10 @@ export async function POST(req: Request) {
                     role
                 })
                 console.log("addMemberToOrganizationaddMemberToOrganization",addMemberToOrganization)
+                return NextResponse.json({ success: true, user: addMemberToOrganization }, { status: 200 });
             }
         
-        console.log(result,"resultresultresult")
-        return NextResponse.json({ success: true, user: result }, { status: 200 });
+
     } catch (error) {
         console.error("Error creating user:", error.errors);
         return NextResponse.json({ error: "Failed to create user" }, { status: 500 });
