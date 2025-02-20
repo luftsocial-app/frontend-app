@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/backend": "^1.24.2",
+    "@clerk/nextjs": "^6.12.0",
     "cors": "^2.8.5",
     "lucide-react": "^0.475.0",
     "next": "15.1.7",
@@ -27,5 +29,6 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

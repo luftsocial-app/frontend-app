@@ -5,7 +5,10 @@ const nextConfig: NextConfig = {
     remotePatterns:[{
       hostname: 'res.cloudinary.com'
     }]
-  }
+  },
+  env: {
+    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+  },
   /* config options here */
 };
 
