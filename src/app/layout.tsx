@@ -7,7 +7,7 @@ import {
   SignedIn,
   SignedOut,
   UserButton,
-} from '@clerk/nextjs'
+} from "@clerk/nextjs";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,7 +20,6 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
 });
-
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -38,23 +37,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} antialiased`}
       >
-         {/* <header className="flex justify-end items-center p-4 gap-4 h-16">
+        <header className="">
+          {/* <ClerkProvider>
             <SignedOut>
               <SignInButton />
               <SignUpButton />
             </SignedOut>
             <SignedIn>
               <UserButton />
-            </SignedIn>
-          </header> */}
+              </SignedIn>
+              </ClerkProvider> */}
+        </header>
         {children}
       </body>
     </html>
-    </ClerkProvider>
   );
 }

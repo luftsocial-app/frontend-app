@@ -9,7 +9,7 @@ export const ProgressBar = ({ currentStep, totalSteps }:any) => {
         <div
           key={index}
           className={`h-2 rounded-full transition-all duration-500 ${
-            index === currentStep - 1 ? "bg-blue-600" : "bg-gray-200"
+            index <= currentStep - 1 ? "bg-blue-600" : "bg-gray-200"
           }`}
           style={{ width: `${segmentWidth}%` }}
         />

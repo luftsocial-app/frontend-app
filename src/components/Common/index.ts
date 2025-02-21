@@ -8,3 +8,4 @@ export { Tags } from "./Tags";
 export { Details } from "./Details";
 export { MarkdownRenderer } from "./MarkdownRenderer";
 export {UpperBlogs} from './UpperBlog'
+export {ResponsiveContainer} from './ResponsiveContainer'
