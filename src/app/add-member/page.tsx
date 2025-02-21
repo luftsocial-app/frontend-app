@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import {  useOrganization } from "@clerk/nextjs"
 import { Mail, Lock } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 const AddMember = () => {
     const { organization,isLoaded } = useOrganization();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('');
+    const router=useRouter()
     console.log(organization,"organizationcoming")
  async function submit (e:React.FormEvent){
         e.preventDefault()
@@ -30,6 +32,9 @@ const AddMember = () => {
 
         const data = await response.json();
         console.log(data,"datadatadata")
+        if(data.success){
+          router.push('/')
+        }
          }
         } catch (error) {
             console.log(error,"error while login") 
