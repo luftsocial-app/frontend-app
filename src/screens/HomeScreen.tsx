@@ -6,14 +6,15 @@ import { StrengthNumber } from "@/components/LandingPage/StrengthNumber";
 import { Subscription } from "@/components/Common/Subscription";
 import Image from "next/image";
 import Link from "next/link";
-import { Header } from "@/components";
+import { Header, ResponsiveContainer } from "@/components";
 
 export function HomeScreen() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen flex flex-col items-center justify-center">
       <Header className="h-[53rem] md:h-auto" />
+      <ResponsiveContainer>
 
-      <div className="z-10 relative lg:pl-[7.75rem]">
+      <div className="z-10 relative">
         <main>
           <div className="flex flex-col lg:flex-row items-center justify-between py-8 md:py-12 lg:py-20 gap-8 md:gap-12">
             <div className="lg:w-1/2 space-y-4 md:space-y-6 text-center lg:text-left flex-grow sm: p-6">
@@ -88,6 +89,7 @@ export function HomeScreen() {
       <QuestionAnswer />
       <Articles />
       <FooterWithCTA />
+      </ResponsiveContainer>
     </div>
   );
 }

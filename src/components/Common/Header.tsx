@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { Navbar } from "@/components/Common/Navbar";
+import { ResponsiveContainer } from "./ResponsiveContainer";
 
 export function Header({ className }: { className: string }) {
   return (
+    <ResponsiveContainer>
     <div className="relative overflow-visible">
       <Image
         src="/images/HomeScreenImages/GradiantImage.png"
@@ -18,5 +20,6 @@ export function Header({ className }: { className: string }) {
         <Navbar />
       </div>
     </div>
+    </ResponsiveContainer>
   );
 }

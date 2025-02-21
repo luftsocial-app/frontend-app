@@ -7,7 +7,9 @@ import Image from "next/image";
 export function Articles() {
   const { data } = useGetRecentBlogs();
   const blogs = data?.data ?? [];
-
+if(!blogs.length){
+  return null
+}
   return (
     <div className="bg-secondaryPink pt-[6.25rem] pb-5">
       <div className="mx-4 md:mx-20">
