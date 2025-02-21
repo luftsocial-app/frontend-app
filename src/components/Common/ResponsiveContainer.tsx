@@ -1,12 +1,9 @@
+interface ResponsiveContainerProps {
+  children: React.ReactNode;
+}
+
 export function ResponsiveContainer({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) {
-    return (
-      <div className="w-full xl:w-[90rem]">
-        {children}
-      </div>
-    );
-  }
-  
+  children,
+}: Readonly<ResponsiveContainerProps>) {
+  return <div className="w-full xl:w-[90rem]">{children}</div>;
+}

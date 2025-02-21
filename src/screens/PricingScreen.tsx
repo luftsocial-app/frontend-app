@@ -5,11 +5,11 @@ import { Subscription } from "@/components/Common/Subscription";
 export function PricingScreen() {
   return (
     <div className="flex flex-col items-center justify-center">
-    <ResponsiveContainer>
-      <Header className="h-[10.625rem]" />
-      <Subscription />
-      <FooterWithCTA />
+      <ResponsiveContainer>
+        <Header className="h-[10.625rem]" />
+        <Subscription />
+        <FooterWithCTA />
       </ResponsiveContainer>
-      </div>
+    </div>
   );
 }
