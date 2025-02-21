@@ -9,20 +9,22 @@ const clerkClient = createClerkClient({
 export async function POST(req: Request) {
     try {
 
-        const {email, passowrd, role, orgId}=req.body
+        const {email, passowrd, role, orgId}=await req.json()
+        console.log(orgId,"orgIdcoming")
         const result= await clerkClient?.users.createUser({
             firstName: 'Test',
             lastName: 'User',
-            emailAddress: ['usernew@gmail.com'],
+            emailAddress: ['finaltesting@gmail.com'],
             password: "newlpassword@3",
             publicMetadata:{role:role}
         })
         console.log("resultcomingg:::", result)
             if(result){
+                console.log(orgId,result.id, role)
                 const addMemberToOrganization=await clerkClient.organizations.createOrganizationMembership({
                     organizationId:orgId,
                     userId:result.id,
-                    role
+                    role:role
                 })
                 console.log("addMemberToOrganizationaddMemberToOrganization",addMemberToOrganization)
                 return NextResponse.json({ success: true, user: addMemberToOrganization }, { status: 200 });

@@ -13,6 +13,7 @@ const AddMember = () => {
 
         try {
          if(organization){
+          console.log(organization.id,"organizationid")
           const response = await fetch("/api/createUser", {
             method: "POST",
             headers: {
@@ -21,7 +22,7 @@ const AddMember = () => {
             body: JSON.stringify({
                 email: email,
                 password: password,
-                role: 'member',
+                role: 'org:member',
                 orgId:organization?.id
 
               }),

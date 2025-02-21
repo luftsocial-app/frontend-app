@@ -1,13 +1,11 @@
-'use client'
-import { CreateOrganization } from '@clerk/nextjs'
+
+import CreateOrganizationPage from '@/components/Common/CreateOrganization'
 import React from 'react'
 
-const OrganizationPage = () => {
+const page = () => {
   return (
-<> 
-<CreateOrganization skipInvitationScreen={true} afterCreateOrganizationUrl="/add-member" />
-</>
+   <CreateOrganizationPage/>
   )
 }
 
-export default OrganizationPage
+export default page
