@@ -4,7 +4,7 @@ import { Subscription } from "@/components/Common/Subscription";
 
 export function PricingScreen() {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <ResponsiveContainer>
         <div className="">
           <Header className="h-[10.625rem]" />

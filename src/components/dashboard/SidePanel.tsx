@@ -1,51 +1,59 @@
-import Link from 'next/link'
-import {
-    LayoutDashboard,
-    Globe,
-    PlusCircle,
-    Mail,
-    RefreshCw,
-    Bell,
-    Library,
-    Users,
-    Settings,
-    Radio,
-    UserCircle
-  } from 'lucide-react'
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { menuItems } from "@/fixtures/dashboardMenu";
+import { SettingsIcon } from "lucide-react";
 
 const SidePanel = () => {
-  const menuItems = [
-    { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
-    { icon: Globe, label: 'Socials', href: '/dashboard/socials' },
-    { icon: PlusCircle, label: 'Create Post', href: '/dashboard/create-post' },
-    { icon: Mail, label: 'Inbox', href: '/dashboard/inbox' },
-    { icon: RefreshCw, label: 'Schedule Post', href: '/dashboard/schedule' },
-    { icon: Bell, label: 'Notifications', href: '/dashboard/notifications' },
-    { icon: Library, label: 'Content Library', href: '/dashboard/library' },
-    { icon: Users, label: 'Team', href: '/dashboard/team' },
-    { icon: Settings, label: 'Automation', href: '/dashboard/automation' },
-    { icon: Radio, label: 'Live Studio', href: '/dashboard/live' },
-  ]
-
   return (
-    <div className="w-64 min-h-screen bg-blue-700 text-white p-4">
-      <div className="mb-8">
-        <h1 className="text-xl font-bold">LiftSocial</h1>
-      </div>
-      <nav>
-        {menuItems.map((item, index) => (
-          <Link
-            key={index}
-            href={item.href}
-            className="flex items-center gap-3 p-3 rounded hover:bg-blue-600 transition-colors"
-          >
-            <item.icon className="w-5 h-5" />
-            <span>{item.label}</span>
-          </Link>
-        ))}
-      </nav>
-    </div>
-  )
-}
+    <div className="w-full min-h-screen bg-[#0317C6] flex flex-col items-center gap-4 py-[10px] px-[8px] max-w-[7rem]">
+      <Link
+        href="/"
+        className="flex flex-col items-center justify-center p-[10px]"
+      >
+        <Image
+          src="/images/dashboard/luftLogo.png"
+          width={40}
+          height={40}
+          alt="Luft Logo"
+          className="cursor-pointer mb-[8px]"
+        />
+        <Image
+          src="/images/dashboard/luftLabel.png"
+          width={58}
+          height={10}
+          alt="Luft Logo"
+          className="cursor-pointer"
+        />
+      </Link>
 
-export default SidePanel
+      <nav className="flex w-full justify-center items-center">
+        <ul className="">
+          {menuItems.map(({ icon, label, href }, index) => (
+            <li key={index}>
+              <Link href={href} className="block">
+                <button className="w-full max-w-[70px] flex flex-col items-center justify-center text-white hover:bg-[#1E31D7] rounded-[4px] transition-colors py-[8px] px-[10px]">
+                  <div>{icon}</div>
+                  <span className="text-[10px] mt-1 font-medium text-white whitespace-nowrap truncate">
+                    {label}
+                  </span>
+                </button>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div className="mt-auto">
+        <Link href="/settings">
+          <button className="w-12 h-12 flex flex-col items-center justify-center text-white hover:bg-blue-500 rounded-lg transition-colors">
+            <SettingsIcon />
+            <span className="text-xs mt-1 whitespace-nowrap">Settings</span>
+          </button>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default SidePanel;

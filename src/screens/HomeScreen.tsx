@@ -11,8 +11,8 @@ import { Header, ResponsiveContainer } from "@/components";
 export function HomeScreen() {
   return (
     <div className="relative min-h-screen flex flex-col justify-center items-center">
-      <Header className="h-[53rem] md:h-auto" />
       <ResponsiveContainer>
+      <Header className="h-[53rem] md:h-auto" />
         <div className="z-10 relative">
           <main>
             <div className="flex flex-col lg:flex-row items-center justify-between py-8 md:py-12 lg:py-20 gap-8 md:gap-12">
@@ -81,7 +81,6 @@ export function HomeScreen() {
             </div>
           </main>
         </div>
-      {/* <div className="max-w-[80rem]"> */}
         <DataColumn />
         <Subscription />
         <StrengthNumber />
@@ -89,7 +88,6 @@ export function HomeScreen() {
         <Articles />
         <FooterWithCTA />
       </ResponsiveContainer>
-      {/* </div> */}
     </div>
   );
 }

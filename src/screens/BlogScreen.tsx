@@ -1,5 +1,5 @@
 "use client";
-import { Cards, FooterWithCTA, UpperBlogs } from "@/components";
+import { Cards, FooterWithCTA, ResponsiveContainer, UpperBlogs } from "@/components";
 import { NewsLetter } from "@/components/BlogScreen/NewsLetter";
 import { Header } from "@/components/Common/Header";
 import { ArrowUpRight } from "lucide-react";
@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 export function BlogScreen() {
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="max-w-[80rem]">
+      <ResponsiveContainer>
         <Header className="h-[10.625rem] " />
         <NewsLetter />
         <div className="flex justify-center items-center w-full mt-20">
@@ -21,12 +21,12 @@ export function BlogScreen() {
             <div className=" lg:mt-24 sm:mt-8">
               <Cards title={"All blog posts "} Icon={ArrowUpRight} />
             </div>
-            <div className="lg:mt-40 sm: mt-8">
+            <div className="lg:mt-32 sm: mt-8">
               <FooterWithCTA />
             </div>
           </div>
         </div>
-      </div>
+      </ResponsiveContainer>
     </div>
   );
 }

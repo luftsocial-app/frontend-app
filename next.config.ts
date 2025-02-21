@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns:[{
       hostname: 'res.cloudinary.com'
     }]
-  }
+  },
   /* config options here */
 };
 

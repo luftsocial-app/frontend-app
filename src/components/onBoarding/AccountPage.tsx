@@ -2,7 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
 import { ProgressBar } from "./ProgressBar";
-import { Pages } from "@/fixtures/accountPageData";
+import { Pages } from "@/fixtures/onBoarding";
 
 const AccountPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -33,7 +33,6 @@ const AccountPage = () => {
         />
       </div>
 
-      {/* Content Section */}
       <div className="w-full md:w-2/3 flex flex-col pt-4">
         <div className="space-y-[1.5rem]">
           <p className="text-xl font-semibold text-gray-900">Account Setup</p>
