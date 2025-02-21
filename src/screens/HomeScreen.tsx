@@ -16,7 +16,7 @@ export function HomeScreen() {
         <div className="z-10 relative">
           <main>
             <div className="flex flex-col lg:flex-row items-center justify-between py-8 md:py-12 lg:py-20 gap-8 md:gap-12">
-              <div className="lg:w-1/2 space-y-4 md:space-y-6 text-center lg:text-left flex-grow sm: p-6">
+              <div className="lg:w-1/2 space-y-4 md:space-y-6 text-center lg:text-left flex-grow sm: p-6 xl:pl-[7rem] ">
                 <span className="text-primaryBlue font-semibold text-lg">
                   EXTREMELY FAST
                 </span>
