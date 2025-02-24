@@ -13,6 +13,8 @@ import {
   RightImageSection,
   Testimonials,
 } from "@/components";
+import TeamSize from "@/components/Common/sections/TeamSize/TeamSize";
+import SocialMedia from "@/components/LandingPage/SocialMedia";
 
 export function AboutUs() {
   return (
@@ -97,25 +99,33 @@ export function AboutUs() {
           cta="Get Started"
           ctaLink="/login"
         />
-        <LeftImageSection
-          heading="Effortless Publishing"
-          subheading="Plan, schedule, and publish content across all your social media platforms from one dashboard."
-          pointers={[
-            "Automate your posting schedule for consistent engagement.",
-            "Customize content for each platform to maximize reach.",
-            "Collaborate with your team and approve posts with ease.",
-          ]}
-          ctaUrl="/"
-          ctaText="Explore our publishing features"
-          imageSrc="/images/BlogScreenImages/BlogCard1.png"
-        />
-
-        <Testimonials />
-        <DataColumn />
+        <div className="">
+          <LeftImageSection
+            heading="Effortless Publishing"
+            subheading="Plan, schedule, and publish content across all your social media platforms from one dashboard."
+            pointers={[
+              "Automate your posting schedule for consistent engagement.",
+              "Customize content for each platform to maximize reach.",
+              "Collaborate with your team and approve posts with ease.",
+            ]}
+            ctaUrl="/"
+            ctaText="Explore our publishing features"
+            imageSrc="/images/BlogScreenImages/BlogCard1.png"
+          />
+        </div>
+        <div className="mb-[6.25rem]">
+          <TeamSize />
+        </div>
         <StrengthNumber />
+        <Testimonials />
+        <SocialMedia />
+
+        {/* <DataColumn /> */}
 
         <Articles />
-        <FooterWithCTA />
+        <div className="mt-[6.25rem]">
+          <FooterWithCTA />
+        </div>
       </ResponsiveContainer>
     </div>
   );

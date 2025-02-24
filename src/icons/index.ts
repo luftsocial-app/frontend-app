@@ -11,3 +11,4 @@ export { StudioIcon } from "./StudioIcon";
 export { SettingsIcon } from "./SettingsIcon";
 export { LuftIcon } from "./LuftIcon";
 export { VerifiedIcon } from "./VerifiedIcon";
+export { DownArrow } from "./DownArrow";
