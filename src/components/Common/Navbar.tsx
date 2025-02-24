@@ -3,21 +3,30 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "../LandingPage/Button";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="z-10 px-6 md:px-[8.875rem] py-4 ">
-      <div className="mx-auto max-w-screen-xl flex justify-between items-center">
-        <Link href="/" className="flex flex-col">
-          <span className="text-2xl font-bold text-primaryBlue text-[40px] leading-[30.45px]">
-            LS
-          </span>
-          <span className="text-primaryBlue text-xs font-normal">
-            LuftSocial
-          </span>
-        </Link>
+      <div className="mx-auto max-w-screen-xl flex justify-between items-center ">
+        <div className="flex items-center justify-center">
+          <Image
+            src="/images/HomeScreenImages/luftLogo.png"
+            width={50}
+            height={50}
+            alt="luft logo"
+            className="my-[0.217rem] mr-[0.989rem]"
+          />
+          <Image
+            src="/images/HomeScreenImages/luftLabel.png"
+            width={189}
+            height={35}
+            alt="luft logo"
+            className="mt-[0.492rem] mb-[0.897rem]"
+          />
+        </div>
         <div className="hidden md:flex items-center space-x-8">
           <Link
             href="/"
@@ -29,14 +38,20 @@ export function Navbar() {
             href="/demo"
             className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
           >
-            Demo
+            About Us
           </Link>
           <Link
             href="/contact"
             className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
           >
-            Guides
+            Features
           </Link>
+          {/* <Link
+            href="/contact"
+            className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
+          >
+            Guides
+          </Link> */}
           <Link
             href="/pricing"
             className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
@@ -51,7 +66,10 @@ export function Navbar() {
           </Link>
         </div>
         <div className="hidden md:flex items-center space-x-4">
-          <Link href="/signin" className="text-primaryBlue text-lg font-semibold">
+          <Link
+            href="/signin"
+            className="text-primaryBlue text-lg font-semibold"
+          >
             Sign In
           </Link>
           <Button href="/get-started" className="max-w-[9rem]">
@@ -113,10 +131,18 @@ export function Navbar() {
           >
             Blogs
           </Link>
-          <Link href="/signin" className="text-primaryBlue text-lg font-semibold" onClick={() => setIsOpen(false)}>
+          <Link
+            href="/signin"
+            className="text-primaryBlue text-lg font-semibold"
+            onClick={() => setIsOpen(false)}
+          >
             Sign In
           </Link>
-          <Button href="/get-started" className="max-w-[12rem]" onClick={() => setIsOpen(false)}>
+          <Button
+            href="/get-started"
+            className="max-w-[12rem]"
+            onClick={() => setIsOpen(false)}
+          >
             Get Started
           </Button>
         </div>

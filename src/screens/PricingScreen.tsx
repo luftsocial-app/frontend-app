@@ -6,11 +6,9 @@ export function PricingScreen() {
   return (
     <div className="flex flex-col items-center justify-center">
       <ResponsiveContainer>
-        <div className="">
-          <Header className="h-[10.625rem]" />
-          <Subscription />
-          <FooterWithCTA />
-        </div>
+        <Header className="h-[10.625rem]" />
+        <Subscription />
+        <FooterWithCTA />
       </ResponsiveContainer>
     </div>
   );
