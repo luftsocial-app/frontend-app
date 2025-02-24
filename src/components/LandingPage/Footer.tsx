@@ -4,9 +4,9 @@ import React from "react";
 export function Footer() {
   return (
     <footer className="w-full mt-[4.625rem] bg-white">
-      <div className="container mx-auto block lg:flex gap-12 ">
-        <div className="space-y-4 flex flex-col overflow-hidden max-w-[21.75rem]">
-          <div className="flex items-center mb-[1.625rem]">
+      <div className="container mx-auto flex flex-wrap lg:flex-nowrap gap-12">
+        <div className="space-y-4 flex flex-col overflow-hidden max-w-[21.75rem] mx-auto lg:mx-0">
+          <div className="flex items-center justify-center lg:justify-start mb-[1.625rem]">
             <Image
               src="/images/HomeScreenImages/frame.png"
               width={256}
@@ -15,13 +15,13 @@ export function Footer() {
             />
           </div>
 
-          <p className="text-secondaryLightGray text-sm md:text-base leading-relaxed max-w-xs">
+          <p className="text-secondaryLightGray text-sm md:text-base leading-relaxed max-w-xs mx-auto lg:mx-0">
             Our all-in-one social media management platform unlocks the full
             potential of social to transform not just your marketing
             strategy—but every area of your organization.
           </p>
 
-          <div className="flex justify-center md:justify-start space-x-4">
+          <div className="flex justify-center lg:justify-start space-x-4">
             {[
               { name: "X", src: "/images/HomeScreenImages/x.png" },
               {
@@ -42,7 +42,7 @@ export function Footer() {
               <a
                 key={name}
                 href="#"
-                className="transition hover:opacity-75 "
+                className="transition hover:opacity-75"
                 aria-label={name}
               >
                 <Image
@@ -56,7 +56,7 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className=" flex-1 grid grid-cols-1  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+        <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
           <div className="space-y-4 mt-[4.063rem]">
             <h3 className="text-lg font-bold text-primaryBlue">LuftSocial</h3>
             <ul className="space-y-2">
@@ -74,7 +74,7 @@ export function Footer() {
               )}
             </ul>
           </div>
-          <div className="space-y-4  mt-[4.063rem]">
+          <div className="space-y-4 mt-[4.063rem]">
             <h3 className="text-lg font-bold text-primaryBlue">Tools</h3>
             <ul className="space-y-2">
               {[
@@ -96,7 +96,6 @@ export function Footer() {
               ))}
             </ul>
           </div>
-
           <div className="space-y-4 mt-[4.063rem]">
             <h3 className="text-lg font-bold text-primaryBlue">Support</h3>
             <ul className="space-y-2">
@@ -119,7 +118,6 @@ export function Footer() {
               ))}
             </ul>
           </div>
-
           <div className="space-y-4 mt-[4.063rem]">
             <h3 className="text-lg font-bold text-primaryBlue">Contact Us</h3>
             <ul className="space-y-2">

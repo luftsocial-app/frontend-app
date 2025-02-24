@@ -21,32 +21,29 @@ export function LeftImageSection({
   pointers,
 }: LeftImageSectionProps) {
   return (
-    <div className="bg-primaryPurple p-8 rounded-lg flex items-center justify-between max-w-6xl mx-auto">
-      {/* Left side - Dashboard Preview */}
-      <div className="w-1/2 relative">
+    <div className="bg-primaryPurple p-6 sm:p-8 rounded-lg flex flex-col lg:flex-row items-center justify-between max-w-6xl mx-auto mb-16 sm:mb-[12.5rem]">
+      {/* Image Section */}
+      <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
         <Image
           src={imageSrc}
           alt="Dashboard Preview"
-          width={200}
-          height={200}
-          objectFit="cover"
-          className="w-full h-full"
+          width={600}
+          height={400}
+          className="w-full h-auto rounded-lg object-cover"
         />
       </div>
 
-      {/* Right side - Content */}
-      <div className="w-1/2 pl-12">
-        <div className="space-y-8">
-          {/* Header */}
+      {/* Content Section */}
+      <div className="w-full lg:w-1/2 lg:pl-12">
+        <div className="space-y-6 sm:space-y-8">
           <div>
-            <h1 className="text-white text-4xl font-bold mb-2 flex items-center gap-2">
+            <h1 className="text-white text-3xl sm:text-4xl font-bold mb-2">
               {heading}
             </h1>
-            <div className=" text-white mt-8">{subheading}</div>
+            <p className="text-white mt-4 sm:mt-8">{subheading}</p>
           </div>
 
-          {/* Feature List */}
-          <div className="space-y-8">
+          <div className="space-y-4">
             {pointers.map((feature, i) => (
               <div key={i} className="flex items-center gap-3 text-white">
                 <CheckCheck className="w-5 h-5 flex-shrink-0" />
@@ -55,10 +52,9 @@ export function LeftImageSection({
             ))}
           </div>
 
-          {/* CTA Button */}
           <Link
             href={ctaUrl}
-            className=" max-w-fit rounded border shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] flex justify-center items-center gap-2 px-9 py-[18px] border-solid border-[#F7BE00]"
+            className="inline-block rounded border border-[#F7BE00] px-6 py-3 sm:px-[2.25rem] sm:py-[1.125rem] text-white"
           >
             {ctaText}
           </Link>

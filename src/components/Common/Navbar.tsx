@@ -10,9 +10,11 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdown, setIsDropdown] = useState(false);
 
+
   const toggleDropdown = () => {
     setIsDropdown(!isDropdown);
   };
+
 
   return (
     <nav className="z-10 px-6 md:px-[8.875rem] py-4">
