@@ -26,7 +26,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} font-sans antialiased`}
         >
           <header className="">
             <SignedIn>

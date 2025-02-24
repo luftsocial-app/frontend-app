@@ -9,3 +9,4 @@ export { Details } from "./Details";
 export { MarkdownRenderer } from "./MarkdownRenderer";
 export { UpperBlogs } from "./UpperBlog";
 export { ResponsiveContainer } from "./ResponsiveContainer";
+export { LeftImageSection, RightImageSection, Testimonials } from "./sections";

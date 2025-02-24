@@ -9,6 +9,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-plus-jakarta)", "system-ui", "sans-serif"],
+        // Add Geist Sans as an alternative font option
+        geist: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        // Add Geist Mono for monospace text
+        mono: ["var(--font-geist-mono)", "monospace"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
