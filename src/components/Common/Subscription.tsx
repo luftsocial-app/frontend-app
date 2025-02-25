@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 
-const columnData = [
+const subscriptionData = [
   {
     heading: "Essential Plan",
     plan: "FREE",
@@ -60,7 +60,7 @@ export function Subscription() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {columnData.map((item, index) => (
+        {subscriptionData.map((item, index) => (
           <div
             key={index}
             className={`relative rounded-[8px] border border-gray-300 w-full max-w-[22.625rem] mx-auto p-6 sm:p-8 ${

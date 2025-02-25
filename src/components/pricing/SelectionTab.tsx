@@ -6,6 +6,7 @@ interface SelectionTabProps {
   title?: string;
   isActive: boolean;
   onClick: () => void;
+  className?: string;
 }
 export function SelectionTab({
   icon,

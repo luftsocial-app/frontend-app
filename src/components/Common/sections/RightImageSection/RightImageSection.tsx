@@ -26,17 +26,21 @@ export function RightImageSection({
           {badge && (
             <h2 className="text-primaryPurple font-semibold mb-2">{badge}</h2>
           )}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            {title}
-          </h1>
-          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-            {description}
-          </p>
+          {title && (
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              {title}
+            </h1>
+          )}
+          {description && (
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed ">
+              {description}
+            </p>
+          )}
 
           {cta && (
             <Link
               href={ctaLink}
-              className="bg-primaryPurple w-fit rounded border shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] border-solid border-[#F7BE00] flex justify-center items-center gap-2 px-6 sm:px-9 py-[12px] sm:py-[18px]"
+              className="px-8 py-3 bg-primaryBlue text-white rounded-[4px] border border-[#F7BE00] w-fit mx-auto md:mx-0 flex font-bold"
             >
               {cta}
             </Link>

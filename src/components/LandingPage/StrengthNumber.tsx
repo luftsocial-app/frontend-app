@@ -25,7 +25,7 @@ return (
           allowing you to do more with less effort.
         </p>
 
-        <button className="px-8 py-3 bg-primaryBlue text-white rounded-[4px] border border-[#F7BE00] hover:bg-blue-700 transition-colors w-fit mx-auto md:mx-0">
+        <button className="px-8 py-3 bg-primaryBlue text-white rounded-[4px] border border-[#F7BE00] w-fit mx-auto md:mx-0">
           Get Started
         </button>
       </div>

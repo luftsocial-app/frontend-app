@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "../LandingPage/Button";
 import { Menu, X } from "lucide-react";
@@ -9,12 +9,25 @@ import { DownArrow } from "@/icons";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdown, setIsDropdown] = useState(false);
-
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setIsDropdown(!isDropdown);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const dropdown = document.getElementById("dropdownMenu");
+      if (dropdown && !dropdown.contains(event.target as Node)) {
+        setIsDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className="z-10 px-6 md:px-[8.875rem] py-4">
@@ -31,13 +44,13 @@ export function Navbar() {
         <div className="hidden md:flex items-center space-x-8">
           <Link
             href="/"
-            className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
+            className="text-secondaryGray hover:text-purple-600 hover:underline text-lg font-semibold"
           >
             Home
           </Link>
           <Link
             href="/about-us"
-            className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
+            className="text-secondaryGray hover:text-purple-600 hover:underline text-lg font-semibold"
           >
             About Us
           </Link>
@@ -51,8 +64,8 @@ export function Navbar() {
             </button>
 
             {isDropdown && (
-              <div className="absolute top-full  mt-2  bg-white border border-gray-200 rounded-lg shadow-lg z-10">
-                  <ul className=" py-2">
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                <ul className="flex items-center justify-center space-x-4 p-2">
                   <li>
                     <Link
                       href="/feature1"
@@ -82,7 +95,7 @@ export function Navbar() {
                   </li>
                   <li>
                     <Link
-                      href="/feature3"
+                      href="/feature4"
                       className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                       onClick={() => setIsDropdown(false)}
                     >
@@ -91,7 +104,7 @@ export function Navbar() {
                   </li>
                   <li>
                     <Link
-                      href="/feature3"
+                      href="/feature5"
                       className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                       onClick={() => setIsDropdown(false)}
                     >
@@ -105,25 +118,25 @@ export function Navbar() {
 
           <Link
             href="/pricing"
-            className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
+            className="text-secondaryGray hover:text-purple-600 hover:underline text-lg font-semibold"
           >
             Pricing
           </Link>
           <Link
             href="/blog"
-            className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
+            className="text-secondaryGray hover:text-purple-600 hover:underline text-lg font-semibold"
           >
             Blogs
           </Link>
         </div>
         <div className="hidden md:flex items-center space-x-4">
           <Link
-            href="/signin"
+            href="/login"
             className="text-primaryBlue text-lg font-semibold"
           >
             Sign In
           </Link>
-          <Button href="/get-started" className="max-w-[9rem]">
+          <Button href="/signup" className="max-w-[9rem] border-primaryBlue">
             Get Started
           </Button>
         </div>
@@ -147,41 +160,17 @@ export function Navbar() {
             <X size={28} />
           </button>
 
-          <Link
-            href="/"
-            className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </Link>
-          <Link
-            href="/demo"
-            className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
-            onClick={() => setIsOpen(false)}
-          >
-            Demo
-          </Link>
-          <Link
-            href="/contact"
-            className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
-            onClick={() => setIsOpen(false)}
-          >
-            Guides
-          </Link>
-          <Link
-            href="/pricing"
-            className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
-            onClick={() => setIsOpen(false)}
-          >
-            Pricing
-          </Link>
-          <Link
-            href="/blog"
-            className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
-            onClick={() => setIsOpen(false)}
-          >
-            Blogs
-          </Link>
+          {["Home", "Demo", "Guides", "Pricing", "Blogs"].map((item) => (
+            <Link
+              key={item}
+              href={`/${item.toLowerCase()}`}
+              className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
+              onClick={() => setIsOpen(false)}
+            >
+              {item}
+            </Link>
+          ))}
+
           <Link
             href="/signin"
             className="text-primaryBlue text-lg font-semibold"

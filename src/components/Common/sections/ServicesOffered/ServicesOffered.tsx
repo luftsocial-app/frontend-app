@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "@/components/onBoarding/Button";
 import { offers } from "@/fixtures/offers";
+import Link from "next/link";
 
 export function ServicesOffered() {
   return (
@@ -17,12 +17,12 @@ export function ServicesOffered() {
           one step closer to success.
         </p>
         <div className="flex items-center justify-center mb-8 sm:mb-[3.75rem]">
-          <Button
+          <Link
             href=""
-            className="bg-[#6610EA] border-[#F7BE00] py-3 px-6 sm:py-[1.125rem] sm:px-[2.25rem]"
+            className="px-8 py-3 bg-primaryBlue text-white rounded-[4px] border border-[#F7BE00] w-fit mx-auto md:mx-0 font-bold"
           >
             Get Started
-          </Button>
+          </Link>
         </div>
       </div>
 

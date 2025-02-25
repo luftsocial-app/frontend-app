@@ -1,15 +1,24 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import { testimonials } from "@/fixtures/testimonials";
 
 export function Testimonials() {
-  const testimonial = {
-    quote:
-      "LuftSocial has completely transformed the way I manage our clients' social media. The ability to schedule, publish, and engage across multiple platforms from one place has saved me hours each week. The interface is user-friendly, and the analytics are invaluable for measuring our success. It's become an essential tool in our daily operations.",
-    author: "Hikmet Atceken",
-    title: "Social Media Manager at Creatify",
-    image: "/images/about-us/testimonials.png",
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    if (currentIndex < testimonials.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
   };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const currentTestimonial = testimonials[currentIndex];
 
   return (
     <section className="py-10 sm:py-14 md:py-20 bg-white">
@@ -21,24 +30,24 @@ export function Testimonials() {
           What Our Users Say
         </p>
 
-        <div className="relative bg-white p-6 sm:p-8 rounded-lg max-w-4xl mx-auto ">
+        <div className="relative bg-white p-6 sm:p-8 rounded-lg max-w-4xl mx-auto">
           <div className="text-gray-600 text-base sm:text-[24px] font-normal mb-4 sm:mb-[1.5rem] relative text-left">
             <Image
               src="/images/about-us/quoteIcon.png"
               height={20}
               width={20}
-              alt="vector"
+              alt="quote icon"
               className="inline-block mr-2"
             />
-            {testimonial.quote}
+            {currentTestimonial.quote}
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-0">
             <div className="flex items-center gap-4 border-l-4 border-[#D9DAFF] pl-4">
               <div className="rounded-full overflow-hidden w-14 sm:w-16 h-14 sm:h-16">
                 <Image
-                  src={testimonial.image}
-                  alt={testimonial.author}
+                  src={currentTestimonial.image}
+                  alt={currentTestimonial.author}
                   width={64}
                   height={64}
                   className="object-cover"
@@ -46,29 +55,56 @@ export function Testimonials() {
               </div>
               <div>
                 <h3 className="text-base sm:text-lg font-semibold text-gray-800 text-left">
-                  {testimonial.author}
+                  {currentTestimonial.author}
                 </h3>
                 <p className="text-sm sm:text-base text-gray-600">
-                  {testimonial.title}
+                  {currentTestimonial.title}
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-3 sm:gap-4">
-              <Image
-                src="/images/about-us/leftArrow.png"
-                alt="Previous"
-                width={32}
-                height={32}
-                className="cursor-pointer"
-              />
-              <Image
-                src="/images/about-us/arrowRight.png"
-                alt="Next"
-                width={32}
-                height={32}
-                className="cursor-pointer"
-              />
+              <button
+                onClick={handlePrev}
+                disabled={currentIndex === 0}
+                className={`cursor-pointer ${
+                  currentIndex === 0
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:opacity-80"
+                }`}
+              >
+                <Image
+                  src={
+                    currentIndex === 0
+                      ? "/images/about-us/leftArrow.png"
+                      : "/images/about-us/leftArrowEnabled.png"
+                  }
+                  alt="Previous"
+                  width={32}
+                  height={32}
+                />
+              </button>
+
+              <button
+                onClick={handleNext}
+                disabled={currentIndex === testimonials.length - 1}
+                className={`cursor-pointer ${
+                  currentIndex === testimonials.length - 1
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:opacity-80"
+                }`}
+              >
+                <Image
+                  src={
+                    currentIndex === testimonials.length - 1
+                      ? "/images/about-us/arrowRightDisabled.png"
+                      : "/images/about-us/arrowRight.png"
+                  }
+                  alt="Next Disabled"
+                  width={32}
+                  height={32}
+                />
+              </button>
             </div>
           </div>
         </div>

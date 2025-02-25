@@ -29,7 +29,6 @@ export function AboutUs() {
         <div className="z-10 relative">
           <main>
             <div className="flex flex-col lg:flex-row items-center justify-between py-8 md:py-12 lg:py-20 gap-8 md:gap-12">
-              {/* Text Section */}
               <div className="lg:w-1/2 space-y-4 md:space-y-6 text-center lg:text-left p-4 sm:p-6 xl:pl-[7rem]">
                 <span className="text-primaryBlue font-semibold text-lg">
                   EXTREMELY FAST
@@ -47,7 +46,6 @@ export function AboutUs() {
                   the rest.
                 </p>
 
-                {/* Email Input & Button */}
                 <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md mx-auto lg:mx-0">
                   <input
                     type="email"
@@ -75,7 +73,6 @@ export function AboutUs() {
           </main>
         </div>
 
-        {/* Mission Section */}
         <div className="my-16 sm:my-[8rem]">
           <RightImageSection
             badge="OUR MISSION"
@@ -89,7 +86,6 @@ export function AboutUs() {
 
         <ServicesOffered />
 
-        {/* Selection Tabs */}
         {activeData && (
           <div className="bg-[#FCF8FB] p-4 rounded-lg">
             <div className="flex flex-wrap gap-4 items-center justify-center my-10">

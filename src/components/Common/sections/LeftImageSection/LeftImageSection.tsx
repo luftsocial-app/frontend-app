@@ -54,7 +54,7 @@ export function LeftImageSection({
 
           <Link
             href={ctaUrl}
-            className="inline-block rounded border border-[#F7BE00] px-6 py-3 sm:px-[2.25rem] sm:py-[1.125rem] text-white"
+            className="inline-block rounded border border-[#F7BE00] px-6 py-3 sm:px-[2.25rem] sm:py-[1.125rem] text-white font-bold"
           >
             {ctaText}
           </Link>

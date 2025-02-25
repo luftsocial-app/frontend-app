@@ -6,6 +6,25 @@ import { Pages } from "@/fixtures/onBoarding";
 
 const AccountPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
+ const [selectedCheckboxes, setSelectedCheckboxes] = useState<number[][]>(
+   Pages.map(() => [])
+ );
+
+ const handleCheckboxChange = (index: number) => {
+   setSelectedCheckboxes((prev: number[][]) => {
+     const updated = [...prev];
+     const currentPageSelections = updated[currentPage] ?? [];
+
+     if (currentPageSelections.includes(index)) {
+       updated[currentPage] = currentPageSelections.filter((i) => i !== index);
+     } else {
+       updated[currentPage] = [...currentPageSelections, index];
+     }
+
+     return updated;
+   });
+ };
+
 
   const handleContinue = () => {
     if (currentPage < Pages.length - 1) {
@@ -23,7 +42,7 @@ const AccountPage = () => {
 
   return (
     <div className="w-full h-screen flex flex-col md:flex-row px-4 md:px-8 py-6 gap-4 md:gap-8">
-      <div className=" h-full max-w-[30.25rem]">
+      <div className="h-full max-w-[30.25rem]">
         <Image
           src={image || "/images/onBoardingScreen/account1.png"}
           width={484}
@@ -36,7 +55,10 @@ const AccountPage = () => {
       <div className="w-full md:w-2/3 flex flex-col pt-4">
         <div className="space-y-[1.5rem]">
           <p className="text-xl font-semibold text-gray-900">Account Setup</p>
-          <ProgressBar currentStep={currentPage + 1} totalSteps={Pages.length} />
+          <ProgressBar
+            currentStep={currentPage + 1}
+            totalSteps={Pages.length}
+          />
           {currentPage > 0 && (
             <button onClick={handleBack} className="flex">
               <Image
@@ -64,26 +86,36 @@ const AccountPage = () => {
             >
               <input
                 type="checkbox"
-                id={`checkbox-${index}`}
+                id={`checkbox-${currentPage}-${index}`}
+                checked={selectedCheckboxes[currentPage]?.includes(index)}
+                onChange={() => handleCheckboxChange(index)}
                 className="h-4 w-4 md:h-5 md:w-5 rounded border-gray-300 text-blue-600 mr-3 md:mr-4 checked:bg-[#1E31D7]"
                 aria-label={item}
               />
-              <label htmlFor={`checkbox-${index}`} className="text-sm md:text-base text-gray-900">
+              <label
+                htmlFor={`checkbox-${currentPage}-${index}`}
+                className="text-sm md:text-base text-gray-900"
+              >
                 {item}
               </label>
             </div>
           ))}
         </div>
+
         <div className="flex flex-col md:flex-row gap-2 md:gap-4">
-          <Link
-            href="/"
-            className="w-full md:flex-1 py-2.5 px-4 text-center border border-[#1E31D7] text-[#1E31D7] rounded-lg"
-          >
-            Skip
-          </Link>
+          {currentPage < Pages.length - 1 && (
+            <Link
+              href="/"
+              className="flex-1 py-2.5 px-4 text-center border border-[#1E31D7] text-[#1E31D7] rounded-lg"
+            >
+              Skip
+            </Link>
+          )}
           <button
             onClick={handleContinue}
-            className="w-full md:flex-1 py-2.5 px-4 text-center bg-[#1E31D7] text-white rounded-lg"
+            className={`py-2.5 px-4 text-center bg-[#1E31D7] text-white rounded-lg ${
+              currentPage < Pages.length - 1 ? "flex-1" : "w-full md:w-1/2"
+            }`}
           >
             {currentPage < Pages.length - 1 ? "Continue" : "Finish"}
           </button>
