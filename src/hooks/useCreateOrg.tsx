@@ -1,7 +1,12 @@
 "use client";
-export function useCreateOrg() {
 
+import { useAuth } from "@clerk/nextjs";
+
+export function useCreateOrg() {
+  const { getToken } = useAuth();
   async function createOrg(orgName: string, userId: string): Promise<any> {
+    const token = await getToken();
+    console.log("Token--->", token);
 
     const clerkApiKey = process.env.NEXT_PUBLIC_CLERK_SECRET_KEY;
 
@@ -12,7 +17,7 @@ export function useCreateOrg() {
       headers: {
         accept: "application/json",
         "content-type": "application/json",
-        authorization: `Bearer ${clerkApiKey}`,
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ name: orgName, created_by: userId }),
       mode: "no-cors",
