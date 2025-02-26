@@ -6,7 +6,7 @@ import { StrengthNumber } from "@/components/LandingPage/StrengthNumber";
 import { Subscription } from "@/components/Common/Subscription";
 import Image from "next/image";
 import Link from "next/link";
-import { Header, ResponsiveContainer } from "@/components";
+import { Header, LeftImageSection, ResponsiveContainer } from "@/components";
 
 export function HomeScreen() {
   return (
@@ -82,7 +82,26 @@ export function HomeScreen() {
           </main>
         </div>
         <DataColumn />
-        <Subscription />
+        <div className="flex flex-col items-center justify-center pt-[6.25rem]">
+          <p className="text-[18px] font-bold text-[#6610EA]">Creativity</p>
+          <p className="text-[42px] font-bold text-gray-900 mb-[3.75rem]">
+            From ideas to a perfect post ready to go public
+          </p>
+        </div>
+        <LeftImageSection
+          heading={"Idea Generation"}
+          subheading={
+            "LuftSocial has all the feature to help you generate post ideas, organize and reuse them on all platforms "
+          }
+          pointers={[
+            "Import content from Canva, Dropbox, Google, Figma and more.",
+            "Kanban style visual organization of your content & ideas",
+            "Use AI Assistant to automate all process from idea generation to post creation, publish and auto replies.",
+          ]}
+          ctaText={"Explore our listening features"}
+          ctaUrl={"/"}
+          imageSrc={"/images/HomeScreenImages/leftImage.png"}
+        />
         <StrengthNumber />
         <QuestionAnswer />
         <Articles />

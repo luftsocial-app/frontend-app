@@ -3,6 +3,7 @@
 import * as Clerk from "@clerk/elements/common";
 import * as SignUp from "@clerk/elements/sign-up";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SignUpPage() {
   return (
@@ -10,7 +11,7 @@ export default function SignUpPage() {
       <SignUp.Root>
         <SignUp.Step
           name="start"
-          className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg "
+          className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg"
         >
           <div className="mb-6 flex flex-col items-center justify-center">
             <div className="relative h-12 w-12 mb-2">
@@ -63,7 +64,6 @@ export default function SignUpPage() {
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
           </Clerk.Field>
-
           <Clerk.Field
             name="confirmPassword"
             className="group/field relative mb-2"
@@ -76,18 +76,16 @@ export default function SignUpPage() {
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
           </Clerk.Field>
+          <SignUp.Captcha className="empty:hidden" />
 
-          {/* Forgot Password Link */}
           <div className="mb-4 text-left">
-            <Clerk.Link
-              navigate="forgot-password"
+            <Link
+              href="/forgot-password"
               className="text-sm font-medium text-blue-600 hover:text-blue-800"
             >
               Forgot Password?
-            </Clerk.Link>
+            </Link>
           </div>
-
-          {/* Sign In Button */}
           <SignUp.Action
             submit
             className="mb-4 w-full rounded-md bg-blue-600 px-4 py-2 text-center font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
@@ -95,7 +93,6 @@ export default function SignUpPage() {
             Continue
           </SignUp.Action>
 
-          {/* Social Sign In */}
           <div className="relative mb-4">
             <div className="relative flex justify-center text-sm">
               <span className="bg-white px-2 text-gray-500">
@@ -138,8 +135,8 @@ export default function SignUpPage() {
               Sign up with Google
             </Clerk.Connection>
 
-            {/* <Clerk.Connection
-              name="linkedin"
+            <Clerk.Connection
+              name="linkedin_oidc"
               className="flex w-full items-center justify-center gap-x-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               <svg
@@ -150,22 +147,19 @@ export default function SignUpPage() {
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
               Sign in with LinkedIn
-            </Clerk.Connection> */}
+            </Clerk.Connection>
           </div>
-
-          {/* Sign Up Link */}
           <p className="text-center text-sm text-gray-600">
             Don't have an account?{" "}
             <Clerk.Link
-              navigate="sign-up"
-              className="font-medium text-blue-600 hover:text-blue-800"
+              navigate="sign-in"
+              className="font-medium text-white decoration-white/20 underline-offset-4 outline-none hover:underline focus-visible:underline"
             >
-              Sign Up
+              Sign in
             </Clerk.Link>
           </p>
         </SignUp.Step>
 
-        {/* Verification Step (if needed) */}
         <SignUp.Step
           name="verifications"
           className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg"
@@ -190,7 +184,7 @@ export default function SignUpPage() {
             Verify your account
           </h2>
           <p className="mb-6 text-center text-sm text-gray-600">
-            We've sent a verification code to your email
+            We&apos;ve sent a verification code to your email
           </p>
 
           <Clerk.GlobalError className="mb-4 block text-sm text-red-500" />

@@ -3,8 +3,8 @@ import React from "react";
 
 export function Footer() {
   return (
-    <footer className="w-full mt-[4.625rem] bg-white">
-      <div className="container mx-auto flex flex-wrap lg:flex-nowrap gap-12">
+    <footer className="w-full mt-[4.625rem] bg-white xl:max-w-[100%] lg:max-w-[80rem] md:max-w-[80rem] ">
+      <div className="container  flex flex-wrap lg:flex-nowrap gap-12">
         <div className="space-y-4 flex flex-col overflow-hidden max-w-[21.75rem] mx-auto lg:mx-0">
           <div className="flex items-center justify-center lg:justify-start mb-[1.625rem]">
             <Image

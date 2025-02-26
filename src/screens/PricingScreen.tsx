@@ -10,7 +10,7 @@ export function PricingScreen() {
         <Header className="h-[10.625rem]" />
         <Subscription />
         <SocialMedia />
-        <FooterWithCTA />
+          <FooterWithCTA />
       </ResponsiveContainer>
     </div>
   );

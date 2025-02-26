@@ -28,7 +28,10 @@ export  default function ForgotPassword() {
         <div className="my-[1.5rem] max-w-[19.25rem] max-h-[2.688rem] w-full">
           <InputField />
         </div>
-        <Button href="/" className="bg-[#1E31D7] text-white font-semibold">
+        <Button
+          href="/"
+          className="bg-[#1E31D7] text-white font-semibold text-center"
+        >
           {"Continue"}
         </Button>
         <Link
@@ -39,7 +42,7 @@ export  default function ForgotPassword() {
         </Link>
         <Button
           href="/login"
-          className="border border-[#1E31D7] text-[#1E31D7]"
+          className="border border-[#1E31D7] text-[#1E31D7] text-center"
         >
           {"Return to Login"}
         </Button>

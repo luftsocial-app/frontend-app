@@ -21,8 +21,7 @@ export function LeftImageSection({
   pointers,
 }: LeftImageSectionProps) {
   return (
-    <div className="bg-primaryPurple p-6 sm:p-8 rounded-lg flex flex-col lg:flex-row items-center justify-between max-w-6xl mx-auto mb-16 sm:mb-[12.5rem]">
-      {/* Image Section */}
+    <div className="bg-primaryPurple p-6 sm:p-8 rounded-lg flex flex-col lg:flex-row items-center justify-between max-w-6xl mx-auto mb-16">
       <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
         <Image
           src={imageSrc}
@@ -33,7 +32,6 @@ export function LeftImageSection({
         />
       </div>
 
-      {/* Content Section */}
       <div className="w-full lg:w-1/2 lg:pl-12">
         <div className="space-y-6 sm:space-y-8">
           <div>

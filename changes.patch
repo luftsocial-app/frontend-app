@@ -1,0 +1,151 @@
+diff --git a/src/app/(auth)/layout.tsx b/src/app/(auth)/layout.tsx
+index 49cc0cf..c42423b 100644
+--- a/src/app/(auth)/layout.tsx
++++ b/src/app/(auth)/layout.tsx
+@@ -1,13 +1,18 @@
+-export default function AuthLayout({ children }: { children: React.ReactNode }) {
+-    return (
+-      <div
+-        className="h-screen w-screen flex items-center justify-center bg-cover bg-center"
+-        style={{ backgroundImage: "url('/images/onBoardingScreen/gradiantImg.png')" }}
+-      >
+-        <div className="w-full max-w-md bg-white rounded-lg shadow-lg m-auto">
+-          {children}
+-        </div>
++export default function AuthLayout({
++  children,
++}: {
++  children: React.ReactNode;
++}) {
++  return (
++    <div
++      className="h-screen w-screen flex items-center justify-center bg-cover bg-center"
++      style={{
++        backgroundImage: "url('/images/onBoardingScreen/gradiantImg.png')",
++      }}
++    >
++      <div className="w-full max-w-md bg-white rounded-lg shadow-lg m-auto">
++        {children}
+       </div>
+-    );
+-  }
+-  
+\ No newline at end of file
++    </div>
++  );
++}
+diff --git a/src/app/(auth)/signup/[[...rest]]/page.tsx b/src/app/(auth)/signup/[[...rest]]/page.tsx
+index 9feb6a1..09aff36 100644
+--- a/src/app/(auth)/signup/[[...rest]]/page.tsx
++++ b/src/app/(auth)/signup/[[...rest]]/page.tsx
+@@ -6,8 +6,9 @@ import Image from "next/image";
+ 
+ export default function SignUpPage() {
+   return (
+-    <div className="flex items-center justify-center">
++    <div className="flex items-center justify-center overflow-scroll">
+       <SignUp.Root>
++        {/* Initial signup step */}
+         <SignUp.Step
+           name="start"
+           className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg "
+@@ -45,7 +46,10 @@ export default function SignUpPage() {
+             />
+             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
+           </Clerk.Field>
+-          <Clerk.Field name="identifier" className="group/field relative mb-4">
++          <Clerk.Field
++            name="emailAddress"
++            className="group/field relative mb-4"
++          >
+             <Clerk.Input
+               type="text"
+               required
+@@ -76,11 +80,12 @@ export default function SignUpPage() {
+             />
+             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
+           </Clerk.Field>
++          <SignUp.Captcha className="empty:hidden" />
+ 
+           {/* Forgot Password Link */}
+           <div className="mb-4 text-left">
+             <Clerk.Link
+-              navigate="forgot-password"
++              navigate="sign-in"
+               className="text-sm font-medium text-blue-600 hover:text-blue-800"
+             >
+               Forgot Password?
+@@ -157,10 +162,10 @@ export default function SignUpPage() {
+           <p className="text-center text-sm text-gray-600">
+             Don't have an account?{" "}
+             <Clerk.Link
+-              navigate="sign-up"
+-              className="font-medium text-blue-600 hover:text-blue-800"
++              navigate="sign-in"
++              className="font-medium text-white decoration-white/20 underline-offset-4 outline-none hover:underline focus-visible:underline"
+             >
+-              Sign Up
++              Sign in
+             </Clerk.Link>
+           </p>
+         </SignUp.Step>
+@@ -190,7 +195,7 @@ export default function SignUpPage() {
+             Verify your account
+           </h2>
+           <p className="mb-6 text-center text-sm text-gray-600">
+-            We've sent a verification code to your email
++            We&apos;ve sent a verification code to your email
+           </p>
+ 
+           <Clerk.GlobalError className="mb-4 block text-sm text-red-500" />
+diff --git a/src/app/layout.tsx b/src/app/layout.tsx
+index 01a70b0..d4f5196 100644
+--- a/src/app/layout.tsx
++++ b/src/app/layout.tsx
+@@ -1,6 +1,6 @@
+ import type { Metadata } from "next";
+ import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+-import { ClerkProvider, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
++import { ClerkProvider, SignedIn, UserButton } from "@clerk/nextjs";
+ import "./globals.css";
+ 
+ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+@@ -23,16 +23,12 @@ export default function RootLayout({
+   children,
+ }: Readonly<{ children: React.ReactNode }>) {
+   return (
+-    <ClerkProvider>
++    <ClerkProvider signUpFallbackRedirectUrl="/create-organization">
+       <html lang="en">
+         <body
+           className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} font-sans antialiased`}
+         >
+-          <header className="">
+-            <SignedIn>
+-              <UserButton />
+-            </SignedIn>
+-          </header>
++          <header className=""></header>
+           {children}
+         </body>
+       </html>
+diff --git a/src/components/Common/Navbar.tsx b/src/components/Common/Navbar.tsx
+index d9a3806..0254d8e 100644
+--- a/src/components/Common/Navbar.tsx
++++ b/src/components/Common/Navbar.tsx
+@@ -9,7 +9,6 @@ import { DownArrow } from "@/icons";
+ export function Navbar() {
+   const [isOpen, setIsOpen] = useState(false);
+   const [isDropdown, setIsDropdown] = useState(false);
+-  const dropdownRef = useRef(null);
+ 
+   const toggleDropdown = () => {
+     setIsDropdown(!isDropdown);
+@@ -58,6 +57,7 @@ export function Navbar() {
+             <button
+               className="text-secondaryGray hover:text-gray-900 text-lg font-semibold flex items-center"
+               onClick={toggleDropdown}
++              id="dropdownMenu"
+             >
+               Features
+               <DownArrow height={16} width={15} className="ml-[8px]" />

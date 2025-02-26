@@ -3,8 +3,8 @@ import { Button } from "./Button";
 
 export function HeroSection() {
   return (
-    <div className="flex justify-center items-center w-full px-4">
-      <div className="relative w-full max-w- min-h-[20rem] bg-gradient-to-br from-primaryPurple to-primaryBlue overflow-hidden rounded-[20px]">
+    <div className=" flex justify-center items-center w-full">
+      <div className="relative w-full  min-h-[20rem] bg-gradient-to-br from-primaryPurple to-primaryBlue overflow-hidden rounded-[20px] xl:max-w-[100%] lg:max-w-[80rem] md:max-w-[80rem]">
         <div className="absolute top-0 left-0 w-40 h-40 md:w-64 md:h-64 rounded-full bg-white/5 -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-64 h-64 md:w-96 md:h-96 rounded-full bg-white/5 translate-x-1/4 translate-y-1/4" />
         <div className="container mx-auto px-6 py-12 md:py-16 relative z-10">

@@ -58,6 +58,7 @@ export function Navbar() {
             <button
               className="text-secondaryGray hover:text-gray-900 text-lg font-semibold flex items-center"
               onClick={toggleDropdown}
+              id="dropdownMenu"
             >
               Features
               <DownArrow height={16} width={15} className="ml-[8px]" />

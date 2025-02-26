@@ -28,13 +28,13 @@ export default function EmailVerification() {
         </div>
         <Button
           href="/"
-          className="bg-[#1E31D7] text-white font-semibold mb-[0.625rem]"
+          className="bg-[#1E31D7] text-white font-semibold mb-[0.625rem] text-center"
         >
           {"Resend Link "}
         </Button>
         <Button
           href="/login"
-          className="border border-[#1E31D7] text-[#1E31D7]"
+          className="border border-[#1E31D7] text-[#1E31D7] text-center"
         >
           {"Return to Login"}
         </Button>

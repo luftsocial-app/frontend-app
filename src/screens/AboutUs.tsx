@@ -116,7 +116,6 @@ export function AboutUs() {
           </div>
         )}
 
-        {/* Team Size Section */}
         <div className="my-10 sm:my-[6.25rem]">
           <TeamSize />
         </div>
@@ -126,10 +125,7 @@ export function AboutUs() {
         <SocialMedia />
         <Articles />
 
-        {/* Footer Section */}
-        <div className="mt-10 sm:mt-[6.25rem]">
           <FooterWithCTA />
-        </div>
       </ResponsiveContainer>
     </div>
   );
