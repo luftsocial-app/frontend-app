@@ -3,7 +3,7 @@ import { Details } from "./Details";
 import { useGetRecentBlogs } from "@/hooks/useGetRecentBlogs";
 import { Tags } from "./Tags";
 import { ArrowUpRight } from "lucide-react";
-import { BlogDataType } from "@/app/blog/[slug]/blog.types";
+import { BlogDataType } from "@/types";
 
 export function UpperBlogs() {
   const { data } = useGetRecentBlogs();

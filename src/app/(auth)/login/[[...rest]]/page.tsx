@@ -118,7 +118,7 @@ export default function SignInPage() {
               href="/signup"
               className="text-secondaryBlue hover:text-blue-800 font-semibold text-sm text-center"
             >
-              Don't have an account? Sign Up
+              Don&apos;t have an account? Sign Up
             </Link>
           </div>
         </SignIn.Step>
@@ -147,7 +147,7 @@ export default function SignInPage() {
             Verify your account
           </h2>
           <p className="mb-6 text-center text-sm text-gray-600">
-            We've sent a verification code to your email
+            We&apos;ve sent a verification code to your email
           </p>
 
           <Clerk.GlobalError className="mb-4 block text-sm text-red-500" />
