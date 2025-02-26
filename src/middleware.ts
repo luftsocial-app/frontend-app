@@ -7,13 +7,13 @@ export default clerkMiddleware(async (auth, req) => {
   const authData = await auth();
   const userId = authData?.userId;
   const { pathname } = req.nextUrl;
-  // if (userId && isAuthRoute(req)) {
-  //   return NextResponse.redirect(new URL("/dashboard", req.url));
-  // }
+  if (userId && isAuthRoute(req)) {
+    return NextResponse.redirect(new URL("/dashboard", req.url));
+  }
 
-  // if (!userId && pathname.startsWith('/dashboard')) {
-  // return NextResponse.redirect(new URL("/auth/login", req.url));
-  // }
+  if (!userId && pathname.startsWith("/dashboard")) {
+    return NextResponse.redirect(new URL("/auth/login", req.url));
+  }
 });
 
 export const config = {

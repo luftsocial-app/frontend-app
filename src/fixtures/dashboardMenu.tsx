@@ -1,9 +1,4 @@
-import {
-  DashboardIcon,
-  SocialIcon,
-  ScheduleIcon,
-  TeamIcon,
-} from "@/icons";
+import { DashboardIcon, SocialIcon, ScheduleIcon, TeamIcon } from "@/icons";
 import {
   PlusCircle,
   Mail,
@@ -36,7 +31,7 @@ export const menuItems = [
   },
   {
     icon: <ScheduleIcon height={20} width={20} />,
-    label: "Schedule Post",
+    label: "Schedule Post Post Post",
     href: "/dashboard/schedule",
   },
   {

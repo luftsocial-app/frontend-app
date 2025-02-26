@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
-import { ClerkProvider, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -28,9 +29,8 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} font-sans antialiased `}
         >
-          <header className="">
-          </header>
           {children}
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
