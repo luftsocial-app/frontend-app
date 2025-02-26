@@ -1,18 +1,23 @@
 "use client";
-import { useCreateOrg } from "@/hooks/useCreateOrg";
-import { CreateOrganization, useUser } from "@clerk/nextjs";
-import Link from "next/link";
+import {
+  CreateOrganization,
+  useUser,
+  useOrganizationList,
+} from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 export default function CreateOrganizationPage() {
-  const { createOrg } = useCreateOrg();
   const { user } = useUser();
-  console.log("UserId is--->", user?.id);
+  const { createOrganization } = useOrganizationList();
+  const router = useRouter();
 
   async function handleCreateOrg() {
-    console.log("GOT--->");
+    const orgName =
+      user?.fullName ??
+      (`${user?.emailAddresses?.[0]?.emailAddress ?? ""}` || `${Date.now()}`);
     try {
-      const data = await createOrg("ExampleOrg", user?.id ?? "");
-      console.log("Organization Created:", data);
+      await createOrganization?.({ name: orgName });
+      router.push("/onboarding");
     } catch (error) {
       console.error("Error:", error);
     }
