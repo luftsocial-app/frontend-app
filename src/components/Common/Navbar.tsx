@@ -105,14 +105,16 @@ export function Navbar() {
         <div className="hidden md:flex items-center space-x-4">
           {isSignedIn ? (
             <>
-              <Link
+              <Button
                 href="/dashboard"
-                className="text-primaryBlue text-lg font-semibold"
+                className="text-primaryBlue text-lg font-semibold border-primaryBlue"
               >
                 Dashboard
-              </Link>
-              <SignOutButton className="text-primaryBlue text-lg font-semibold">
-                Sign Out
+              </Button>
+              <SignOutButton>
+                <p className="text-primaryBlue text-lg font-semibold cursor-pointer">
+                  Log Out
+                </p>
               </SignOutButton>
             </>
           ) : (
@@ -168,7 +170,7 @@ export function Navbar() {
               >
                 Dashboard
               </Link>
-              <SignOutButton>Sign Out</SignOutButton>
+              <SignOutButton>Log Out</SignOutButton>
             </>
           ) : (
             <>
