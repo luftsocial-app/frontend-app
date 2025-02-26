@@ -9,7 +9,7 @@ import { onboardingSteps } from "@/fixtures";
 const AccountSetup: React.FC = () => {
   const [stepIndex, setStepIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<number[][]>(
-    onboardingSteps.map(() => []),
+    onboardingSteps.map(() => [])
   );
   const router = useRouter();
 
@@ -26,7 +26,7 @@ const AccountSetup: React.FC = () => {
         return updatedSelections;
       });
     },
-    [stepIndex],
+    [stepIndex]
   );
 
   const handleNext = async () => {
@@ -48,10 +48,10 @@ const AccountSetup: React.FC = () => {
       .map((step, index) => ({
         key: step.key,
         selectedOptions: selectedOptions[index].map(
-          (optIdx) => step.options[optIdx].value,
+          (optIdx) => step.options[optIdx].value
         ),
       }))
-      .filter((step) => step.selectedOptions.length > 0); // Exclude empty selections
+      .filter((step) => step.selectedOptions.length > 0);
 
     try {
       await fetch("/api/onboarding", {
@@ -70,8 +70,7 @@ const AccountSetup: React.FC = () => {
 
   return (
     <div className="w-full h-full flex flex-col md:flex-row px-4 md:px-8 gap-4 md:gap-8">
-      {/* Left Image Section */}
-      <div className="h-full py-[2.5rem] max-w-[30.25rem]">
+      <div className="h-0 md:h-full hidden md:block py-[2.5rem] max-w-[30.25rem]">
         <Image
           key={label}
           src={image}
@@ -82,7 +81,6 @@ const AccountSetup: React.FC = () => {
         />
       </div>
 
-      {/* Right Content Section */}
       <div className="w-full py-[2.5rem] no-scrollbar max-h-screen overflow-scroll md:w-2/3 flex flex-col h-full justify-between">
         <div>
           <div className="space-y-6">
@@ -110,14 +108,15 @@ const AccountSetup: React.FC = () => {
           <p className="text-[#1D1C1C] my-4  text-[34px] font-semibold">
             {label}
           </p>
-          {/* Options List */}
           <div className="mb-6 md:mb-12">
             {options.map((option, index) => (
               <div
                 key={index}
                 className={`flex items-center p-3 md:p-4 border border-gray-200 ${
                   index === 0 ? "rounded-t-lg" : ""
-                } ${index === options.length - 1 ? "rounded-b-lg" : "border-b-0"}`}
+                } ${
+                  index === options.length - 1 ? "rounded-b-lg" : "border-b-0"
+                }`}
               >
                 <input
                   type="checkbox"
@@ -138,12 +137,11 @@ const AccountSetup: React.FC = () => {
           </div>
         </div>
 
-        {/* Action Buttons */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-4">
           {stepIndex < onboardingSteps.length - 1 && (
             <Link
               href="/dashboard"
-              className="flex-1 py-2.5 px-4 text-center border border-[#1E31D7] text-[#1E31D7] rounded-lg"
+              className="flex-1 py-2.5 px-4 text-center border border-secondaryBlue text-secondaryBlue rounded-lg"
             >
               Skip
             </Link>

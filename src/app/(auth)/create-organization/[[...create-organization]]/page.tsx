@@ -17,7 +17,7 @@ export default function CreateOrganizationPage() {
       (`${user?.emailAddresses?.[0]?.emailAddress ?? ""}` || `${Date.now()}`);
     try {
       await createOrganization?.({ name: orgName });
-      router.push("/onboarding");
+      router.push("/choose-plan");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -27,7 +27,7 @@ export default function CreateOrganizationPage() {
     <div className="flex flex-col items-center gap-4">
       <CreateOrganization
         skipInvitationScreen
-        afterCreateOrganizationUrl="/onboarding"
+        afterCreateOrganizationUrl="/choose-plan"
       />
       <button
         className="text-gray-100 text-lg hover:underline"

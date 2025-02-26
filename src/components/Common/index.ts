@@ -10,3 +10,4 @@ export { MarkdownRenderer } from "./MarkdownRenderer";
 export { UpperBlogs } from "./UpperBlog";
 export { ResponsiveContainer } from "./ResponsiveContainer";
 export { LeftImageSection, RightImageSection, Testimonials } from "./sections";
+export { GenericTooltip } from "./GenericTooltip";

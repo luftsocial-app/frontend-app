@@ -73,7 +73,7 @@ export default function ForgotPassword() {
     create({} as any);
   };
   return (
-    <div className="p-8 bg-white shadow-sm w-full max-w-md rounded-lg m-auto">
+    <div className=" p-[1.875rem] bg-white shadow-sm w-full max-w-md rounded-lg m-auto">
       <div className="flex flex-col items-center">
         <div className="p-2">
           <Image
@@ -102,7 +102,7 @@ export default function ForgotPassword() {
         >
           <div className="flex flex-col items-center gap-6 justify-center">
             {!successfulCreation && (
-              <div className="w-80">
+              <div className="min-w-[19.25rem]">
                 <div className="relative w-full">
                   <input
                     type="email"

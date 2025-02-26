@@ -11,7 +11,7 @@ export default function SignUpPage() {
       <SignUp.Root>
         <SignUp.Step
           name="start"
-          className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg"
+          className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg "
         >
           <div className="mb-6 flex flex-col items-center justify-center">
             <div className="relative h-12 w-12 mb-2">
@@ -35,14 +35,14 @@ export default function SignUpPage() {
             Enter your details to sign up
           </p>
 
-          <Clerk.GlobalError className="mb-4 block text-sm text-red-500" />
+          <Clerk.GlobalError className="block text-sm text-red-500" />
 
           <Clerk.Field name="name" className="group/field relative mb-4">
             <Clerk.Input
               type="text"
               required
               placeholder="Full Name"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-[10px] border-[1px] border-solid border-black px-3 py-2 text-gray-800 placeholder:text-[12px] placeholder:leading-none"
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
           </Clerk.Field>
@@ -54,7 +54,7 @@ export default function SignUpPage() {
               type="text"
               required
               placeholder="Email Address"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-[10px] border-[1px] border-solid border-black px-3 py-2 text-gray-800 placeholder:text-[12px] placeholder:leading-none"
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
           </Clerk.Field>
@@ -64,7 +64,7 @@ export default function SignUpPage() {
               type="password"
               required
               placeholder="Password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-[10px] border-[1px] border-solid border-black px-3 py-2 text-gray-800 placeholder:text-[12px] placeholder:leading-none"
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
           </Clerk.Field>
@@ -77,7 +77,7 @@ export default function SignUpPage() {
               type="password"
               required
               placeholder="Confirm Password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-[10px] border-[1px] border-solid border-black px-3 py-2 text-gray-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
           </Clerk.Field> */}
@@ -86,23 +86,26 @@ export default function SignUpPage() {
           <div className="mb-4 text-left">
             <Link
               href="/forgot-password"
-              className="text-sm font-medium text-blue-600 hover:text-blue-800"
+              className="text-sm font-bold text-secondaryBlue "
             >
               Forgot Password?
             </Link>
           </div>
           <SignUp.Action
             submit
-            className="mb-4 w-full rounded-md bg-blue-600 px-4 py-2 text-center font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="text-sm font-semibold mb-4 w-full rounded-md bg-secondaryBlue px-4 py-2 text-center text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Continue
           </SignUp.Action>
 
           <div className="relative mb-4">
             <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">
+              <Link
+                href="/login"
+                className="bg-white px-2 text-secondaryBlue font-semibold"
+              >
                 Already have an account? Sign In here
-              </span>
+              </Link>
             </div>
           </div>
           <div className="relative mb-4">
@@ -110,11 +113,13 @@ export default function SignUpPage() {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">or</span>
+              <span className="bg-white px-2 text-secondaryBlue font-semibold">
+                or
+              </span>
             </div>
           </div>
 
-          <div className="mb-4 grid grid-cols-1 gap-3">
+          <div className=" grid grid-cols-1 gap-3">
             <Clerk.Connection
               name="google"
               className="flex w-full items-center justify-center gap-x-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
@@ -154,15 +159,6 @@ export default function SignUpPage() {
               Sign in with LinkedIn
             </Clerk.Connection>
           </div>
-          <p className="text-center text-sm text-gray-600">
-            Don't have an account?{" "}
-            <Clerk.Link
-              navigate="sign-in"
-              className="font-medium text-white decoration-white/20 underline-offset-4 outline-none hover:underline focus-visible:underline"
-            >
-              Sign in
-            </Clerk.Link>
-          </p>
         </SignUp.Step>
 
         <SignUp.Step

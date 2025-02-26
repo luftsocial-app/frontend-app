@@ -31,70 +31,44 @@ export default function SignInPage() {
           <h2 className="mb-1 text-center text-2xl font-semibold text-gray-800">
             Welcome
           </h2>
-          <p className="mb-6 text-center text-sm text-gray-600">
+          <p className="mb-6 text-center text-[12px] text-[#212020] font-normal">
             Log in to LuftSocial to continue using it.
           </p>
 
           <Clerk.GlobalError className="mb-4 block text-sm text-red-500" />
           <Clerk.Field name="identifier" className="group/field relative mb-4">
-            <Clerk.Label className="mb-1 block text-sm font-medium text-gray-700">
-              Email Address
-            </Clerk.Label>
             <Clerk.Input
               type="text"
               required
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="Email Address"
+              className="w-full rounded-[10px] border-[1px] border-solid border-black px-3 py-2 text-gray-800 placeholder:text-[12px] placeholder:leading-none"
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
           </Clerk.Field>
 
-          {/* Password Field */}
           <Clerk.Field name="password" className="group/field relative mb-2">
-            <Clerk.Label className="mb-1 block text-sm font-medium text-gray-700">
-              Password
-            </Clerk.Label>
             <Clerk.Input
               type="password"
               required
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="Password"
+              className="w-full rounded-[10px] border-[1px] border-solid border-black px-3 py-2 text-gray-800 placeholder:text-[12px] placeholder:leading-none"
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
           </Clerk.Field>
 
-          {/* Forgot Password Link */}
           <div className="mb-4 text-left">
             <Link
               href="/forgot-password"
-              className="text-sm font-medium text-blue-600 hover:text-blue-800"
+              className="text-sm font-bold text-secondaryBlue hover:text-blue-800"
             >
               Forgot Password?
             </Link>
           </div>
 
-          {/* Sign In Button */}
-          <SignIn.Action
-            submit
-            className="mb-4 w-full rounded-md bg-blue-600 px-4 py-2 text-center font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          >
-            Continue
-          </SignIn.Action>
-
-          {/* Social Sign In */}
-          <div className="relative mb-4">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">
-                Or continue with
-              </span>
-            </div>
-          </div>
-
           <div className="mb-4 grid grid-cols-1 gap-3">
             <Clerk.Connection
               name="google"
-              className="flex w-full items-center justify-center gap-x-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="flex w-full items-center justify-center gap-x-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               <svg className="h-5 w-5" viewBox="0 0 24 24">
                 <path
@@ -119,7 +93,7 @@ export default function SignInPage() {
 
             <Clerk.Connection
               name="linkedin_oidc"
-              className="flex w-full items-center justify-center gap-x-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="flex w-full items-center justify-center gap-x-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               <svg
                 className="h-5 w-5 text-[#0A66C2]"
@@ -132,15 +106,21 @@ export default function SignInPage() {
             </Clerk.Connection>
           </div>
 
-          <p className="text-center text-sm text-gray-600">
-            Don't have an account?{" "}
+          <SignIn.Action
+            submit
+            className="mb-4 w-full font-semibold text-sm rounded-md bg-secondaryBlue px-4 py-2 text-center text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            Continue
+          </SignIn.Action>
+
+          <div className="flex justify-center">
             <Link
               href="/signup"
-              className="font-medium text-blue-600 hover:text-blue-800"
+              className="text-secondaryBlue hover:text-blue-800 font-semibold text-sm text-center"
             >
-              Sign Up
+              Don't have an account? Sign Up
             </Link>
-          </p>
+          </div>
         </SignIn.Step>
 
         <SignIn.Step

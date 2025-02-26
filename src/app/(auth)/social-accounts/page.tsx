@@ -80,13 +80,13 @@ export default function SocialAccounts() {
 
       <Button
         href="/login"
-        className="border text-white mt-[0.562rem] bg-[#1E31D7] text-center"
+        className="border text-white mt-[0.562rem] bg-secondaryBlue text-center"
       >
         Continue
       </Button>
       <Link
         href="/social-accounts"
-        className=" py-[6px] px-[16px] text-sm  font-semibold text-[#1E31D7] text-center"
+        className=" py-[6px] px-[16px] text-sm  font-semibold text-secondaryBlue text-center"
       >
         Skip for now
       </Link>
