@@ -31,7 +31,7 @@ export default function SocialAccounts() {
   };
 
   return (
-    <div className="flex flex-col p-[1.875rem] items-center">
+    <div className="flex flex-col p-[1.875rem] items-center bg-white shadow-sm w-full max-w-md rounded-lg m-auto">
       <div className="p-[10px] mb-[0.625rem]">
         <Image
           src="/images/onBoardingScreen/luft_image.png"

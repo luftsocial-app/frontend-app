@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function SignUpPage() {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center ">
       <SignUp.Root>
         <SignUp.Step
           name="start"
@@ -46,7 +46,10 @@ export default function SignUpPage() {
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
           </Clerk.Field>
-          <Clerk.Field name="identifier" className="group/field relative mb-4">
+          <Clerk.Field
+            name="emailAddress"
+            className="group/field relative mb-4"
+          >
             <Clerk.Input
               type="text"
               required
@@ -57,6 +60,7 @@ export default function SignUpPage() {
           </Clerk.Field>
           <Clerk.Field name="password" className="group/field relative mb-4">
             <Clerk.Input
+              validatePassword
               type="password"
               required
               placeholder="Password"
@@ -64,18 +68,19 @@ export default function SignUpPage() {
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
           </Clerk.Field>
-          <Clerk.Field
+          {/* <Clerk.Field
             name="confirmPassword"
             className="group/field relative mb-2"
           >
             <Clerk.Input
+              validatePassword
               type="password"
               required
               placeholder="Confirm Password"
               className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
             <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
-          </Clerk.Field>
+          </Clerk.Field> */}
           <SignUp.Captcha className="empty:hidden" />
 
           <div className="mb-4 text-left">

@@ -19,11 +19,17 @@ export default function CreateOrganizationPage() {
   }
 
   return (
-    <div className="">
-      <CreateOrganization />
-      <Link href="" className=" text-black" onClick={handleCreateOrg}>
-        {"Skip"}
-      </Link>
+    <div className="flex flex-col items-center gap-4">
+      <CreateOrganization
+        skipInvitationScreen
+        afterCreateOrganizationUrl="/onboarding"
+      />
+      <button
+        className="text-gray-100 text-lg hover:underline"
+        onClick={handleCreateOrg}
+      >
+        Skip
+      </button>
     </div>
   );
 }

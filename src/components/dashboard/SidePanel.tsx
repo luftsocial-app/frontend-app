@@ -33,7 +33,7 @@ const SidePanel = () => {
             <Link href={href} className="block">
               <button className="w-full max-w-[70px] flex flex-col items-center justify-center text-white hover:bg-[#1E31D7] rounded-[4px] transition-colors py-[8px] px-[10px]">
                 <div>{icon}</div>
-                <span className="text-[10px] mt-1 font-medium text-white whitespace-pre-wrap truncate">
+                <span className="text-[10px] mt-1 font-medium text-white whitespace-nowrap truncate">
                   {label}
                 </span>
               </button>

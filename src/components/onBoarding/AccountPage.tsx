@@ -105,7 +105,7 @@ const AccountPage = () => {
         <div className="flex flex-col md:flex-row gap-2 md:gap-4">
           {currentPage < Pages.length - 1 && (
             <Link
-              href="/"
+              href="/dashboard"
               className="flex-1 py-2.5 px-4 text-center border border-[#1E31D7] text-[#1E31D7] rounded-lg"
             >
               Skip

@@ -31,7 +31,7 @@ export const menuItems = [
   },
   {
     icon: <ScheduleIcon height={20} width={20} />,
-    label: "Schedule Post Post Post",
+    label: "Schedule Post",
     href: "/dashboard/schedule",
   },
   {

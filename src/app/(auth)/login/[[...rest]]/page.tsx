@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function SignInPage() {
   return (
-    <div className="flex  items-center justify-center">
+    <div className="flex items-center justify-center">
       <SignIn.Root>
         <SignIn.Step
           name="start"
