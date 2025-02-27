@@ -1,6 +1,7 @@
 import { FooterWithCTA, ResponsiveContainer } from "@/components";
 import { Header } from "@/components/Common/Header";
 import { Subscription } from "@/components/Common/Subscription";
+import SocialMedia from "@/components/LandingPage/SocialMedia";
 
 export function PricingScreen() {
   return (
@@ -8,7 +9,8 @@ export function PricingScreen() {
       <ResponsiveContainer>
         <Header className="h-[10.625rem]" />
         <Subscription />
-        <FooterWithCTA />
+        <SocialMedia />
+          <FooterWithCTA />
       </ResponsiveContainer>
     </div>
   );

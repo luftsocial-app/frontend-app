@@ -1,149 +1,45 @@
-import { Check } from "lucide-react";
-
-const columnData = [
-  {
-    heading: "Essential Plan",
-    plan: "FREE",
-    paragraph: "For Solo Creators & Small Businesses",
-    features: [
-      "Schedule up to 50 posts/month on 3 platforms",
-      "AI-powered best time to post suggestions",
-      "Basic engagement tracking (likes, comments, shares)",
-      "Single-user access",
-      "Live Stream for free on 2 platforms",
-    ],
-    buttonText: "Start Free",
-    isPopular: false,
-  },
-  {
-    heading: "Pro Plan",
-    plan: "$89.99",
-    period: "/ month",
-    paragraph: "For Growing Teams & Agencies",
-    features: [
-      "Unlimited post scheduling on 5 platforms",
-      "AI-driven content optimization & hashtag suggestions",
-      "Bulk scheduling with drag-and-drop calendar",
-      "Team collaboration tools, including post approvals",
-      "Competitor tracking and audience insights",
-    ],
-    buttonText: "Start Pro",
-    isPopular: true,
-  },
-  {
-    heading: "Enterprise Plan",
-    plan: "$149.99",
-    period: "/ month",
-    paragraph: "For Large Brands & Enterprises",
-    features: [
-      "Unlimited scheduling on all major platforms",
-      "AI-powered trend forecasting & sentiment analysis",
-      "Custom automated workflows for post approvals & engagement",
-      "CRM integration for personalized customer interactions",
-      "Dedicated account manager & 24/7 priority support",
-    ],
-    buttonText: "Start Enterprise",
-    isPopular: false,
-  },
-];
+"use client";
+import { BillingSelector } from "../LandingPage/BillingSelector";
+import { SubscriptionItem } from "./SubscriptionItem";
+import { useState } from "react";
+import { subscriptionData } from "@/fixtures/subscriptionData";
 
 export function Subscription() {
+  const [platformCount, setPlatformCount] = useState(1);
+  const [billingCycle, setBillingCycle] = useState("monthly");
+
+  const [freePlan, proPlan, enterprisePlan] = subscriptionData;
+
+  const isPriceYearly = billingCycle === "yearly";
+  const proPrice = (isPriceYearly ? 8.99 : 10) * platformCount;
+  const enterprisePrice = (isPriceYearly ? 24.99 : 30) * platformCount;
+
   return (
     <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-[11.81rem] py-16 sm:py-[6.25rem]">
-      <div className="text-center mb-12">
+      <div className="text-center">
         <p className="text-primaryBlue font-bold text-lg mb-4">PRICING</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
           Packages That Don&apos;t Dent
           <br className="hidden sm:block" />
           The Wallet
         </h2>
+        <div className="my-[3.75rem]">
+          <BillingSelector
+            setBillingCycle={setBillingCycle}
+            billingCycle={billingCycle}
+            platformCount={platformCount}
+            setPlatformCount={setPlatformCount}
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {columnData.map((item, index) => (
-          <div
-            key={index}
-            className={`relative rounded-[8px] border border-gray-300 w-full max-w-[22.625rem] mx-auto p-6 sm:p-8 ${
-              item.isPopular ? "bg-primaryBlue" : "bg-secondaryPink"
-            }`}
-          >
-            {item.isPopular && (
-              <span className="absolute top-4 right-4 bg-white text-primaryBlack px-3 py-1 rounded-full text-xs font-semiBold">
-                Most Popular
-              </span>
-            )}
-
-            <div className="space-y-4">
-              <h3
-                className={`text-xl font-semibold ${
-                  item.isPopular ? "text-white" : "text-primaryBlack"
-                }`}
-              >
-                {item.heading}
-              </h3>
-              <div className="flex items-baseline">
-                <span
-                  className={`text-3xl font-bold ${
-                    item.isPopular ? "text-secondaryGray2" : "text-primaryBlack"
-                  }`}
-                >
-                  {item.plan}
-                </span>
-                {item.period && (
-                  <span
-                    className={`text-sm ml-1 ${
-                      item.isPopular
-                        ? "text-secondaryGray2"
-                        : "text-primaryBlack"
-                    }`}
-                  >
-                    {item.period}
-                  </span>
-                )}
-              </div>
-              <p
-                className={`text-sm font-normal ${
-                  item.isPopular ? "text-white" : "text-secondaryBlack2"
-                }`}
-              >
-                {item.paragraph}
-              </p>
-
-              <div className="border-t border-gray-200 my-6"></div>
-
-              <div className="space-y-4">
-                {item.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <span
-                      className={`text-${
-                        item.isPopular ? "white" : "primaryBlue"
-                      }`}
-                    >
-                      <Check size={18} />
-                    </span>
-                    <span
-                      className={`text-sm ${
-                        item.isPopular
-                          ? "text-secondaryGray2"
-                          : "text-primaryBlack"
-                      }`}
-                    >
-                      {feature}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                className={`mt-8 py-3 w-full sm:w-auto px-8 rounded-lg text-base font-semibold bg-white text-primaryBlue border ${
-                  item.isPopular ? "border-white" : "border-primaryBlue"
-                }`}
-              >
-                {item.buttonText}
-              </button>
-            </div>
-          </div>
-        ))}
+        <SubscriptionItem {...freePlan} />
+        <SubscriptionItem {...proPlan} plan={`$${proPrice.toFixed(2)}`} />
+        <SubscriptionItem
+          {...enterprisePlan}
+          plan={`$${enterprisePrice.toFixed(2)}`}
+        />
       </div>
     </div>
   );

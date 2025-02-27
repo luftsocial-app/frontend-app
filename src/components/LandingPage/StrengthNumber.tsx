@@ -8,7 +8,7 @@ export function StrengthNumber() {
     { number: "5M", label: "AI Data Set" },
   ];
 
-  return (
+return (
     <div className="flex flex-col md:flex-row items-center justify-center gap-8 bg-secondaryPink px-6 py-12 md:px-[12.9375rem] md:py-[12.5rem]">
       <div className="flex flex-col space-y-6 max-w-xl text-center md:text-left">
         <span className="text-lg font-bold text-primaryBlue">OUR STATS</span>
@@ -16,12 +16,16 @@ export function StrengthNumber() {
           Our strength is expressed in numbers
         </h2>
         <p className="text-gray-600 text-lg leading-relaxed max-w-[33.25rem] w-full">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation
+          LuftSocial empowers you to achieve more in less time. By automating
+          scheduling, optimizing engagement, and streamlining content
+          management, we help you maximize efficiency while focusing on what
+          truly matters—growing your brand. Every number reflects the time
+          saved, the impact created, and the seamless experience our users enjoy
+          daily. With LuftSocial, social media management becomes effortless,
+          allowing you to do more with less effort.
         </p>
 
-        <button className="px-8 py-3 bg-primaryBlue text-white rounded-[4px] border border-[#F7BE00] hover:bg-blue-700 transition-colors w-fit mx-auto md:mx-0">
+        <button className="px-8 py-3 bg-primaryBlue text-white rounded-[4px] border border-[#F7BE00] w-fit mx-auto md:mx-0">
           Get Started
         </button>
       </div>

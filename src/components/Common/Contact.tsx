@@ -64,7 +64,7 @@ export function Contact() {
               Phone number
             </label>
 
-            <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+            <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden xl:max-w-[32rem]">
               <div className="relative flex items-center border-r-0 border-gray-300 bg-white">
                 <select className="appearance-none px-4 py-3  pr-8 bg-transparent focus:outline-none text-gray-900">
                   <option className="text-base font-normal text-gray-900">
@@ -86,7 +86,7 @@ export function Contact() {
                 type="tel"
                 id="phone"
                 placeholder="+1 (555) 000-0000"
-                className="w-full max-w-[32rem] px-4 py-3 text-sm md:text-base placeholder:text-base placeholder-gray-500 placeholder-opacity-75 focus:outline-none border-l-0 text-gray-900"
+                className="w-full max-w-[28rem] px-4 py-3 text-sm md:text-base placeholder:text-base placeholder-gray-500 placeholder-opacity-75 focus:outline-none border-l-0 text-gray-900"
               />
             </div>
           </div>

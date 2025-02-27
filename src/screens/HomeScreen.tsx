@@ -6,13 +6,13 @@ import { StrengthNumber } from "@/components/LandingPage/StrengthNumber";
 import { Subscription } from "@/components/Common/Subscription";
 import Image from "next/image";
 import Link from "next/link";
-import { Header, ResponsiveContainer } from "@/components";
+import { Header, LeftImageSection, ResponsiveContainer } from "@/components";
 
 export function HomeScreen() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center">
-      <Header className="h-[53rem] md:h-auto" />
       <ResponsiveContainer>
+        <Header className="h-[53rem] md:h-auto" />
         <div className="z-10 relative">
           <main>
             <div className="flex flex-col lg:flex-row items-center justify-between py-8 md:py-12 lg:py-20 gap-8 md:gap-12">
@@ -81,9 +81,28 @@ export function HomeScreen() {
             </div>
           </main>
         </div>
-
         <DataColumn />
-        <Subscription />
+        <div className="flex flex-col items-center justify-center pt-24 sm:pt-32 lg:pt-40 px-4">
+          <p className="text-lg sm:text-xl font-bold text-[#6610EA]">
+            Creativity
+          </p>
+          <p className="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12 text-center">
+            From ideas to a perfect post ready to go public
+          </p>
+        </div>
+        <LeftImageSection
+          heading="Idea Generation"
+          subheading="LuftSocial has all the features to help you generate post ideas, organize, and reuse them on all platforms."
+          pointers={[
+            "Import content from Canva, Dropbox, Google, Figma and more.",
+            "Kanban style visual organization of your content & ideas.",
+            "Use AI Assistant to automate the process from idea generation to post creation, publishing, and auto replies.",
+          ]}
+          ctaText="Explore our listening features"
+          ctaUrl="/"
+          imageSrc="/images/HomeScreenImages/leftImage.png"
+        />
+
         <StrengthNumber />
         <QuestionAnswer />
         <Articles />

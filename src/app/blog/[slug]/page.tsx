@@ -1,7 +1,7 @@
 import { FooterWithCTA, Header, MarkdownRenderer } from "@/components";
 import { BlogMeta } from "@/components/BlogScreen/BlogMeta";
-import { BlogDataType } from "./blog.types";
-import { formatDateString } from "@/utils";
+import { BlogDataType } from "../../../types/blog.types";
+import {  formatDateString } from "@/utils";
 import Image from "next/image";
 import { Twitter, Linkedin } from "lucide-react";
 
