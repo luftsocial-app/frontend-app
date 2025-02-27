@@ -61,7 +61,7 @@ export function AboutUs() {
               {/* Image Section */}
               <div className="lg:w-1/2 w-full flex justify-center">
                 <Image
-                  src="/images/HomeScreenImages/Mac.png"
+                  src="/images/about-us/platforms.png"
                   alt="User avatar"
                   width={1221}
                   height={707}
