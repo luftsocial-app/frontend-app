@@ -1,216 +1,70 @@
 "use client";
-import { Attachment } from "@/components/dashboard/Attachment";
-import { Dropdown } from "@/components/dashboard/Dropdown";
-import { SearchInput } from "@/components/dashboard/SearchBar";
+
+import { FormInput, FormSelect, InputLocation } from "@/components";
+import { InputLabel } from "@/components/Common/label";
 import React from "react";
+import { useForm, FormProvider } from "react-hook-form";
 
 export default function CreatePost() {
-  return (
-    <form onSubmit={() => {}} className="flex-grow">
-      <div className="flex items-center justify-center gap-5 mb-[5px]">
-        <Dropdown
-          label="Post Type"
-          placeholder="Choose an option"
-          // value={selectedOption}
-          // onChange={(e) => setSelectedOption(e.target.value)}
-          options={[
-            { label: "Option 1", value: "option1" },
-            { label: "Option 2", value: "option2" },
-            { label: "Option 3", value: "option3" },
-          ]}
-          icon={"/images/dashboard/dropdown-up.png"}
-        />
-        <SearchInput
-          label="Post Title"
-          placeholder="APT Dance"
-          icon={"/images/dashboard/searchIcon.png"}
-        />
-      </div>
-      <div className="flex items-center justify-center gap-5 mb-[5px]">
-        <SearchInput
-          label="Location"
-          placeholder="APT Dance"
-          icon={"/images/dashboard/searchIcon.png"}
-        />
-        <SearchInput
-          label="Collaborate"
-          placeholder="APT Dance"
-          icon={"/images/dashboard/searchIcon.png"}
-        />
-      </div>
-      <Attachment
-        label={"Select From Library"}
-        icon={"/images/dashboard/gallery.png"}
-      />
+  const methods = useForm({
+    defaultValues: {
+      postType: "Reel",
+    },
+  });
 
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-      <Dropdown
-        label="Collaborate"
-        placeholder="Choose an option"
-        // value={selectedOption}
-        // onChange={(e) => setSelectedOption(e.target.value)}
-        options={[
-          { label: "Option 1", value: "option1" },
-          { label: "Option 2", value: "option2" },
-          { label: "Option 3", value: "option3" },
-        ]}
-        icon={"/images/dashboard/dropdown-up.png"}
-      />
-    </form>
+  const fruitOptions = [
+    { label: "Reel", value: "Reel" },
+    { label: "Story", value: "Story" },
+    { label: "Post", value: "Post" },
+    { label: "Short", value: "Short" },
+  ];
+
+  const onSubmit = (data: any) => {
+    console.log("Form Data:", data);
+  };
+
+  return (
+    <FormProvider {...methods}>
+      <form
+        onSubmit={methods.handleSubmit(onSubmit)}
+        className="flex-grow ml-[20px] "
+      >
+        <div className="flex items-center gap-x-5  w-full">
+          <div className="w-full max-w-[23.563rem]">
+            <InputLabel
+              label="Post Type"
+              classname="text-sm mb-1 font-semibold"
+            />
+            <FormSelect
+              name="postType"
+              options={fruitOptions}
+              className="border-orange-900 border-0 rounded-none shadow-none w-full"
+            />
+          </div>
+          <div className=" w-full max-w-[23.563rem]">
+            <InputLabel
+              label="Post Title"
+              classname="text-sm mb-1 font-semibold"
+            />
+            <FormInput
+              placeholder="APT Dance"
+              name="input"
+              className="w-full"
+            />
+          </div>
+        </div>
+        <div className="w-full max-w-[23.563rem]">
+          <InputLocation />
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="mt-4 p-2 bg-blue-500 text-white ml-[20px]"
+        >
+          Submit
+        </button>
+      </form>
+    </FormProvider>
   );
 }
