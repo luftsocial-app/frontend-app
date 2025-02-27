@@ -142,7 +142,9 @@ export function Navbar() {
         </button>
       </div>
       <div
-        className={`fixed top-0 left-0 h-full w-[70%] bg-white shadow-lg transition-transform duration-300 z-50 md:hidden ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed top-0 left-0 h-full w-[70%] bg-white shadow-lg transition-transform duration-300 z-50 md:hidden ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
         <div className="p-6 flex flex-col space-y-6">
           <button
@@ -151,16 +153,24 @@ export function Navbar() {
           >
             <X size={28} />
           </button>
-          {["Home", "Demo", "Guides", "Pricing", "Blogs"].map((item) => (
-            <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
-              className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
-              onClick={() => setIsOpen(false)}
-            >
-              {item}
-            </Link>
-          ))}
+          {["Home", "About Us", "Pricing", "Blogs"].map((item) => {
+            const route =
+              item.toLowerCase() === "home"
+                ? "/"
+                : item.toLowerCase() === "blogs"
+                ? "/blog"
+                : `/${item.toLowerCase().replace(/\s+/g, "-")}`;
+            return (
+              <Link
+                key={item}
+                href={route}
+                className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
+                onClick={() => setIsOpen(false)}
+              >
+                {item}
+              </Link>
+            );
+          })}
           {isSignedIn ? (
             <>
               <Link

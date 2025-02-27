@@ -65,7 +65,7 @@ export function AboutUs() {
                   alt="User avatar"
                   width={1221}
                   height={707}
-                  className="w-full h-auto rounded-lg shadow-lg"
+                  className="w-full h-auto rounded-lg "
                   priority
                 />
               </div>
@@ -125,7 +125,7 @@ export function AboutUs() {
         <SocialMedia />
         <Articles />
 
-          <FooterWithCTA />
+        <FooterWithCTA />
       </ResponsiveContainer>
     </div>
   );

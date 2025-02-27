@@ -15,13 +15,11 @@ export function BillingSelector({
   setPlatformCount,
 }: BillingSelectorProps) {
   const incrementCount = () => {
-    setPlatformCount(platformCount + 1);
+    setPlatformCount((prev) => prev + 1);
   };
 
   const decrementCount = () => {
-    if (platformCount > 1) {
-      setPlatformCount(platformCount - 1);
-    }
+    setPlatformCount((prev) => (prev > 1 ? prev - 1 : prev));
   };
 
   const handleBillingChange = (cycle: string) => {
@@ -29,61 +27,64 @@ export function BillingSelector({
   };
 
   return (
-    <div className="bg-white rounded-[4px] border flex items-center justify-between p-4 gap-8">
-      <div className="flex flex-col text-left">
-        <p className="text-gray-900 font-medium text-[16px]">Platforms</p>
-        <p className="text-gray-900 text-[10px] font-normal">
+    <div className="bg-white rounded-md border p-4 flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-8">
+      <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+        <p className="text-gray-900 font-medium text-base">Platforms</p>
+        <p className="text-gray-600 text-xs">
           Select how many social media platforms you want to connect
         </p>
       </div>
+
       <div className="flex items-center space-x-2">
         <button
           onClick={decrementCount}
-          className=""
+          className="disabled:opacity-50"
           disabled={platformCount <= 1}
         >
           <Image
             src="/images/HomeScreenImages/decrementIcon.png"
-            width={30}
-            height={30}
+            width={24}
+            height={24}
             alt="decrement"
           />
         </button>
-        <span className="text-[16px] font-medium text-gray-900 px-[1.313rem]">
+        <span className="text-base font-medium text-gray-900 px-4">
           {platformCount}
         </span>
-        <button onClick={incrementCount} className=" ">
+        <button onClick={incrementCount}>
           <Image
             src="/images/HomeScreenImages/incrementIcon.png"
-            width={30}
-            height={30}
+            width={24}
+            height={24}
             alt="increment"
           />
         </button>
       </div>
-      <div className="flex flex-col text-left">
-        <p className="text-gray-800 font-medium">Billing</p>
-        <p className="text-gray-500 text-[10px]">
+
+      <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+        <p className="text-gray-900 font-medium">Billing</p>
+        <p className="text-gray-600 text-xs">
           Select your preferred billing schedule
         </p>
       </div>
-      <div className="flex space-x-2 border rounded-[4px] p-1">
+
+      <div className="flex space-x-2 border rounded-md p-1">
         <button
           onClick={() => handleBillingChange("monthly")}
-          className={`px-4 py-2  rounded-[50px] text-[14px] font-semibold ${
+          className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
             billingCycle === "monthly"
               ? "bg-[#6610EA] text-white"
-              : "bg-white text-gray-700 "
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
           }`}
         >
           Monthly
         </button>
         <button
           onClick={() => handleBillingChange("yearly")}
-          className={`px-3 py-1 rounded-[50px] text-[14px] font-semibold ${
+          className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
             billingCycle === "yearly"
               ? "bg-[#6610EA] text-white"
-              : "bg-white text-gray-700"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
           }`}
         >
           Yearly

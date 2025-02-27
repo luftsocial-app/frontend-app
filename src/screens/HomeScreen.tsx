@@ -82,26 +82,27 @@ export function HomeScreen() {
           </main>
         </div>
         <DataColumn />
-        <div className="flex flex-col items-center justify-center pt-[6.25rem]">
-          <p className="text-[18px] font-bold text-[#6610EA]">Creativity</p>
-          <p className="text-[42px] font-bold text-gray-900 mb-[3.75rem]">
+        <div className="flex flex-col items-center justify-center pt-24 sm:pt-32 lg:pt-40 px-4">
+          <p className="text-lg sm:text-xl font-bold text-[#6610EA]">
+            Creativity
+          </p>
+          <p className="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12 text-center">
             From ideas to a perfect post ready to go public
           </p>
         </div>
         <LeftImageSection
-          heading={"Idea Generation"}
-          subheading={
-            "LuftSocial has all the feature to help you generate post ideas, organize and reuse them on all platforms "
-          }
+          heading="Idea Generation"
+          subheading="LuftSocial has all the features to help you generate post ideas, organize, and reuse them on all platforms."
           pointers={[
             "Import content from Canva, Dropbox, Google, Figma and more.",
-            "Kanban style visual organization of your content & ideas",
-            "Use AI Assistant to automate all process from idea generation to post creation, publish and auto replies.",
+            "Kanban style visual organization of your content & ideas.",
+            "Use AI Assistant to automate the process from idea generation to post creation, publishing, and auto replies.",
           ]}
-          ctaText={"Explore our listening features"}
-          ctaUrl={"/"}
-          imageSrc={"/images/HomeScreenImages/leftImage.png"}
+          ctaText="Explore our listening features"
+          ctaUrl="/"
+          imageSrc="/images/HomeScreenImages/leftImage.png"
         />
+
         <StrengthNumber />
         <QuestionAnswer />
         <Articles />
