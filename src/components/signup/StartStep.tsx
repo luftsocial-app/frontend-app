@@ -34,11 +34,20 @@ export function StartStep() {
 
       <Clerk.GlobalError className="block text-sm text-red-500" />
 
-      <Clerk.Field name="name" className="group/field relative mb-4">
+      <Clerk.Field name="firstName" className="group/field relative mb-4">
         <Clerk.Input
           type="text"
           required
-          placeholder="Full Name"
+          placeholder="First Name"
+          className="w-full rounded-[10px] border-[1px] border-solid border-black px-3 py-2 text-gray-800 placeholder:text-[12px] placeholder:leading-none"
+        />
+        <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
+      </Clerk.Field>
+      <Clerk.Field name="lastName" className="group/field relative mb-4">
+        <Clerk.Input
+          type="text"
+          required
+          placeholder="Last Name"
           className="w-full rounded-[10px] border-[1px] border-solid border-black px-3 py-2 text-gray-800 placeholder:text-[12px] placeholder:leading-none"
         />
         <Clerk.FieldError className="mt-1 block text-xs text-red-500" />
