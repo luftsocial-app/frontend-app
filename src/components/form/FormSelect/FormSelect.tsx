@@ -26,7 +26,7 @@ export const FormSelect: React.FC<PostTypeSelectProps> = ({
     formState: { errors },
   } = useFormContext();
 
-  let rules: any = {};
+  const rules: any = {};
   if (required) {
     rules.required = "This field is required";
   }
@@ -59,7 +59,9 @@ export const FormSelect: React.FC<PostTypeSelectProps> = ({
       />
       {errors[name] && (
         <p className="text-sm text-red-700 font-medium">
-          {errors[name]?.message ?? ""}
+          {typeof errors[name]?.message === "string"
+            ? errors[name]?.message
+            : ""}
         </p>
       )}
     </div>

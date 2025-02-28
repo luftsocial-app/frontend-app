@@ -1,6 +1,6 @@
 "use client";
 
-import { FormInput, FormSelect, InputLocation } from "@/components";
+import { FormInput, FormSelect } from "@/components";
 import { InputLabel } from "@/components/Common/label";
 import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
@@ -53,9 +53,7 @@ export default function CreatePost() {
             />
           </div>
         </div>
-        <div className="w-full max-w-[23.563rem]">
-          <InputLocation />
-        </div>
+        <div className="w-full max-w-[23.563rem]"></div>
 
         {/* Submit Button */}
         <button
