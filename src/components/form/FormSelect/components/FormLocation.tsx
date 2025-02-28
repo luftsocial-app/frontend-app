@@ -2,23 +2,25 @@
 
 import React from "react";
 import { useFormContext, Controller } from "react-hook-form";
-import { Select } from "@/components/Common/select";
 import { Input } from "@/components/ui/input";
+import { LocationSelect } from "@/components/Common/LocationSelect";
 
-interface PostTypeSelectProps {
+interface FormLocationProps {
   placeholder?: string;
   required?: string;
   name: string;
   validate?: any;
   className?: string;
+  label: string;
 }
 
-export const FormInput: React.FC<PostTypeSelectProps> = ({
+export const FormLocation: React.FC<FormLocationProps> = ({
   placeholder,
   required,
   validate,
   className,
   name,
+  label,
 }) => {
   const {
     control,
@@ -36,12 +38,19 @@ export const FormInput: React.FC<PostTypeSelectProps> = ({
 
   return (
     <div className={`mb-4 ${className || ""}`}>
+      {label && (
+        <label className="block text-sm font-medium text-gray-700">
+          {label}
+          {required && <span className="text-red-600"> *</span>}
+        </label>
+      )}
+
       <Controller
         name={name}
         control={control}
         rules={rules}
         render={({ field }) => (
-          <Input {...field} placeholder={placeholder} className="max-w-[23.563rem]" />
+          <LocationSelect {...field}/>
         )}
       />
       {errors[name] && (

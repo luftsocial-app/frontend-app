@@ -11,4 +11,3 @@ export { UpperBlogs } from "./UpperBlog";
 export { ResponsiveContainer } from "./ResponsiveContainer";
 export { LeftImageSection, RightImageSection, Testimonials } from "./sections";
 export { GenericTooltip } from "./GenericTooltip";
-// export { InputLocation } from "./InputLocation";

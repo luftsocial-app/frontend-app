@@ -14,6 +14,7 @@ interface SelectProps {
   placeholder?: string;
   value: string;
   onChange: (value: string) => void;
+  className?:string;
 }
 
 export function Select({
@@ -21,10 +22,11 @@ export function Select({
   placeholder = "Select an option",
   value,
   onChange,
+  className,
 }: SelectProps) {
   return (
     <RadixSelect value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className={className}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
