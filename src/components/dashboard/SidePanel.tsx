@@ -6,7 +6,7 @@ import { SettingsIcon } from "lucide-react";
 
 const SidePanel = () => {
   return (
-    <div className="w-full min-h-screen bg-[#0317C6] flex flex-col items-center gap-4 py-[10px] px-[8px] max-w-[5.875rem] max-h-screen overflow-auto">
+    <div className="w-full bg-[#0317C6] flex flex-col items-center gap-4 py-[10px] px-[8px] max-w-[5.875rem] ">
       <Link
         href="/"
         className="flex flex-col items-center justify-center p-[10px]"
@@ -42,9 +42,9 @@ const SidePanel = () => {
         ))}
       </ul>
 
-      <div className="mt-auto">
+      <div className="mt-auto bg-red-300">
         <Link href="/settings" className="w-full ">
-          <button className=" flex flex-col items-center justify-center text-white rounded-lg transition-colors hover:bg-secondaryBlue">
+          <button className=" flex flex-col items-center justify-center text-white rounded-lg transition-colors hover:bg-secondaryBlue ">
             <SettingsIcon />
             <span className="text-xs mt-1 whitespace-nowrap">Settings</span>
           </button>

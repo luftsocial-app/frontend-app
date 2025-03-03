@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 
@@ -30,12 +31,12 @@ export function InputWithAISuggestion({
   };
 
   return (
-    <div className="w-full  p-4  rounded-lg">
+    <div className="w-full rounded-lg">
       <label className="block text-sm font-medium text-gray-700" htmlFor={name}>
         {label} {required && <span className="text-red-500">*</span>}
       </label>
-      <div className="relative mt-2">
-        <div className="flex items-center gap-5">
+      <div className="relative mt-2 bg-white">
+        <div className="flex items-center border border-gray-300 rounded-lg py-[12px] px-[14px]">
           <Controller
             name={name}
             control={control}
@@ -45,20 +46,26 @@ export function InputWithAISuggestion({
               <textarea
                 {...field}
                 id={name}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-primaryBlue focus:border-primaryBlue max-h-[72px] overflow-y-auto"
-                rows={3}
+                className="w-full overflow-y-auto focus:outline-none text-sm font-semibold text-secondaryBlack2"
+                // rows={3}
                 style={{ resize: "none" }}
               />
             )}
           />
-
           <button
             type="button"
             onClick={fetchAISuggestion}
-            className="btn-primary-outline"
+            className="btn-primary-outline border-[1px] border-[#0317C6] rounded-[6px] w-[89px] text-xs font-semibold py-[8px] px-[10px] whitespace-nowrap text-[#0317C6] flex items-center justify-center"
             disabled={loading}
           >
-            {loading ? "Loading..." : "✨ AI Assist"}
+            <Image
+              src="/images/create-post/ai-fill.png"
+              width={20}
+              height={20}
+              alt="ai-fill"
+              className="mr-1"
+            />
+            <span>{loading ? "Loading..." : "AI Assist"}</span>
           </button>
         </div>
         {errors[name] && (

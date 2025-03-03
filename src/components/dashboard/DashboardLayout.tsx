@@ -2,10 +2,9 @@ import SidePanel from "./SidePanel";
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen overscroll-none ">
+    <div className="flex">
       <SidePanel />
-
-      <div className="flex-1 overflow-scroll max-h-screen">{children}</div>
+      <div className="flex-1 max-h-[100vh]">{children}</div>
     </div>
   );
 }

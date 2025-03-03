@@ -12,3 +12,4 @@ export { SettingsIcon } from "./SettingsIcon";
 export { LuftIcon } from "./LuftIcon";
 export { VerifiedIcon } from "./VerifiedIcon";
 export { DownArrow } from "./DownArrow";
+export { Facebook } from "./Facebook";

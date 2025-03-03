@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 type Option = { label: string; value: any };
 
 interface InputSelectProps {
-  options: Option[];
+  options: { label: string; value: string }[];
   placeholder?: string;
   onSelect?: (option: Option | null) => void;
   onInputChange: (value: string) => void;
@@ -86,7 +86,7 @@ export function InputSelect({
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full bg-white">
       <Input
         ref={inputRef}
         value={inputValue}

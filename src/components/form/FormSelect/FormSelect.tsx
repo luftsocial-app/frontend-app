@@ -45,7 +45,7 @@ export function FormSelect({
               placeholder="Select an option"
               value={field.value}
               onChange={field.onChange}
-              className={className}
+              className="py-[12px] px-[14px] bg-white"
             />
             <FormMessage />
           </FormItem>

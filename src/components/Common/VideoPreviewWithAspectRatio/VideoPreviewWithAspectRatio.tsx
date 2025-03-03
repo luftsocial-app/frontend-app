@@ -30,7 +30,7 @@ export function VideoPreviewWithAspectRatio({
 
   return (
     <div className="w-full max-w-md mx-auto flex flex-col items-center">
-      <div className="flex space-x-2 justify-center mb-4">
+      <div className="flex space-x-2 justify-center my-[30px]">
         {ratios.map((ratio) => (
           <button
             key={ratio.label}

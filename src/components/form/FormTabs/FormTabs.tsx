@@ -8,32 +8,33 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Tooltip } from "@/components/Common/Tooltip/Tooltip";
 
-interface FormInputSelectProps extends UseControllerProps {
-  placeholder:string;
+interface FormTabsSelectProps extends UseControllerProps {
+  options: any[];
+  loading?: boolean;
   label?: string;
   name: string;
 }
 
-export function FormInput({
+export function FormTabsSelect({
+  options,
   label,
   name,
-  placeholder,
   ...rest
-}: Readonly<FormInputSelectProps>) {
+}: Readonly<FormTabsSelectProps>) {
   const form = useFormContext();
 
   return (
-    <div className="">
+    <div className="min-w-[23.563rem]">
       <FormField
-        control={form.control}
+        control={form?.control}
         name={name}
         {...rest}
         render={({ field }) => (
           <FormItem>
             <FormLabel>{label}</FormLabel>
-            <Input {...field} placeholder={placeholder} className="bg-white" />
+            <Tooltip onChange={field.onChange} options={options} />
             <FormMessage />
           </FormItem>
         )}

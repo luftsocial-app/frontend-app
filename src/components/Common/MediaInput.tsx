@@ -63,7 +63,7 @@ export function MediaInput({ name }: { name: string }) {
             className="cursor-pointer bg-white text-gray-500 inline-block text-xs font-medium whitespace-nowrap"
             onClick={() => fileInputRef.current?.click()}
           >
-            Select From Library{" "}
+            Select From Library
           </label>
         </div>
       </div>
