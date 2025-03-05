@@ -80,13 +80,13 @@ export function InputSelect({
     setInputValue(option.label);
     setOpen(false);
 
-    if (onSelect) onSelect(option);
+    if (onSelect) onSelect(option.value);
 
     // inputRef.current?.focus();
   };
 
   return (
-    <div className="relative w-full bg-white">
+    <div className="relative w-full ">
       <Input
         ref={inputRef}
         value={inputValue}
@@ -94,16 +94,15 @@ export function InputSelect({
         type="text"
         onFocus={() => inputValue.trim() !== "" && setOpen(true)}
         placeholder={placeholder ?? ""}
-        className="w-full text-black"
+        className="w-full text-black "
       />
-
       {open && (
         <div
           ref={dropdownRef}
-          className="absolute w-full mt-1 bg-white rounded-md border border-gray-200 shadow-lg z-50"
+          className="absolute w-full mt-1 border border-gray-200 shadow-lg z-50 py-[12px] px-[14px] bg-white rounded-[13px]"
         >
           <Command>
-            <CommandList className="max-h-60 overflow-auto py-2">
+            <CommandList className="py-2">
               {loading ? (
                 <div className="flex flex-col gap-1">
                   <Skeleton className="h-8 w-full" />
@@ -115,7 +114,7 @@ export function InputSelect({
                   <CommandItem
                     key={option.label}
                     onSelect={() => handleSelect(option)}
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                    className="cursor-pointer hover:bg-gray-100"
                   >
                     {option.label}
                   </CommandItem>

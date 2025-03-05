@@ -1,12 +1,30 @@
 "use client";
 import { Facebook } from "@/icons";
-import { Checkbox, CheckboxIndicator } from "@radix-ui/react-checkbox";
-import { CheckIcon } from "@radix-ui/react-icons";
-import { Instagram, Linkedin, TicketIcon, X, Youtube } from "lucide-react";
 import { useState } from "react";
+import { Checkbox } from "../ui/checkbox";
+import { Ticktok } from "@/icons/Tiktok";
+import { YoutubeIcon } from "@/icons/YoutubeIcon";
+import { LinkedinIcon } from "@/icons/LinkedinIcon";
+import { XIcon } from "@/icons/XIcon";
+import { InstagramIcon } from "@/icons/InstagramIcon";
+
+const profileData = [
+  { id: "1", label: "Facebook", icon: <Facebook height="16" width="16" /> },
+  { id: "2", label: "TikTok", icon: <Ticktok size={16} /> },
+  { id: "3", label: "YouTube", icon: <YoutubeIcon size={16} /> },
+  {
+    id: "4",
+    label: "LinkedIn",
+    icon: <LinkedinIcon size={16} />,
+  },
+  { id: "5", label: "X", icon: <XIcon size={16} /> },
+  { id: "6", label: "Instagram", icon: <InstagramIcon size={16} /> },
+];
 
 export function ProfileSection() {
-  const [selectedProfiles, setSelectedProfiles] = useState(Array(6).fill(true));
+  const [selectedProfiles, setSelectedProfiles] = useState(
+    Array(profileData.length).fill(true)
+  );
 
   const handleProfileChange = (index: number) => {
     const newSelectedProfiles = [...selectedProfiles];
@@ -15,66 +33,46 @@ export function ProfileSection() {
   };
 
   const handleSelectAll = (checked: boolean | "indeterminate") => {
-    setSelectedProfiles(Array(6).fill(checked === true));
+    setSelectedProfiles(Array(profileData.length).fill(checked === true));
   };
 
   return (
-    <div className="max-w-[233px] border-r py-[20px] px-[35px]">
-      <div className="flex items-center mb-2">
-        <Checkbox
-          id="select-all"
-          checked={selectedProfiles.every((p) => p)}
-          onCheckedChange={handleSelectAll}
-          className="w-4 h-4 border border-gray-300 bg-white rounded"
-        >
-          <CheckboxIndicator className="flex items-center justify-center text-white bg-blue-500 rounded">
-            <CheckIcon className="w-3 h-3" />
-          </CheckboxIndicator>
-        </Checkbox>
-        <label htmlFor="select-all" className="text-sm font-bold ml-2">
-          Select All
-        </label>
+    <div className="max-w-[233px] border">
+      <div className="py-[18px] px-[35px]">
+        <p className="text-sm font-semibold ">Social Profiles</p>
       </div>
-      <ul className="space-y-2">
-        {[
-          {
-            id: "1",
-            label: "Facebook",
-            icon: <Facebook height="16" width="16" />,
-          },
-          { id: "2", label: "TikTok", icon: <TicketIcon size={16} /> },
-          { id: "3", label: "YouTube", icon: <Youtube size={16} /> },
-          {
-            id: "4",
-            label: "LinkedIn",
-            icon: (
-              <Linkedin
-                size={16}
-                className="bg-[#0076B2] fill-white stroke-white"
+      <div className=" py-[20px] px-[35px] border-t">
+        <div className="flex items-center mb-2">
+          <Checkbox
+            id="select-all"
+            checked={selectedProfiles.every((p) => p)}
+            onCheckedChange={handleSelectAll}
+            className="w-[18px] h-[18px] border border-gray-300 bg-primaryblue rounded mr-[10px]"
+          />
+          <label htmlFor="select-all" className="text-sm font-bold">
+            Select all profiles
+          </label>
+        </div>
+        <ul className="space-y-2">
+          {profileData.map((profile, index) => (
+            <li key={profile.id} className="flex items-center">
+              <Checkbox
+                id={`profile-${index}`}
+                checked={selectedProfiles[index]}
+                onCheckedChange={() => handleProfileChange(index)}
+                className="w-[18px] h-[18px] border border-gray-300 rounded mr-[10px]"
               />
-            ),
-          },
-          { id: "5", label: "X", icon: <X size={16} /> },
-          { id: "6", label: "Instagram", icon: <Instagram size={16} /> },
-        ].map((profile, index) => (
-          <li key={profile?.id} className="flex items-center">
-            <Checkbox
-              id={`profile-${index}`}
-              checked={selectedProfiles[index]}
-              onCheckedChange={() => handleProfileChange(index)}
-              className="w-4 h-4 border border-gray-300 bg-white rounded"
-            >
-              <CheckboxIndicator className="flex items-center justify-center text-white bg-blue-500 rounded">
-                <CheckIcon className="w-3 h-3" />
-              </CheckboxIndicator>
-            </Checkbox>
-            <span className="mx-[10px]">{profile?.icon}</span>
-            <label htmlFor={`profile-${index}`} className="text-sm font-normal">
-              {profile?.label ?? ""}
-            </label>
-          </li>
-        ))}
-      </ul>
+              <span className="mr-[10px]">{profile.icon}</span>
+              <label
+                htmlFor={`profile-${index}`}
+                className="text-sm font-normal"
+              >
+                {profile.label}
+              </label>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

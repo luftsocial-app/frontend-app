@@ -32,7 +32,7 @@ export function Footer() {
                 name: "Instagram",
                 src: "/images/HomeScreenImages/instagram2.png",
               },
-              { name: "Music", src: "/images/HomeScreenImages/tiktok.png" },
+              { name: "tiktok", src: "/images/HomeScreenImages/tiktok.png" },
               {
                 name: "Linkedin",
                 src: "/images/HomeScreenImages/linkedin.png",
@@ -57,15 +57,17 @@ export function Footer() {
           </div>
         </div>
         <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
-          <div className="space-y-4 mt-[4.063rem]">
-            <h3 className="text-lg font-bold text-primaryBlue">LuftSocial</h3>
-            <ul className="space-y-2">
+          <div className="mt-[4.063rem]">
+            <h3 className="text-lg font-bold text-primaryBlue mb-[30px]">
+              LuftSocial
+            </h3>
+            <ul className="space-y-4">
               {["Home", "Pricing", "About", "Blogs", "Integration"].map(
                 (link) => (
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-secondaryLightGray hover:text-primaryPurple transition-colors text-sm md:text-base"
+                      className="text-secondaryLightGray hover:text-primaryPurple transition-colors text-base md:text-base"
                     >
                       {link}
                     </a>
@@ -74,9 +76,12 @@ export function Footer() {
               )}
             </ul>
           </div>
+
           <div className="space-y-4 mt-[4.063rem]">
-            <h3 className="text-lg font-bold text-primaryBlue">Tools</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-bold text-primaryBlue mb-[30px]">
+              Tools
+            </h3>
+            <ul className="space-y-4">
               {[
                 "Create / Publish",
                 "Schedule",
@@ -97,8 +102,10 @@ export function Footer() {
             </ul>
           </div>
           <div className="space-y-4 mt-[4.063rem]">
-            <h3 className="text-lg font-bold text-primaryBlue">Support</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-bold text-primaryBlue mb-[30px]">
+              Support
+            </h3>
+            <ul className="space-y-4">
               {[
                 "Privacy Policy",
                 "Terms & Conditions",
@@ -118,9 +125,11 @@ export function Footer() {
               ))}
             </ul>
           </div>
-          <div className="space-y-4 mt-[4.063rem]">
-            <h3 className="text-lg font-bold text-primaryBlue">Contact Us</h3>
-            <ul className="space-y-2">
+          <div className=" mt-[4.063rem]">
+            <h3 className="text-lg font-bold text-primaryBlue mb-[30px]">
+              Contact Us
+            </h3>
+            <ul className="space-y-4">
               {[
                 "info@luftsocial.com",
                 "Careers",

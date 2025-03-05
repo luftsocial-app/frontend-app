@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -8,14 +8,19 @@ import { Facebook } from "@/icons";
 import { ScheduleModal } from "@/Modals";
 import { ScheduleHeader } from "@/components/ScheduleHeader";
 import { ProfileSection } from "@/components/ProfileSection";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Tooltip } from "../Tooltip/Tooltip";
 import listPlugin from "@fullcalendar/list";
-import Image from "next/image";
+import { GrapghicUi, TextUi } from "@/components/Schedule";
+import { DayHeaderContentArg } from "@fullcalendar/core/index.js";
+import { FacebookIcon } from "@/icons/authIcons";
+import { CustomCalendarHeader } from "@/components/CustomCalendarHeader";
 
 function ScheduleFullCalendar() {
-  const calendarRef = useRef(null);
+  const calendarRef = useRef<FullCalendar | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentView, setCurrentView] = useState("dayGridMonth");
+  const [expandedDays, setExpandedDays] = useState<{ [key: string]: boolean }>(
+    {}
+  );
 
   const handleDateClick = (info: any) => {
     alert("Date clicked: " + info.dateStr);
@@ -44,137 +49,133 @@ function ScheduleFullCalendar() {
             start: `${date.toISOString().split("T")[0]}T11:15:00`,
             allDay: false,
             extendedProps: { icon: <Facebook size={11} /> },
+            image: <FacebookIcon />,
           },
           {
             title: "Event 2",
             start: `${date.toISOString().split("T")[0]}T12:15:00`,
             allDay: false,
             extendedProps: { icon: <Facebook size={11} /> },
+            image: <FacebookIcon />,
           },
           {
             title: "Event 3",
             start: `${date.toISOString().split("T")[0]}T11:12:00`,
             allDay: false,
             extendedProps: { icon: <Facebook size={11} /> },
+            image: <FacebookIcon />,
+          },
+          {
+            title: "Event 4",
+            start: `${date.toISOString().split("T")[0]}T14:10:00`,
+            allDay: false,
+            extendedProps: { icon: <Facebook size={11} /> },
+            image: <FacebookIcon />,
           }
         );
       }
     }
     return events;
   };
-
   const initialEvents = generateEvents();
 
-  const renderCustomHeader = () => {
-    return (
-      <div className="flex items-center gap-4">
-        <div className="max-w-[233px] border-r px-[22px]">
-          <p className="text-sm font-semibold ">Social Profiles</p>
-        </div>
-        <div className="flex gap-28">
-          <div className="flex items-center gap-2 ml-4 ">
-            <button
-              onClick={() => calendarRef.current?.getApi().today()}
-              className="px-[18px] py-[5px] text-black border rounded-[6px] mr-[20px]"
-              title="Today"
-            >
-              Today
-            </button>
-            <button
-              onClick={() => calendarRef.current?.getApi().prev()}
-              className="px-2 py-1"
-              title="Previous Month"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={() => calendarRef.current?.getApi().next()}
-              className="py-1"
-              title="Next Month"
-            >
-              <ChevronRight size={20} />
-            </button>
-
-            <h2 className="text-lg font-semibold mr-[20px]">
-              {calendarRef.current?.getApi().view.title}
-            </h2>
-            <button
-              onClick={() => calendarRef.current?.getApi().today()}
-              className="px-[18px] py-[5px] text-black border rounded-[6px] flex"
-              title="Today"
-            >
-              GMT + 2
-            </button>
-          </div>
-
-          <div className="flex items-center">
-            <Tooltip
-              options={[
-                { label: "Grid View", value: "dayGridMonth" },
-                { label: "List View", value: "listWeek" },
-              ]}
-              onChange={(value) =>
-                calendarRef.current?.getApi().changeView(value)
-              }
-            />
-
-            <div className="border rounded-[4px] text-end flex">
-              <button
-                onClick={() =>
-                  calendarRef.current?.getApi().changeView("timeGridDay")
-                }
-                className={`px-4 py-2 ${
-                  calendarRef.current?.getApi().view.type === "timeGridDay"
-                    ? "bg-blue-600 text-white"
-                    : "text-black"
-                }`}
-                title="Day View"
-              >
-                Daily
-              </button>
-
-              <button
-                onClick={() =>
-                  calendarRef.current?.getApi().changeView("timeGridWeek")
-                }
-                className={`px-4 py-2 ${
-                  calendarRef.current?.getApi().view.type === "timeGridWeek"
-                    ? "bg-blue-600 text-white"
-                    : "text-black"
-                } border-r`}
-                title="Week View"
-              >
-                Weekly
-              </button>
-              <button
-                onClick={() =>
-                  calendarRef.current?.getApi().changeView("dayGridMonth")
-                }
-                className={`px-4 py-2 ${
-                  calendarRef.current?.getApi().view.type === "dayGridMonth"
-                    ? "bg-secondaryBlue text-white"
-                    : "text-black"
-                } border-r`}
-                title="Month View"
-              >
-                Monthly
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+  const getEventsForDate = (date: any) => {
+    const formattedDate = date.toISOString().split("T")[0];
+    return initialEvents.filter((event) =>
+      event.start.startsWith(formattedDate)
     );
   };
+
+  const handleExpandClick = (date: string) => {
+    setExpandedDays((prev) => ({
+      ...prev,
+      [date]: !prev[date],
+    }));
+  };
+
+  const customViewType = "text";
+
+  const eventContent = (eventInfo: any) => {
+    const selectedDate = new Date(eventInfo.event.start);
+    const formattedDate = selectedDate.toISOString().split("T")[0];
+    const dailyEvents = getEventsForDate(selectedDate);
+    const eventIndex = dailyEvents.findIndex(
+      (event) => event?.title === eventInfo?.event?.title
+    );
+
+    if (customViewType === "text") {
+      if (eventIndex < 2) {
+        return (
+          <div className="flex flex-col items-start">
+            <TextUi eventInfo={eventInfo} />
+            {eventIndex === 1 &&
+              !expandedDays[formattedDate] &&
+              dailyEvents.length > 2 && (
+                <p
+                  onClick={() => handleExpandClick(formattedDate)}
+                  className="cursor-pointer text-[11px] text-[#1E31D7] mt-4 font-semibold"
+                >
+                  All ({dailyEvents.length - 2} posts)
+                </p>
+              )}
+          </div>
+        );
+      }
+    } else {
+      if (eventIndex === 0 && !expandedDays[formattedDate]) {
+        return (
+          <div className="flex flex-col items-start">
+            <GrapghicUi eventInfo={eventInfo} />
+            {dailyEvents.length > 1 && (
+              <p
+                onClick={() => handleExpandClick(formattedDate)}
+                className="cursor-pointer text-[11px] text-[#1E31D7] mt-4 font-semibold"
+              >
+                All ({dailyEvents.length - 1} posts)
+              </p>
+            )}
+          </div>
+        );
+      }
+    }
+    if (expandedDays[formattedDate]) {
+      return (
+        <div>
+          {customViewType === "text" ? (
+            <TextUi eventInfo={eventInfo} />
+          ) : (
+            <GrapghicUi eventInfo={eventInfo} />
+          )}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
+  useEffect(() => {
+    const calendarApi = calendarRef.current?.getApi();
+    if (calendarApi) {
+      const handleViewChange = () => {
+        setCurrentView(calendarApi.view.type);
+      };
+      calendarApi.on("datesSet", handleViewChange);
+      return () => {
+        calendarApi.off("datesSet", handleViewChange);
+      };
+    }
+  }, []);
 
   return (
     <div className="" onClick={() => setIsModalOpen(false)}>
       <ScheduleHeader />
-      <div className="py-[10px] px-[35px] border">{renderCustomHeader()}</div>
-
       <div className="calendar-container bg-white rounded-md shadow-sm">
         <div className="flex">
           <ProfileSection />
           <div className="flex-1">
+            <div className="py-[14px] px-[20px] border border-b-0 border-l-0">
+              <CustomCalendarHeader calendarRef={calendarRef} />
+            </div>
             <FullCalendar
               ref={calendarRef}
               plugins={[
@@ -183,6 +184,11 @@ function ScheduleFullCalendar() {
                 interactionPlugin,
                 listPlugin,
               ]}
+              dayHeaderClassNames={() => "px-[25px] py-[12px] font-semibold"}
+              dayHeaderContent={(args: DayHeaderContentArg) =>
+                args.date.toLocaleDateString("en-US", { weekday: "long" })
+              }
+              dayCellClassNames={"bg-[#F9FBFC]"}
               initialView="dayGridMonth"
               headerToolbar={false}
               events={initialEvents}
@@ -191,26 +197,7 @@ function ScheduleFullCalendar() {
               eventsSet={handleEventsSet}
               selectable={true}
               editable={true}
-              eventContent={(eventInfo) => (
-                <div className="flex items-center gap-1 p-[5px] overflow-hidden">
-                  <div className="h-4 w-[2px] bg-red-600 rounded"></div>
-                  <span className="text-[10px] text-gray-600">
-                    {new Date(eventInfo.event.start).toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      hour12: true,
-                    })}
-                  </span>
-                  <Image
-                    src="/images/create-post/attachement.png"
-                    height={9}
-                    width={9}
-                    alt="attachment"
-                  />
-                  <span className="text-[10px]">{eventInfo.event.title}</span>
-                  {eventInfo.event.extendedProps.icon}
-                </div>
-              )}
+              eventContent={eventContent}
             />
             {isModalOpen && <ScheduleModal />}
           </div>

@@ -14,8 +14,8 @@ export function HeroSection() {
               <br />
               impact from social media.
             </h1>
-            <form className="flex flex-wrap gap-4 justify-center">
-              <div className="w-full sm:w-auto">
+            <form className="flex flex-wrap gap-[13px] justify-center">
+              <div className="w-full sm:w-auto min-w-[16.875rem]">
                 <input
                   type="text"
                   placeholder="Full Name"
@@ -23,7 +23,7 @@ export function HeroSection() {
                   required
                 />
               </div>
-              <div className="w-full sm:w-auto">
+              <div className="w-full sm:w-auto min-w-[16.875rem]">
                 <input
                   type="email"
                   placeholder="Email Address"
@@ -31,10 +31,10 @@ export function HeroSection() {
                   required
                 />
               </div>
-              <div className="w-full sm:w-auto flex justify-center">
+              <div className="w-full sm:w-auto flex justify-center ">
                 <Button
                   href="/start-your-trial"
-                  className="bg-primaryWhite text-primaryBlue border rounded-[9px]"
+                  className="bg-primaryWhite text-primaryBlue border rounded-[9px] min-w-[16rem]"
                 >
                   Start Your Trial
                 </Button>

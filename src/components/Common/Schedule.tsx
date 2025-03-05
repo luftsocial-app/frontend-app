@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FormSelect } from "../form";
 import { DatePicker } from "./DatePicker";
 import { TimePicker } from "./TimePicker";
+import { FormLabel } from "../ui/form";
 
 interface ScheduleComponentProps {
   initialDate?: string;
@@ -23,8 +24,8 @@ const ScheduleComponent = ({
 
   return (
     <div>
-      <div className="border rounded-lg py-[12px] px-[14px] font-sans mt-10 max-w-[47.5rem]">
-        <p className="text-sm mb-[20px] font-medium">
+      <div className="border rounded-lg py-[12px] px-[14px] font-sans mt-10 max-w-[47.5rem] bg-white">
+        <p className="text-sm mb-[20px] font-bold text-[#6D6D6D]">
           Select a date to Schedule your post and make it Public.
         </p>
         <span className="font-semibold text-sm text-black">{scheduleText}</span>
@@ -34,14 +35,13 @@ const ScheduleComponent = ({
               <DatePicker name="schedule_date" />
               <TimePicker name="schedule_time" />
 
-
               <FormSelect
                 name="time_zone"
                 options={[
                   { label: "UTC", value: "utc" },
                   { label: "Time Zone", value: "time_zone" },
                 ]}
-                className={`max-w-[10.563rem] items-center text-sm font-medium 
+                className={`max-w-[10.563rem] items-center text-sm font-medium text-black 
                   border ${
                     selectedTimezone
                       ? "border-secondaryBlue text-secondaryBlue"
@@ -50,7 +50,7 @@ const ScheduleComponent = ({
               />
             </div>
           </div>
-          <p className="text-sm mt-[20px]">{privateMessage}</p>
+          <p className="text-sm mt-[20px] font-medium">{privateMessage}</p>
         </div>
       </div>
     </div>

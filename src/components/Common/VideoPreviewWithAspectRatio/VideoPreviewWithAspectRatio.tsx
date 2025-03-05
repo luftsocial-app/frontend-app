@@ -24,20 +24,21 @@ export function VideoPreviewWithAspectRatio({
   const { watch } = useFormContext();
   const value = watch(fieldName);
 
+  const posterUrl = watch("thumbnail");
   useEffect(() => {
     getMediaTypeAndUrl(value, setAssetUrl, setAssetType);
   }, [value]);
 
   return (
     <div className="w-full max-w-md mx-auto flex flex-col items-center">
-      <div className="flex space-x-2 justify-center my-[30px]">
+      <div className="flex space-x-2 justify-center my-[30px] border p-[5px] rounded-[100px]">
         {ratios.map((ratio) => (
           <button
             key={ratio.label}
-            className={`px-3 py-1 rounded-full text-sm border ${
+            className={`px-[1.078rem] py-[3px] rounded-full text-sm border ${
               selectedRatio === ratio.value
-                ? "bg-gray-600 text-white"
-                : "bg-gray-200"
+                ? "bg-[#A8A8A8] text-white"
+                : "white border-0"
             }`}
             onClick={() => setSelectedRatio(ratio.value)}
           >
@@ -46,10 +47,15 @@ export function VideoPreviewWithAspectRatio({
         ))}
       </div>
       <div
-        className={`relative w-80 ${selectedRatio} bg-gray-800 overflow-hidden rounded-lg rounded-b-none`}
+        className={`relative w-80 ${selectedRatio} bg-gray-800 overflow-hidden rounded-lg rounded-b-none `}
       >
         {assetUrl && assetType === "video" ? (
-          <video src={assetUrl} className="w-full h-full object-cover" controls>
+          <video
+            src={assetUrl}
+            className="w-full h-full object-cover"
+            controls
+            poster={posterUrl ?? ""}
+          >
             <source />
             Your browser does not support the video tag.
           </video>

@@ -1,1 +1,1 @@
-export { FormTabsSelect } from "./FormTabs";
+export { FormTabs } from "./FormTabs";

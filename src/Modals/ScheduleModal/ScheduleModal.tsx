@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { DialogBox } from "@/components/DialogBox";
 
 export function ScheduleModal() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const postData = {
     image: "/images/create-post/ai-fill.png",
     sound: "Original Sound - APT - Rose & Bruno Mars",
@@ -52,15 +55,35 @@ export function ScheduleModal() {
           </p>
 
           <div className="flex flex-col">
-            <Button className="w-full bg-[#1E31D7] text-white py-[6px] px-[16px] rounded-[6px]">
+            <Button className="w-full bg-[#1E31D7] text-white py-[6px] px-[16px] rounded-[6px]"
+            // onClick={}
+            >
               Edit Post
             </Button>
-            <Button className="w-full text-[#1E31D7]  py-[6px] px-[16px]">
+            <Button
+              className="w-full text-[#1E31D7] py-[6px] px-[16px]"
+              onClick={() => {
+                setIsDialogOpen(true);
+                console.log("Button clicked");
+                console.log('Check===>', isDialogOpen)
+              }}
+            >
               Delete Post
             </Button>
           </div>
         </CardContent>
       </div>
+
+      {isDialogOpen && (
+        <DialogBox
+          open={isDialogOpen}
+          title="Confirm Post Deletion"
+          subHeading="Are you sure you want to delete this post?"
+          onClose={() => setIsDialogOpen(false)}
+          buttonText1="Continue"
+          buttonText2="Review Post"
+        />
+      )}
     </div>
   );
 }

@@ -38,7 +38,7 @@ export function Testimonials() {
             alt="quote icon"
             className="inline-block mb-4"
           />
-          <div className="text-gray-600 text-base sm:text-[24px] font-normal sm:mb-[2rem] relative text-left">
+          <div className="text-gray-600 text-2xl sm:text-[24px] font-normal sm:mb-[2rem] relative text-left">
             {currentTestimonial.quote}
           </div>
 

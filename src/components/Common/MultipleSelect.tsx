@@ -16,6 +16,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { FormLabel } from "../ui/form";
+import Image from "next/image";
 
 interface MultiSelectProps {
   options: {
@@ -25,7 +26,6 @@ interface MultiSelectProps {
   }[];
   onValueChange: (value: string[]) => void;
   defaultValue?: string[];
-  placeholder?: string;
   className?: string;
 }
 
@@ -33,15 +33,12 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   options,
   onValueChange,
   defaultValue = [],
-  placeholder = "",
   className,
 }) => {
   const [selectedValues, setSelectedValues] = React.useState<string[]>(
     defaultValue.length > 0 ? defaultValue : options.map((o) => o?.value)
   );
 
-  //   const [selectedValues, setSelectedValues] =
-  //     React.useState<string[]>(defaultValue);
   const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
 
   const toggleOption = (option: string) => {
@@ -54,33 +51,45 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 
   return (
     <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
-      <FormLabel className="text-text-sm  font-semiBold text-black">
+      <FormLabel className="text-text-sm  font-semiBold text-black ">
         Platforms
       </FormLabel>
       <PopoverTrigger asChild className="">
         <Button
           onClick={() => setIsPopoverOpen((prev) => !prev)}
           className={cn(
-            "flex  p-1 rounded-[13px] border min-h-10 h-auto items-center justify-between bg-white w-[760px]",
+            "flex  rounded-[13px] border min-h-10 items-center justify-between bg-white  h-[48px] w-full",
             className
           )}
         >
           {selectedValues.length > 0 ? (
-            <div className="flex flex-wrap items-center w-full gap-2 ">
+            <div className="flex flex-wrap items-center w-full py-[8px] gap-[10px] ">
               {selectedValues.map((value) => {
                 const option = options.find((o) => o.value === value);
                 return (
                   <React.Fragment key={value}>
-                    <Badge className="bg-[#FAF7FF] text-secondaryBlack2 ">
-                      {option?.icon && <option.icon className=" mr-2" />}
-                      {option?.label}
-                      <XCircle
-                        className="ml-2 h-4 w-4 cursor-pointer "
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          toggleOption(value);
+                    <Badge className="bg-[#FAF7FF] text-secondaryBlack2 py-[4px] px-[9px] hover:bg-[#FAF7FF]">
+                      {option?.icon && <option.icon className="" />}
+                      {option?.label && (
+                        <span className="mx-[10px]">{option?.label}</span>
+                      )}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const updatedValues = selectedValues.filter(
+                            (v) => v !== value
+                          );
+                          setSelectedValues(updatedValues);
+                          onValueChange(updatedValues);
                         }}
-                      />
+                      >
+                        <Image
+                          src="/images/create-post/cross.png"
+                          height={13}
+                          width={13}
+                          alt="cross"
+                        />
+                      </button>
                     </Badge>
                   </React.Fragment>
                 );
@@ -89,7 +98,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
           ) : (
             <div className="flex items-center justify-between w-full mx-auto ">
               <span className="text-sm text-muted-foreground mx-3">
-                {/* {placeholder} */}
+                {"placeholder"}
               </span>
               <ChevronDown className="h-4 cursor-pointer text-muted-foreground mx-2" />
             </div>
@@ -109,10 +118,15 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                 <CommandItem
                   key={option?.value}
                   onSelect={() => toggleOption(option.value)}
-                  className="cursor-pointer "
+                  className={cn(
+                    "cursor-pointer",
+                    selectedValues.includes(option.value)
+                      ? "bg-secondaryBlue text-white"
+                      : ""
+                  )}
                 >
-                  {option.icon && <option.icon className=" h-20 w-20" />}
-                  <span className="text-xs font-seminbold my-[4px] text-secondaryBlack2">
+                  {option.icon && <option.icon className="h-20 w-20" />}
+                  <span className="text-xs font-semibold my-[4px]">
                     {option.label}
                   </span>
                 </CommandItem>

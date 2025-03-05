@@ -11,7 +11,7 @@ import {
 import { InputSelect } from "@/components/Common/select/InputSelect";
 
 interface FormInputSelectProps extends UseControllerProps {
-  options: any[];
+  options: { label: string; value: any }[];
   loading?: boolean;
   label?: string;
   name: string;

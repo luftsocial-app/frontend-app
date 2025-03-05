@@ -26,7 +26,7 @@ export function Select({
 }: SelectProps) {
   return (
     <RadixSelect value={value} onValueChange={onChange}>
-      <SelectTrigger className={className}>
+      <SelectTrigger className={"py-[12px] px-[14px] bg-white h-[48px] rounded-[13px]"}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>

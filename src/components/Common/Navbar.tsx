@@ -6,12 +6,14 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { DownArrow } from "@/icons";
 import { useUser, SignOutButton } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const { isSignedIn } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdown, setIsDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const pathname = usePathname();
 
   const toggleDropdown = () => {
     setIsDropdown(!isDropdown);
@@ -31,8 +33,13 @@ export function Navbar() {
     };
   }, []);
 
+  const linkClasses = (route: string) =>
+    `text-lg font-semibold ${
+      pathname === route ? "text-primaryBlue" : "text-secondaryGray"
+    } hover:text-purple-600 hover:underline`;
+
   return (
-    <nav className="z-10 px-6 md:px-[8.875rem] py-4">
+    <nav className="z-10 px-6 md:px-[8.875rem] xl:pl-[7rem] py-4">
       <div className="mx-auto max-w-screen-xl flex justify-between items-center">
         <div className="flex items-center justify-center">
           <Image
@@ -44,21 +51,15 @@ export function Navbar() {
           />
         </div>
         <div className="hidden md:flex items-center space-x-8">
-          <Link
-            href="/"
-            className="text-secondaryGray hover:text-purple-600 hover:underline text-lg font-semibold"
-          >
+          <Link href="/" className={linkClasses("/")}>
             Home
           </Link>
-          <Link
-            href="/about-us"
-            className="text-secondaryGray hover:text-purple-600 hover:underline text-lg font-semibold"
-          >
+          <Link href="/about-us" className={linkClasses("/about-us")}>
             About Us
           </Link>
           <div className="relative">
             <button
-              className="text-secondaryGray hover:text-gray-900 text-lg font-semibold flex items-center"
+              className="text-lg font-semibold flex items-center text-secondaryGray hover:text-gray-900"
               onClick={toggleDropdown}
               id="dropdownMenu"
             >
@@ -89,16 +90,10 @@ export function Navbar() {
               </div>
             )}
           </div>
-          <Link
-            href="/pricing"
-            className="text-secondaryGray hover:text-purple-600 hover:underline text-lg font-semibold"
-          >
+          <Link href="/pricing" className={linkClasses("/pricing")}>
             Pricing
           </Link>
-          <Link
-            href="/blog"
-            className="text-secondaryGray hover:text-purple-600 hover:underline text-lg font-semibold"
-          >
+          <Link href="/blog" className={linkClasses("/blog")}>
             Blogs
           </Link>
         </div>
@@ -107,33 +102,37 @@ export function Navbar() {
             <>
               <Button
                 href="/dashboard"
-                className="text-primaryBlue text-lg font-semibold border-primaryBlue"
+                className={`text-lg font-semibold border-primaryBlue 
+                  hover:bg-primaryBlue hover:text-white transition-colors ${
+                    pathname === "/dashboard"
+                      ? "text-primaryBlue"
+                      : "text-primaryBlue"
+                  }`}
               >
                 Dashboard
               </Button>
               <SignOutButton>
-                <p className="text-primaryBlue text-lg font-semibold cursor-pointer">
+                <p className="text-primaryBlue text-lg font-semibold cursor-pointer hover:underline">
                   Log Out
                 </p>
               </SignOutButton>
             </>
           ) : (
             <>
-              <Link
-                href="/login"
-                className="text-primaryBlue text-lg font-semibold"
-              >
+              <Link href="/login" className={linkClasses("/login")}>
                 Sign In
               </Link>
               <Button
                 href="/signup"
-                className="max-w-[9rem] border-primaryBlue"
+                className="max-w-[9rem] border border-primaryBlue text-primaryBlue
+                 hover:bg-primaryBlue hover:text-white transition-colors"
               >
                 Get Started
               </Button>
             </>
           )}
         </div>
+
         <button
           className="md:hidden text-primaryBlue focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
@@ -141,6 +140,7 @@ export function Navbar() {
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
+
       <div
         className={`fixed top-0 left-0 h-full w-[70%] bg-white shadow-lg transition-transform duration-300 z-50 md:hidden ${
           isOpen ? "translate-x-0" : "-translate-x-full"
@@ -160,11 +160,14 @@ export function Navbar() {
                 : item.toLowerCase() === "blogs"
                 ? "/blog"
                 : `/${item.toLowerCase().replace(/\s+/g, "-")}`;
+
             return (
               <Link
                 key={item}
                 href={route}
-                className="text-secondaryGray hover:text-gray-900 text-lg font-semibold"
+                className={`text-lg font-semibold ${
+                  pathname === route ? "text-primaryBlue" : "text-secondaryGray"
+                } hover:text-gray-900`}
                 onClick={() => setIsOpen(false)}
               >
                 {item}
@@ -175,7 +178,11 @@ export function Navbar() {
             <>
               <Link
                 href="/dashboard"
-                className="text-primaryBlue text-lg font-semibold"
+                className={`text-lg font-semibold ${
+                  pathname === "/dashboard"
+                    ? "text-primaryBlue"
+                    : "text-secondaryGray"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 Dashboard
@@ -186,7 +193,11 @@ export function Navbar() {
             <>
               <Link
                 href="/signin"
-                className="text-primaryBlue text-lg font-semibold"
+                className={`text-lg font-semibold ${
+                  pathname === "/signin"
+                    ? "text-primaryBlue"
+                    : "text-secondaryGray"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 Sign In
@@ -202,6 +213,7 @@ export function Navbar() {
           )}
         </div>
       </div>
+
       {isOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 md:hidden"

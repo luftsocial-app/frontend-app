@@ -4,11 +4,11 @@ import { UseFormReturn } from "react-hook-form";
 interface PostPreviewProps {
   methods: UseFormReturn<any>;
 }
-export function PostPreview({methods}: PostPreviewProps) {
+export function PostPreview({ methods }: PostPreviewProps) {
   return (
     <div className="mx-[5.188rem]">
-      <VideoPreviewWithAspectRatio fieldName="media" />
-      <div className="border py-[20px] rounded-bl-[12px] rounded-br-[12px]">
+      <VideoPreviewWithAspectRatio fieldName="postMedia" />
+      <div className="py-[20px] rounded-bl-[12px] rounded-br-[12px] w-80 border">
         <div className="mt-[20px] ">
           <div className=" px-[6px]">
             <span className="text-xs font-bold">Location:</span>
@@ -17,12 +17,14 @@ export function PostPreview({methods}: PostPreviewProps) {
             </span>
             <div className="mt-[10px]">
               <span className="text-xs font-bold">Collaborate:</span>
-              <span>{methods.watch("collaborates") ?? ""}</span>
+              <span className="text-[#6D6D6D] text-xs font-bold">
+                {methods.watch("collaborators") ?? ""}
+              </span>
             </div>
             <div className="my-[10px]">
               <span className="text-xs font-bold">Tag:</span>
               <span className="text-[#6D6D6D] text-xs font-bold">
-                {methods.watch("tags")?.map((tag:string, index:number) => (
+                {methods.watch("tags")?.map((tag: string, index: number) => (
                   <span
                     key={index}
                     className="ml-[2px] text-[#6D6D6D] text-xs font-bold"

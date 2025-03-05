@@ -8,6 +8,7 @@ return (
     height="35"
     fill="none"
     viewBox="0 0 34 35"
+    {...props}
   >
     <g filter="url(#filter0_d_969_10352)">
       <rect
