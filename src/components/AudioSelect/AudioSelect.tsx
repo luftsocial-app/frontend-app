@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Check, Search, X } from "lucide-react";
+import { Search, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -57,38 +57,38 @@ export function AudioSelect({
 
   return (
     <div>
-      <FormLabel>{label}</FormLabel>
+      <FormLabel className="text-sm  font-semiBold text-black leading-6">
+        {label}
+      </FormLabel>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className="w-full justify-between py-[12px] px-[14px] flex overflow-hidden border rounded-[13px] h-auto mb-[8px]"
+            className="w-full justify-between py-[12px] px-[14px] flex overflow-hidden border rounded-[13px] mb-[8px] hover:bg-white  min-h-[3.5rem]"
           >
             <div className="flex flex-wrap gap-2 w-full max-h-[40px] overflow-y-auto items-center">
-              {selectedOption ? (
+              {selectedOption && (
                 <span className="font-semiBold text-black text-xs bg-[#FAF7FF] py-[4px] px-[9px] border rounded-[10px] flex items-center gap-2">
                   {selectedOption.icon && <span>{selectedOption.icon}</span>}
                   {selectedOption.label}
-                  <button onClick={clearSelection}>
+                  <span onClick={clearSelection}>
                     <X className="ml-2 h-4 w-4 cursor-pointer" />
-                  </button>
+                  </span>
                 </span>
-              ) : (
-                <span className="text-gray-400">Select framework...</span>
               )}
             </div>
             <Search className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
 
-        <PopoverContent className="p-0 w-full min-w-[inherit]">
-          <Command>
+        <PopoverContent className="min-w-[var(--radix-popover-trigger-width)] p-0">
+          <Command className="w-full">
             <CommandInput placeholder="Search here..." />
             <CommandList className="max-h-[200px] overflow-y-auto">
               <CommandEmpty>No framework found.</CommandEmpty>
-              <CommandGroup className="w-full">
+              <CommandGroup className="w-full ">
                 {options.map((framework) => (
                   <CommandItem
                     key={framework.value}

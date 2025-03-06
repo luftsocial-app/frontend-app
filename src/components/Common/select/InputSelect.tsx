@@ -3,6 +3,9 @@ import { useState, useRef, useEffect } from "react";
 import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { FacebookIcon } from "@/icons/authIcons";
+import { Facebook } from "@/icons";
+import { Search } from "lucide-react";
 
 type Option = { label: string; value: any };
 
@@ -87,15 +90,21 @@ export function InputSelect({
 
   return (
     <div className="relative w-full ">
-      <Input
-        ref={inputRef}
-        value={inputValue}
-        onChange={handleInputChange}
-        type="text"
-        onFocus={() => inputValue.trim() !== "" && setOpen(true)}
-        placeholder={placeholder ?? ""}
-        className="w-full text-black "
-      />
+      <div className="relative w-full">
+        <Input
+          ref={inputRef}
+          value={inputValue}
+          onChange={handleInputChange}
+          type="text"
+          onFocus={() => inputValue.trim() !== "" && setOpen(true)}
+          placeholder={placeholder ?? ""}
+          className="w-full text-black pr-10"
+        />
+        <span className="absolute inset-y-0 right-0 flex items-center pr-3">
+          <Search className="h-4 w-4 text-gray-500" />
+        </span>
+      </div>
+
       {open && (
         <div
           ref={dropdownRef}

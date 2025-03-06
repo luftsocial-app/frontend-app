@@ -9,7 +9,7 @@ import { useUser } from "@clerk/nextjs";
 const SidePanel = () => {
   const { user, isSignedIn } = useUser();
   return (
-    <div className="w-full bg-[#0317C6] flex flex-col items-center gap-4 py-[10px] px-[8px] max-w-[5.875rem] ">
+    <div className="w-full bg-primaryBlue2 flex flex-col items-center gap-4 py-[10px] px-[8px] max-w-[5.875rem] ">
       <Link
         href="/"
         className="flex flex-col items-center justify-center p-[10px]"
@@ -45,8 +45,8 @@ const SidePanel = () => {
         ))}
       </ul>
 
-      <div className="mt-[auto]">
-        <div className="h-[1px] bg-white w-full mb-[18px]" />
+      <div className="mt-[auto] flex flex-col items-center">
+        <div className="h-[1px] bg-white w-full mb-[18px] max-w-[3.094rem]" />
         <Link href="/settings" className="w-full ">
           <button className="flex flex-col items-center justify-center text-white rounded-lg transition-colors hover:bg-secondaryBlue px-[10px] py-[8px]">
             <SettingsIcon />
@@ -54,6 +54,7 @@ const SidePanel = () => {
           </button>
         </Link>
       </div>
+
       {isSignedIn && user ? (
         <div className="flex flex-col items-center mt-[3px]">
           <div className="h-[30px] w-[30px] rounded-full overflow-hidden">

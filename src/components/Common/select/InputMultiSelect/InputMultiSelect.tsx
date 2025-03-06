@@ -37,12 +37,13 @@ export function InputMultiSelect({
 
     onChange(newValues);
   };
+const safeValue = Array.isArray(value) ? value : [];
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger
         asChild
-        className="w-full max-w-[23.563rem] border rounded-[13px] h-auto"
+        className="w-full max-w-[23.563rem] border rounded-[13px] min-h-[3.5rem]"
       >
         <Button
           variant="outline"
@@ -50,8 +51,8 @@ export function InputMultiSelect({
           aria-expanded={open}
           className="justify-between py-[12px] px-[14px] flex overflow-hidden"
         >
-          <div className="flex flex-wrap gap-2 max-w-[377px] max-h-[40px] overflow-y-auto">
-            {value.length > 0 ? (
+          <div className="flex flex-wrap gap-2 max-w-[377px] max-h-[40px] overflow-y-auto border-red-500">
+            {safeValue?.length > 0 &&
               value.map((selected) => {
                 const label = options.find((f) => f.value === selected)?.label;
                 return (
@@ -60,20 +61,19 @@ export function InputMultiSelect({
                     className="font-semiBold text-black text-xs bg-[#FAF7FF] py-[4px] px-[9px] border rounded-[10px] flex items-center"
                   >
                     {label}
-                    <button
+                    <span
                       onClick={(e) => {
                         e.stopPropagation();
                         toggleSelection(selected);
                       }}
+                      role="button"
+                      tabIndex={0}
                     >
                       <X className="ml-2 h-4 w-4 cursor-pointer" />
-                    </button>
+                    </span>
                   </span>
                 );
-              })
-            ) : (
-              <span className="text-gray-400">Select framework...</span>
-            )}
+              })}
           </div>
 
           <Search className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -95,7 +95,7 @@ export function InputMultiSelect({
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value.includes(framework.value)
+                      value?.includes(framework.value)
                         ? "opacity-100"
                         : "opacity-0"
                     )}

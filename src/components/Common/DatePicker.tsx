@@ -18,6 +18,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { parseISO,format } from "date-fns";
+import { UpDownArrow } from "@/icons/UpDownArrow";
 
 interface DatePickerProps {
   name: string;
@@ -38,7 +39,11 @@ export function DatePicker({ name, label }: DatePickerProps) {
           : "Select Date";
         return (
           <FormItem>
-            {label && <FormLabel>{label}</FormLabel>}
+            {label && (
+              <FormLabel className="text-sm  font-semiBold text-black leading-6">
+                {label}
+              </FormLabel>
+            )}
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
                 <Button
@@ -48,8 +53,10 @@ export function DatePicker({ name, label }: DatePickerProps) {
                     error ? "border-red-500" : "text-gray-500"
                   )}
                 >
-                  <CalendarIcon className="h-4 w-4 ml-2" />
-                  {formattedDate}
+                  <span className="text-black font-medium text-sm">
+                    {formattedDate}
+                  </span>
+                  <UpDownArrow className="h-4 w-4 ml-2" />
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0">

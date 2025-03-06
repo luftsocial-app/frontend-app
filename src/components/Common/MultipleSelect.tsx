@@ -1,5 +1,5 @@
 import * as React from "react";
-import { XCircle, ChevronDown } from "lucide-react";
+import { XCircle, ChevronDown, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -36,7 +36,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   className,
 }) => {
   const [selectedValues, setSelectedValues] = React.useState<string[]>(
-    defaultValue.length > 0 ? defaultValue : options.map((o) => o?.value)
+    defaultValue.length > 0 ? defaultValue : options?.map((o) => o?.value)
   );
 
   const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
@@ -51,7 +51,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 
   return (
     <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
-      <FormLabel className="text-text-sm  font-semiBold text-black ">
+      <FormLabel className="text-sm  font-semiBold text-black leading-6">
         Platforms
       </FormLabel>
       <PopoverTrigger asChild className="">
@@ -73,7 +73,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                       {option?.label && (
                         <span className="mx-[10px]">{option?.label}</span>
                       )}
-                      <button
+                      <span
                         onClick={(e) => {
                           e.stopPropagation();
                           const updatedValues = selectedValues.filter(
@@ -89,7 +89,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                           width={13}
                           alt="cross"
                         />
-                      </button>
+                      </span>
                     </Badge>
                   </React.Fragment>
                 );
@@ -114,23 +114,33 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
         <Command>
           <CommandList>
             <CommandGroup>
-              {options.map((option) => (
-                <CommandItem
-                  key={option?.value}
-                  onSelect={() => toggleOption(option.value)}
-                  className={cn(
-                    "cursor-pointer",
-                    selectedValues.includes(option.value)
-                      ? "bg-secondaryBlue text-white"
-                      : ""
-                  )}
-                >
-                  {option.icon && <option.icon className="h-20 w-20" />}
-                  <span className="text-xs font-semibold my-[4px]">
-                    {option.label}
-                  </span>
-                </CommandItem>
-              ))}
+              {options.filter(
+                (option) => !selectedValues.includes(option?.value)
+              ).length > 0 ? (
+                options
+                  .filter((option) => !selectedValues.includes(option?.value))
+                  .map((option) => (
+                    <CommandItem
+                      key={option.value}
+                      onSelect={() => toggleOption(option.value)}
+                      className={cn(
+                        "cursor-pointer",
+                        selectedValues.includes(option.value)
+                          ? "text-black rounded-none"
+                          : ""
+                      )}
+                    >
+                      {option.icon && <option.icon className="h-20 w-20" />}
+                      <span className="text-xs font-semibold my-[4px]">
+                        {option.label}
+                      </span>
+                    </CommandItem>
+                  ))
+              ) : (
+                <CommandEmpty className="text-sm p-2 text-center">
+                  No options left
+                </CommandEmpty>
+              )}
             </CommandGroup>
           </CommandList>
         </Command>

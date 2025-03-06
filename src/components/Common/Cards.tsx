@@ -60,7 +60,7 @@ export function Cards({ title, Icon }: CardProps) {
           className="bg-white text-gray-500 flex items-center gap-2 px-4 py-2 text-sm font-medium disabled:opacity-50"
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
           disabled={page === 1}
-        >
+         >
           <Image
             src="/images/BlogScreenImages/paginationPrevious.png"
             height={20}
@@ -82,7 +82,7 @@ export function Cards({ title, Icon }: CardProps) {
                 }`}
                 onClick={() => typeof num === "number" && setPage(num)}
                 disabled={num === "..."}
-              >
+               >
                 {num}
               </button>
             ),

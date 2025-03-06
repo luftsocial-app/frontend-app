@@ -6,9 +6,9 @@ interface PostPreviewProps {
 }
 export function PostPreview({ methods }: PostPreviewProps) {
   return (
-    <div className="mx-[5.188rem]">
+    <div className="mx-[5.188rem] ">
       <VideoPreviewWithAspectRatio fieldName="postMedia" />
-      <div className="py-[20px] rounded-bl-[12px] rounded-br-[12px] w-80 border">
+      <div className="py-[20px] rounded-bl-[12px] rounded-br-[12px] min-w-[19.625rem] border">
         <div className="mt-[20px] ">
           <div className=" px-[6px]">
             <span className="text-xs font-bold">Location:</span>

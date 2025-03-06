@@ -11,7 +11,6 @@ import { Tooltip } from "@/components/Common/Tooltip/Tooltip";
 import { FormInput } from "@/components/form/FormInput";
 import { InputWithAISuggestion } from "@/components/form/FormInputAISuggestion/FormInputAISuggestion";
 import { FormInputMultiSelect } from "@/components/form/FormInputMultiSelect";
-// import { FormTabsSelect } from "@/components/form/FormTabs/FormTabs";
 import { PostPreview } from "@/components/PostPreview/PostPreview";
 import { Facebook } from "@/icons";
 import { AudioIcon } from "@/icons/AudioIcon";
@@ -22,7 +21,8 @@ import {
   YoutubeIcon,
 } from "@/icons/authIcons";
 import { Ticktok } from "@/icons/Tiktok";
-import React, { useState } from "react";
+import { useParams } from "next/navigation";
+import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
 
 interface FormFields {
@@ -103,7 +103,9 @@ export default function CreatePost() {
     console.log("Form Data:", data);
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const params = useParams();
+  const id = params.id;
+  console.log("Got Id===>", id);
 
   return (
     <FormProvider {...methods}>
@@ -128,6 +130,7 @@ export default function CreatePost() {
                   name="postType"
                   options={postType}
                   rules={{ required: "Please select Post Type" }}
+                  className="py-[12px] px-[14px] bg-white h-[48px] rounded-[13px]"
                 />
               </div>
               <div className=" w-full max-w-[23.594rem]">
@@ -183,7 +186,7 @@ export default function CreatePost() {
                   name="postVisibility"
                   options={postVisibility}
                   rules={{ required: "Please select Post Visibility type" }}
-                  className=""
+                  className="py-[12px] px-[14px] bg-white h-[48px] rounded-[13px]"
                 />
               </div>
             </div>
@@ -193,7 +196,7 @@ export default function CreatePost() {
               privateMessage="Video will be private before publishing"
             />
             <div className="flex justify-between max-w-[47.5rem] mt-[14px]">
-              <button className="px-[16px] py-[8px] ml-[20px] rounded-[6px] border-[1px] border-[#0317C6] text-[#0317C6] text-sm font-semibold">
+              <button className="px-[16px] py-[8px] ml-[20px] rounded-[6px] border-[1px] border-primaryBlue2 text-primaryBlue2 text-sm font-semibold">
                 Cancel
               </button>
               <ScheduleButton />

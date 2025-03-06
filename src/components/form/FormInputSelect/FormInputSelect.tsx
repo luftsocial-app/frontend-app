@@ -36,7 +36,9 @@ export function FormInputSelect({
         {...rest}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{label}</FormLabel>
+            <FormLabel className="text-sm  font-semiBold text-black leading-6">
+              {label}
+            </FormLabel>
             <InputSelect
               options={options}
               onInputChange={onInputChange}

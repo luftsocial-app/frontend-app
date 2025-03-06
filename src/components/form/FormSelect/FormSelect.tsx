@@ -17,7 +17,6 @@ interface FormSelectProps extends UseControllerProps {
   options: any[];
   validate?: any;
   className?: string;
-
 }
 
 export function FormSelect({
@@ -39,12 +38,17 @@ export function FormSelect({
         {...rest}
         render={({ field }) => (
           <FormItem>
-            {label && <FormLabel>{label}</FormLabel>}
+            {label && (
+              <FormLabel className="text-sm  font-semiBold text-black leading-6">
+                {label}
+              </FormLabel>
+            )}
             <Select
               options={options}
               placeholder="Select an option"
               value={field.value}
               onChange={field.onChange}
+              className={className}
             />
             <FormMessage />
           </FormItem>

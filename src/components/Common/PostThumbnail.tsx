@@ -31,7 +31,9 @@ export function PostThumbnail({
 
   return (
     <div>
-      <FormLabel>{label}</FormLabel>
+      <FormLabel className="text-sm  font-semiBold text-black leading-6">
+        {label}
+      </FormLabel>
       <div className="mt-4 relative">
         <div className="mb-4 relative inline-block">
           <button

@@ -12,7 +12,8 @@ interface DialogBoxProps {
   title: string;
   subHeading?: string;
   open: boolean;
-  onClose: () => void;
+  onContinue?: () => void;
+  onCancel?: () => void;
   icon?: string | StaticImageData;
   buttonText1: string;
   buttonText2: string;
@@ -22,14 +23,18 @@ export function DialogBox({
   title,
   subHeading,
   open,
-  onClose,
+  onCancel,
+  onContinue,
   icon,
   buttonText1,
   buttonText2,
 }: DialogBoxProps) {
   return (
-    <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px] items-center justify-center">
+    <Dialog open={open}>
+      <DialogContent
+        onInteractOutside={onCancel}
+        className="sm:max-w-[425px] items-center justify-center"
+       >
         <DialogHeader>
           <DialogTitle className="text-center">{title}</DialogTitle>
         </DialogHeader>
@@ -41,23 +46,23 @@ export function DialogBox({
             <Image src={icon} alt="dialogImg" height={203} width={203} />
           </div>
         )}
-        <DialogFooter className="">
-          <div className="my-[24px] gap-4 items-center justify-center">
-            {buttonText1 && (
-              <Button
-                type="submit"
-                onClick={onClose}
-                className="w-full border flex-1 min-w-[19.25rem] px-[16px] py-[6px] bg-secondaryBlue text-white text-sm font-semibold rounded-[6px] mb-[10px]"
-              >
-                {buttonText1}
-              </Button>
-            )}
-            {buttonText2 && (
-              <Button className="w-full border flex-1 min-w-[19.25rem] px-[16px] py-[6px] }border-secondaryBlue text-secondaryBlue rounded-[6px]  text-sm font-semibold ">
-                {buttonText2}
-              </Button>
-            )}
-          </div>
+        <DialogFooter className="flex flex-row my-[24px] overflow-hidden">
+          {buttonText1 && (
+            <Button
+              onClick={onContinue}
+              className="w-full border flex-1 px-[16px] py-[6px] bg-secondaryBlue text-white text-sm font-semibold rounded-[6px] mb-[10px]"
+            >
+              {buttonText1}
+            </Button>
+          )}
+          {buttonText2 && (
+            <Button
+              className="w-full border flex-1 px-[16px] py-[6px] }border-secondaryBlue text-secondaryBlue rounded-[6px]  text-sm font-semibold "
+              onClick={onCancel}
+            >
+              {buttonText2}
+            </Button>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>

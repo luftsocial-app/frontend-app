@@ -8,34 +8,52 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Tooltip } from "@/components/Common/Tooltip/Tooltip";
 import { DialogBox } from "@/components/DialogBox";
 
 interface FormDialogBoxProps extends UseControllerProps {
-  options: any[];
   loading?: boolean;
   label?: string;
   name: string;
+  title: string;
+  subHeading?: string;
+  open: boolean;
+  onClose: () => void;
+  icon?: string;
+  buttonText1: string;
+  buttonText2: string;
 }
 
 export function FormDialogBox({
-  options,
   label,
   name,
+  title,
+  open,
+  onClose,
+  buttonText1,
+  buttonText2,
+  icon,
   ...rest
 }: Readonly<FormDialogBoxProps>) {
   const form = useFormContext();
 
   return (
-    <div className="min-w-[23.563rem]">
+    <div>
       <FormField
         control={form.control}
         name={name}
         {...rest}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{label}</FormLabel>
-            <DialogBox />
+            <FormLabel className="text-sm  font-semiBold text-black leading-6">
+              {label}
+            </FormLabel>
+            <DialogBox
+              title={title}
+              open={open}
+              buttonText1={buttonText1}
+              buttonText2={buttonText2}
+              icon={icon}
+            />
             <FormMessage />
           </FormItem>
         )}

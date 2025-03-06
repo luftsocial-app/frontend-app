@@ -23,17 +23,18 @@ export function Select({
 }: SelectProps) {
   return (
     <RadixSelect value={value} onValueChange={onChange}>
-      <SelectTrigger className="max-w-[23.563rem] py-[12px] px-[14px] border border-red-400 border-b-0 ">
+      <SelectTrigger className="max-w-[23.563rem] py-[12px] px-[14px] border border-b-0 ">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
-      <SelectContent className="border border-red-400 border-t-0 bg-white -mt-px">
-        <SelectGroup>
+      <SelectContent className="border border-t-0 bg-white -mt-px">
+        <SelectGroup className="">
           {options.map((option) => (
             <SelectItem
               key={option.value}
               value={option.value}
               className="px-4 py-2"
             >
+
               {option.label}
             </SelectItem>
           ))}

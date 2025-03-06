@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 interface FormInputSelectProps extends UseControllerProps {
-  placeholder:string;
+  placeholder: string;
   label?: string;
   name: string;
 }
@@ -32,8 +32,13 @@ export function FormInput({
         {...rest}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{label}</FormLabel>
-            <Input {...field} placeholder={placeholder} className="bg-white" />
+            <FormLabel className="text-sm  font-semiBold text-black leading-6">{label}</FormLabel>
+            <Input
+              {...field}
+              placeholder={placeholder}
+              className="bg-white"
+              value={field.value ?? ""}
+            />
             <FormMessage />
           </FormItem>
         )}

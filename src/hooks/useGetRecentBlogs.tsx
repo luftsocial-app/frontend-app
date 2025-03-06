@@ -8,15 +8,12 @@ export function useGetRecentBlogs() {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("GOT---->");
       try {
         const response = await fetch(
           "http://localhost:1337/api/all-blogs?populate=*&sort[updatedAt]=desc&pagination[page]=1&pagination[pageSize]=3",
         );
 
         const result = await response.json();
-        console.log("result====>", result);
-
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }

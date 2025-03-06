@@ -6,7 +6,6 @@ export function useCreateOrg() {
   const { getToken } = useAuth();
   async function createOrg(orgName: string, userId: string): Promise<any> {
     const token = await getToken();
-    console.log("Token--->", token);
 
     const clerkApiKey = process.env.NEXT_PUBLIC_CLERK_SECRET_KEY;
 

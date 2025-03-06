@@ -1,14 +1,14 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import listPlugin from "@fullcalendar/list";
 import { Facebook } from "@/icons";
 import { ScheduleModal } from "@/Modals";
 import { ScheduleHeader } from "@/components/ScheduleHeader";
 import { ProfileSection } from "@/components/ProfileSection";
-import listPlugin from "@fullcalendar/list";
 import { GrapghicUi, TextUi } from "@/components/Schedule";
 import { DayHeaderContentArg } from "@fullcalendar/core/index.js";
 import { FacebookIcon } from "@/icons/authIcons";
@@ -17,6 +17,7 @@ import { CustomCalendarHeader } from "@/components/CustomCalendarHeader";
 function ScheduleFullCalendar() {
   const calendarRef = useRef<FullCalendar | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [scheduleModalData, setScheduleModalData] = useState(null);
   const [currentView, setCurrentView] = useState("dayGridMonth");
   const [expandedDays, setExpandedDays] = useState<{ [key: string]: boolean }>(
     {}
@@ -27,15 +28,67 @@ function ScheduleFullCalendar() {
   };
 
   const handleEventClick = (info: any) => {
+    setScheduleModalData(info?.event?.extendedProps);
     setIsModalOpen(true);
   };
-
   const handleEventsSet = (events: any) => {
     console.log("Events loaded:", events);
   };
 
+  const eventData = [
+    {
+      id: "1",
+      title: "Event 1",
+      icon: <Facebook size={11} />,
+      modalimage: "/images/create-post/ai-fill.png",
+      sound: "Original Sound - APT - Rose & Bruno Mars",
+      location: "New York, United States",
+      collaborate: "@JohnDoe",
+      tag: "@JohnDoe",
+      modaltitle: "APT Dance",
+      description:
+        "Okay last time, We promise! 😆🥲🤪, Sped up version of the APT Dance! If you win, you live. If you lose, you die. If you don’t fight, you can’t win. If someone is willing to take my freedom,💗",
+      hashtags:
+        "#fyp #foryoupage #foryou #apt #aptdancechallenge #dance #dancechallenge",
+    },
+    {
+      id: "2",
+      title: "Event 2",
+      icon: <Facebook size={11} />,
+      modalimage: "/images/create-post/ai-fill.png",
+      sound: "Original Sound - APT - Rose & Bruno Mars",
+      location: "New York, United States",
+      collaborate: "@JohnDoe",
+      tag: "@JohnDoe",
+      modaltitle: "APT Dance",
+      description:
+        "Okay last time, We promise! 😆🥲🤪, Sped up version of the APT Dance! If you win, you live. If you lose, you die. If you don’t fight, you can’t win. If someone is willing to take my freedom,💗",
+      hashtags:
+        "#fyp #foryoupage #foryou #apt #aptdancechallenge #dance #dancechallenge",
+    },
+  ];
+
   const generateEvents = () => {
-    const events = [];
+    const events: {
+      id: string;
+      title: string;
+      start: string;
+      allDay: boolean;
+      extendedProps: {
+        id: string;
+        title: string;
+        icon: React.JSX.Element;
+        modalimage: string;
+        sound: string;
+        location: string;
+        collaborate: string;
+        tag: string;
+        modaltitle: string;
+        description: string;
+        hashtags: string;
+      };
+      image: React.JSX.Element;
+    }[] = [];
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -43,41 +96,24 @@ function ScheduleFullCalendar() {
     for (let day = 1; day <= 31; day++) {
       const date = new Date(year, month, day);
       if (date.getMonth() === month) {
-        events.push(
-          {
-            title: "Event 1",
+        eventData.forEach((dataItem) => {
+          events.push({
+            id: dataItem.id,
+            title: dataItem.title,
             start: `${date.toISOString().split("T")[0]}T11:15:00`,
             allDay: false,
-            extendedProps: { icon: <Facebook size={11} /> },
-            image: <FacebookIcon />,
-          },
-          {
-            title: "Event 2",
-            start: `${date.toISOString().split("T")[0]}T12:15:00`,
-            allDay: false,
-            extendedProps: { icon: <Facebook size={11} /> },
-            image: <FacebookIcon />,
-          },
-          {
-            title: "Event 3",
-            start: `${date.toISOString().split("T")[0]}T11:12:00`,
-            allDay: false,
-            extendedProps: { icon: <Facebook size={11} /> },
-            image: <FacebookIcon />,
-          },
-          {
-            title: "Event 4",
-            start: `${date.toISOString().split("T")[0]}T14:10:00`,
-            allDay: false,
-            extendedProps: { icon: <Facebook size={11} /> },
-            image: <FacebookIcon />,
-          }
-        );
+            extendedProps: {
+              ...dataItem,
+            },
+            image: dataItem.icon,
+          });
+        });
       }
     }
     return events;
   };
-  const initialEvents = generateEvents();
+
+  const initialEvents = useMemo(() => generateEvents(), []);
 
   const getEventsForDate = (date: any) => {
     const formattedDate = date.toISOString().split("T")[0];
@@ -149,7 +185,6 @@ function ScheduleFullCalendar() {
         </div>
       );
     }
-
     return null;
   };
 
@@ -167,7 +202,7 @@ function ScheduleFullCalendar() {
   }, []);
 
   return (
-    <div className="" onClick={() => setIsModalOpen(false)}>
+    <div>
       <ScheduleHeader />
       <div className="calendar-container bg-white rounded-md shadow-sm">
         <div className="flex">
@@ -199,7 +234,14 @@ function ScheduleFullCalendar() {
               editable={true}
               eventContent={eventContent}
             />
-            {isModalOpen && <ScheduleModal />}
+            {isModalOpen && scheduleModalData && (
+              <ScheduleModal
+                open={isModalOpen}
+                data={scheduleModalData}
+                onContinue={() => setIsModalOpen(false)}
+                onClose={() => setIsModalOpen(false)}
+              />
+            )}
           </div>
         </div>
       </div>

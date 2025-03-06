@@ -14,7 +14,7 @@ interface SelectProps {
   placeholder?: string;
   value: string;
   onChange: (value: string) => void;
-  className?:string;
+  className?: string;
 }
 
 export function Select({
@@ -26,14 +26,18 @@ export function Select({
 }: SelectProps) {
   return (
     <RadixSelect value={value} onValueChange={onChange}>
-      <SelectTrigger className={"py-[12px] px-[14px] bg-white h-[48px] rounded-[13px]"}>
+      <SelectTrigger className={` ${className}`}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Options</SelectLabel>
           {options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
+            <SelectItem
+              key={option.value}
+              value={option.value}
+              className=" data-[state=checked]:bg-[#1E31D7] data-[state=checked]:text-white text-sm font-medium py-[8px] px-[14px]"
+            >
               {option.label}
             </SelectItem>
           ))}

@@ -30,7 +30,7 @@ export function VideoPreviewWithAspectRatio({
   }, [value]);
 
   return (
-    <div className="w-full max-w-md mx-auto flex flex-col items-center">
+    <div className="w-full flex flex-col items-center">
       <div className="flex space-x-2 justify-center my-[30px] border p-[5px] rounded-[100px]">
         {ratios.map((ratio) => (
           <button
@@ -47,7 +47,7 @@ export function VideoPreviewWithAspectRatio({
         ))}
       </div>
       <div
-        className={`relative w-80 ${selectedRatio} bg-gray-800 overflow-hidden rounded-lg rounded-b-none `}
+        className={`relative min-w-[19.625rem] ${selectedRatio} bg-gray-800 overflow-hidden rounded-lg rounded-b-none `}
       >
         {assetUrl && assetType === "video" ? (
           <video

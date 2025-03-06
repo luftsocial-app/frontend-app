@@ -32,11 +32,13 @@ export function FormInputMultiSelect({
         {...rest}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{label}</FormLabel>
+            <FormLabel className="text-sm  font-semiBold text-black leading-6">
+              {label}
+            </FormLabel>
             <InputMultiSelect
               options={options}
               onChange={field.onChange}
-              value={field.value ?? []}
+              value={field.value}
             />
             <FormMessage />
           </FormItem>

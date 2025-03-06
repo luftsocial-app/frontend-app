@@ -13,7 +13,9 @@ export function MediaInput({ name, label }: { name: string; label? :string}) {
 
   return (
     <div>
-      <FormLabel className="">{label}</FormLabel>
+      <FormLabel className="text-sm  font-semiBold text-black leading-6">
+        {label}
+      </FormLabel>
       <div className="mt-4 relative ">
         {mediaPreview && (
           <div className="mb-4 relative inline-block">
@@ -50,7 +52,7 @@ export function MediaInput({ name, label }: { name: string; label? :string}) {
           className="hidden"
         />
         <div className="flex gap-8 mt-[8px] ">
-          <div className="flex items-center border border-[#EDEDED] max-w-[9.438rem] px-2 py-2 rounded-[10px] w-full h-[32px] bg-white">
+          <div className="flex items-center border border-[#EDEDED] max-w-[9.438rem] px-2 py-2 rounded-[10px] w-full min-h-[2rem] bg-white">
             <Image
               src="/images/create-post/library.png"
               height={18}
@@ -64,7 +66,7 @@ export function MediaInput({ name, label }: { name: string; label? :string}) {
               Select From Library
             </label>
           </div>
-          <div className="flex items-center bg-white border border-[#EDEDED] max-w-[9.438rem] px-2 py-2 rounded-[10px] w-full h-[32px]">
+          <div className="flex items-center bg-white border border-[#EDEDED] max-w-[9.438rem] px-2 py-2 rounded-[10px] w-full min-h-[2rem]">
             <Image
               src="/images/create-post/media.png"
               height={18}

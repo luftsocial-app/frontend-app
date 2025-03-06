@@ -27,7 +27,7 @@ export function Tooltip({
             <TabsTrigger
               key={option.value}
               value={option.value}
-              className="flex items-center justify-center space-x-[10px] data-[state=active]:border-b-[2px] data-[state=active]:border-[#0317C6] data-[state=active]:pb-[10px] rounded-none  
+              className="flex items-center justify-center space-x-[10px] data-[state=active]:border-b-[2px] data-[state=active]:border-primaryBlue2 data-[state=active]:pb-[10px] rounded-none  
                data-[state=inactive]:border-b-[1px] data-[state=inactive]:border-gray-200 data-[state=inactive]:pb-[10px] mt-[15px]"
             >
               {option.icon}

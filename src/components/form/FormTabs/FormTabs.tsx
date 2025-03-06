@@ -32,7 +32,7 @@ export function FormTabs({
 }: Readonly<FormTabsSelectProps>) {
   const form = useFormContext();
 
-  return (    
+  return (
     <div className="min-w-[23.563rem]">
       <FormField
         control={form.control}
@@ -40,7 +40,9 @@ export function FormTabs({
         {...rest}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{label}</FormLabel>
+            <FormLabel className="text-sm  font-semiBold text-black leading-6">
+              {label}
+            </FormLabel>
             <Tooltip
               onChange={onChange}
               options={options}

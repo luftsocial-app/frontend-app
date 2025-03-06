@@ -61,7 +61,7 @@ export function Footer() {
             <h3 className="text-lg font-bold text-primaryBlue mb-[30px]">
               LuftSocial
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-[20px]">
               {["Home", "Pricing", "About", "Blogs", "Integration"].map(
                 (link) => (
                   <li key={link}>
@@ -81,7 +81,7 @@ export function Footer() {
             <h3 className="text-lg font-bold text-primaryBlue mb-[30px]">
               Tools
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-[20px]">
               {[
                 "Create / Publish",
                 "Schedule",
@@ -105,7 +105,7 @@ export function Footer() {
             <h3 className="text-lg font-bold text-primaryBlue mb-[30px]">
               Support
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-[20px]">
               {[
                 "Privacy Policy",
                 "Terms & Conditions",
@@ -129,7 +129,7 @@ export function Footer() {
             <h3 className="text-lg font-bold text-primaryBlue mb-[30px]">
               Contact Us
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-[20px]">
               {[
                 "info@luftsocial.com",
                 "Careers",

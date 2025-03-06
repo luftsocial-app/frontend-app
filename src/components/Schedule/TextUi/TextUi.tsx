@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function TextUi({ eventInfo = {} }) {
+export function TextUi({ eventInfo }) {
   const { event } = eventInfo;
   const { start, title, extendedProps = {} } = event;
   const eventTime = start

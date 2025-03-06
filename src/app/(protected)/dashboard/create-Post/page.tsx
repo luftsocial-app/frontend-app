@@ -11,7 +11,6 @@ import { Tooltip } from "@/components/Common/Tooltip/Tooltip";
 import { FormInput } from "@/components/form/FormInput";
 import { InputWithAISuggestion } from "@/components/form/FormInputAISuggestion/FormInputAISuggestion";
 import { FormInputMultiSelect } from "@/components/form/FormInputMultiSelect";
-// import { FormTabsSelect } from "@/components/form/FormTabs/FormTabs";
 import { PostPreview } from "@/components/PostPreview/PostPreview";
 import { Facebook } from "@/icons";
 import { AudioIcon } from "@/icons/AudioIcon";
@@ -26,16 +25,28 @@ import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 
 interface FormFields {
-  postType: string;
+  postType: any;
   location: any;
+  collaborators: any;
+  description: any;
+  hashtags: any;
+  postVisibility: any;
   media: any;
+  title: any;
 }
 
 export default function CreatePost() {
   const methods = useForm<FormFields>({
     defaultValues: {
       postType: "Reel",
-      location: "asdfasdfasdf",
+      location: "New York, United States",
+      collaborators: "@johndoe",
+      description:
+        "Okay last time. We promise! 🥹🥺😘, Sped up version of the APT. Dance!  If you win, you live. If you lose, you die. If you don't fight, you can't win. If someone is willing to take my freedom,💗",
+      hashtags:
+        "#fyp #foryoupage #foryou #apt #aptdancechallenge #dance #dancechallenge",
+      postVisibility: "Public",
+      title: "APT Dance",
     },
   });
 
@@ -128,12 +139,13 @@ export default function CreatePost() {
                   name="postType"
                   options={postType}
                   rules={{ required: "Please select Post Type" }}
+                  className="py-[12px] px-[14px] bg-white h-[48px] rounded-[13px]"
                 />
               </div>
               <div className=" w-full max-w-[23.594rem]">
                 <FormInput
                   label="Post Title"
-                  placeholder="APT Dance"
+                  placeholder=""
                   name="title"
                   rules={{ required: "Please enter text" }}
                 />
@@ -171,8 +183,16 @@ export default function CreatePost() {
                 label={"Audio"}
               />
             </div>
-            <InputWithAISuggestion name="description" label="Caption" />
-            <InputWithAISuggestion name="hashtags" label="Hashtags" />
+            <InputWithAISuggestion
+              name="description"
+              label="Caption"
+              className="min-h-[4.5rem]"
+            />
+            <InputWithAISuggestion
+              name="hashtags"
+              label="Hashtags"
+              className="min-h-[4rem]"
+            />
             <div className="mt-[10px] flex gap-2 justify-center">
               <div className="flex-1">
                 <FormInputMultiSelect name="tags" options={tags} label="Tag" />
@@ -183,7 +203,7 @@ export default function CreatePost() {
                   name="postVisibility"
                   options={postVisibility}
                   rules={{ required: "Please select Post Visibility type" }}
-                  className=""
+                  className="py-[12px] px-[14px] bg-white min-h-[3.5rem] rounded-[13px]"
                 />
               </div>
             </div>
@@ -192,8 +212,8 @@ export default function CreatePost() {
               scheduleText="Schedule as Public"
               privateMessage="Video will be private before publishing"
             />
-            <div className="flex justify-between max-w-[47.5rem] mt-[14px]">
-              <button className="px-[16px] py-[8px] ml-[20px] rounded-[6px] border-[1px] border-[#0317C6] text-[#0317C6] text-sm font-semibold">
+            <div className="flex  mt-[14px] w-full">
+              <button className="px-[16px] py-[8px] rounded-[6px] border-[1px] border-primaryBlue2 text-primaryBlue2 text-sm font-semibold">
                 Cancel
               </button>
               <ScheduleButton />

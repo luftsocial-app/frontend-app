@@ -7,12 +7,14 @@ interface InputWithAISuggestionProps {
   name: string;
   label: string;
   required?: boolean;
+  className?:string;
 }
 
 export function InputWithAISuggestion({
   name,
   label,
   required = false,
+  className,
 }: InputWithAISuggestionProps) {
   const {
     control,
@@ -36,7 +38,9 @@ export function InputWithAISuggestion({
         {label} {required && <span className="text-red-500">*</span>}
       </label>
       <div className="relative mt-2 bg-white">
-        <div className="flex items-center border border-gray-300 rounded-lg py-[12px] px-[14px]">
+        <div
+          className={`flex items-center border border-gray-300 rounded-lg py-[12px] px-[14px] ${className}`}
+        >
           <Controller
             name={name}
             control={control}
@@ -55,7 +59,7 @@ export function InputWithAISuggestion({
           <button
             type="button"
             onClick={fetchAISuggestion}
-            className="btn-primary-outline border-[1px] border-[#0317C6] rounded-[6px] w-[89px] text-xs font-semibold py-[8px] px-[10px] whitespace-nowrap text-[#0317C6] flex items-center justify-center"
+            className="btn-primary-outline border-[1px] border-primaryBlue2 rounded-[6px] min-w-[5.563rem] text-xs font-semibold py-[8px] px-[10px] whitespace-nowrap text-primaryBlue2 flex items-center justify-center"
             disabled={loading}
           >
             <Image
@@ -65,7 +69,9 @@ export function InputWithAISuggestion({
               alt="ai-fill"
               className="mr-1"
             />
-            <span>{loading ? "Loading..." : "AI Assist"}</span>
+            <span className="text-primaryBlue2 text-xs font-semibold leading-6">
+              {loading ? "Loading..." : "AI Assist"}
+            </span>
           </button>
         </div>
         {errors[name] && (

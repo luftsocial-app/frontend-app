@@ -40,7 +40,7 @@ export function BillingSelector({
           onClick={decrementCount}
           className="disabled:opacity-50"
           disabled={platformCount <= 1}
-        >
+         >
           <Image
             src="/images/HomeScreenImages/decrementIcon.png"
             width={24}

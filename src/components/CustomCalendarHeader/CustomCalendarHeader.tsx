@@ -38,7 +38,7 @@ export function CustomCalendarHeader({
             onClick={() => handleCalendarViewChange("dayGridMonth")}
             className="px-[18px] py-[5px] text-black border rounded-[6px] mr-[20px] text-xs font-semibold"
             title="Today"
-          >
+           >
             Today
           </button>
           <button

@@ -39,7 +39,9 @@ export function TimePicker({ name, label }: TimePickerProps) {
                   const minute = ((i % 4) * 15).toString().padStart(2, "0");
                   return (
                     <SelectItem key={i} value={`${hour}:${minute}`}>
-                      {hour}:{minute}
+                      <span className="text-black text-sm font-medium">
+                         {hour}:{minute}
+                        </span>
                     </SelectItem>
                   );
                 })}
