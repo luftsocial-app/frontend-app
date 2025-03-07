@@ -33,20 +33,24 @@ interface FormFields {
   postVisibility: any;
   media: any;
   title: any;
+  tags: any;
+  time_zone: any;
 }
 
 export default function CreatePost() {
   const methods = useForm<FormFields>({
     defaultValues: {
-      postType: "Reel",
       location: "New York, United States",
+      postType: "reel",
       collaborators: "@johndoe",
       description:
         "Okay last time. We promise! 🥹🥺😘, Sped up version of the APT. Dance!  If you win, you live. If you lose, you die. If you don't fight, you can't win. If someone is willing to take my freedom,💗",
       hashtags:
         "#fyp #foryoupage #foryou #apt #aptdancechallenge #dance #dancechallenge",
-      postVisibility: "Public",
+      postVisibility: "public",
       title: "APT Dance",
+      tags: ["@johndoe"],
+      time_zone: ["Time zone"],
     },
   });
 
@@ -132,7 +136,7 @@ export default function CreatePost() {
               onValueChange={() => {}}
               className="my-4"
             />
-            <div className="flex items-center justify-between w-full mb-[8px]">
+            <div className="flex items-center justify-between w-full mb-[12px]">
               <div className="w-full max-w-[23.594rem]">
                 <FormSelect
                   label="Post Type"
@@ -151,7 +155,7 @@ export default function CreatePost() {
                 />
               </div>
             </div>
-            <div className="flex justify-between mb-[8px]">
+            <div className="flex justify-between mb-[12px]">
               <LocationSelect />
               <div className="">
                 <FormInputSelect
@@ -166,7 +170,7 @@ export default function CreatePost() {
                 />
               </div>
             </div>
-            <div className="flex">
+            <div className="flex mb-[12px]">
               <div className=" w-full max-w-[23.594rem] mr-[2rem]">
                 <MediaInput name="postMedia" label="Media" />
               </div>
@@ -176,24 +180,28 @@ export default function CreatePost() {
                 label="Thumbnail"
               />
             </div>
-            <div className="mt-[8px]">
+            <div className="mb-[12px]">
               <AudioSelect
                 options={audioOptions}
                 onChange={() => {}}
                 label={"Audio"}
               />
             </div>
-            <InputWithAISuggestion
-              name="description"
-              label="Caption"
-              className="min-h-[4.5rem]"
-            />
-            <InputWithAISuggestion
-              name="hashtags"
-              label="Hashtags"
-              className="min-h-[4rem]"
-            />
-            <div className="mt-[10px] flex gap-2 justify-center">
+            <div className="mb-[12px]">
+              <InputWithAISuggestion
+                name="description"
+                label="Caption"
+                className="min-h-[4.5rem]"
+              />
+            </div>
+            <div className="mb-[12px]">
+              <InputWithAISuggestion
+                name="hashtags"
+                label="Hashtags"
+                className="min-h-[4rem]"
+              />
+            </div>
+            <div className="flex gap-2 justify-center mb-[12px]">
               <div className="flex-1">
                 <FormInputMultiSelect name="tags" options={tags} label="Tag" />
               </div>
@@ -207,16 +215,18 @@ export default function CreatePost() {
                 />
               </div>
             </div>
-
-            <ScheduleComponent
-              scheduleText="Schedule as Public"
-              privateMessage="Video will be private before publishing"
-            />
-            <div className="flex  mt-[14px] w-full">
-              <button className="px-[16px] py-[8px] rounded-[6px] border-[1px] border-primaryBlue2 text-primaryBlue2 text-sm font-semibold">
-                Cancel
-              </button>
-              <ScheduleButton />
+            <div className="">
+              <ScheduleComponent
+                label="Schedule"
+                scheduleText="Schedule as Public"
+                privateMessage="Video will be private before publishing"
+              />
+              <div className="flex w-full mt-[12px]">
+                <button className="px-[16px] py-[8px] rounded-[6px] border-[1px] border-primaryBlue2 text-primaryBlue2 text-sm font-semibold">
+                  Cancel
+                </button>
+                <ScheduleButton />
+              </div>
             </div>
           </form>
         </div>

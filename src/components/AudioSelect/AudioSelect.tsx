@@ -1,7 +1,5 @@
 import * as React from "react";
 import { Search, X } from "lucide-react";
-
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -31,7 +29,7 @@ interface SingleSelectProps {
 
 export function AudioSelect({
   options,
-  defaultValue = null,
+   defaultValue="audio1",
   onChange,
   label,
 }: SingleSelectProps) {
@@ -57,9 +55,6 @@ export function AudioSelect({
 
   return (
     <div>
-      <FormLabel className="text-sm  font-semiBold text-black leading-6">
-        {label}
-      </FormLabel>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button

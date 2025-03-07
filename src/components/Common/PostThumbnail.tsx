@@ -36,13 +36,6 @@ export function PostThumbnail({
       </FormLabel>
       <div className="mt-4 relative">
         <div className="mb-4 relative inline-block">
-          <button
-            type="button"
-            onClick={removeMedia}
-            className="absolute top-2 right-2 bg-black bg-opacity-50 text-white rounded-full w-2 h-2 flex items-center justify-center text-sm"
-          ></button>
-
-          {/* For images, show the normal preview */}
           {selectedMedia?.type.startsWith("image/") && (
             <img
               src={mediaPreview}
@@ -50,11 +43,8 @@ export function PostThumbnail({
               className="w-[66px] h-[103px] object-contain rounded-sm"
             />
           )}
-
-          {/* For videos, display the generated thumbnail */}
           {selectedMedia?.type.startsWith("video/") && (
             <>
-              {/* Hidden video element used for generating the thumbnail */}
               <video
                 ref={videoRef}
                 src={mediaPreview}

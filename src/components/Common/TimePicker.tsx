@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FormField, FormItem, FormMessage } from "../ui/form";
+import { FormItem, FormMessage } from "../ui/form";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useFormContext, Controller } from "react-hook-form";
 
@@ -40,8 +40,8 @@ export function TimePicker({ name, label }: TimePickerProps) {
                   return (
                     <SelectItem key={i} value={`${hour}:${minute}`}>
                       <span className="text-black text-sm font-medium">
-                         {hour}:{minute}
-                        </span>
+                        {hour}:{minute}
+                      </span>
                     </SelectItem>
                   );
                 })}

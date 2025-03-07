@@ -17,15 +17,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { parseISO,format } from "date-fns";
+import { parseISO, format } from "date-fns";
 import { UpDownArrow } from "@/icons/UpDownArrow";
 
 interface DatePickerProps {
   name: string;
   label?: string;
+  onChange?: (date: string | null) => void;
 }
 
-export function DatePicker({ name, label }: DatePickerProps) {
+export function DatePicker({ name, label, onChange }: DatePickerProps) {
   const { control } = useFormContext();
   const [open, setOpen] = useState(false);
 
@@ -37,10 +38,11 @@ export function DatePicker({ name, label }: DatePickerProps) {
         const formattedDate = field.value
           ? format(parseISO(field.value), "dd MMM yyyy")
           : "Select Date";
+
         return (
           <FormItem>
             {label && (
-              <FormLabel className="text-sm  font-semiBold text-black leading-6">
+              <FormLabel className="text-sm font-semiBold text-black leading-6">
                 {label}
               </FormLabel>
             )}
@@ -63,13 +65,13 @@ export function DatePicker({ name, label }: DatePickerProps) {
                 <Calendar
                   mode="single"
                   onSelect={(date) => {
-                    if (date) {
-                      field.onChange(date.toISOString());
-                    }
+                    const isoDate = date ? date.toISOString() : null;
+                    field.onChange(isoDate);
+                    if (onChange) onChange(isoDate);
                     setOpen(false);
                   }}
                   initialFocus
-                  selected={field.value}
+                  selected={field.value ? parseISO(field.value) : undefined}
                 />
               </PopoverContent>
             </Popover>

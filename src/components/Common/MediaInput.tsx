@@ -5,8 +5,10 @@ import { CrossIcon } from "lucide-react";
 import { useRef } from "react";
 import { FormLabel } from "../ui/form";
 import Image from "next/image";
+import { PlayIcon } from "@/icons/PlayIcon";
+import { CloseIcon } from "@/icons/CloseIcon";
 
-export function MediaInput({ name, label }: { name: string; label? :string}) {
+export function MediaInput({ name, label }: { name: string; label?: string }) {
   const { handleMediaSelect, removeMedia, selectedMedia, mediaPreview } =
     useMediaInput(name);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -19,14 +21,6 @@ export function MediaInput({ name, label }: { name: string; label? :string}) {
       <div className="mt-4 relative ">
         {mediaPreview && (
           <div className="mb-4 relative inline-block">
-            <button
-              type="button"
-              onClick={removeMedia}
-              className="absolute top-2 right-2 bg-black bg-opacity-50 text-white rounded-full w-2 h-2 flex items-center justify-center text-sm "
-            >
-              <CrossIcon />
-            </button>
-
             {selectedMedia?.type.startsWith("image/") && (
               <img
                 src={mediaPreview}
@@ -36,10 +30,22 @@ export function MediaInput({ name, label }: { name: string; label? :string}) {
             )}
 
             {selectedMedia?.type.startsWith("video/") && (
-              <video
-                src={mediaPreview}
-                className="w-[66px] h-[103px] object-cover rounded-md shadow"
-              />
+              <div className="relative w-[66px] h-[103px]">
+                <video
+                  src={mediaPreview}
+                  className="w-full h-full object-cover rounded-md shadow"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <PlayIcon className="w-5 h-5 text-white" />
+                </div>
+                <button
+                  type="button"
+                  onClick={removeMedia}
+                  className="absolute top-[-6] right-[-6]"
+                >
+                  <CloseIcon />
+                </button>
+              </div>
             )}
           </div>
         )}
